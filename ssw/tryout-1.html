@@ -44,12 +44,23 @@
 <h2>Soal</h2>
 
 <!-- ===== CONTOH SOAL ===== -->
-<p><b>1. 「点検」の意味はどれですか。</b></p>
-<label><input type="radio" name="q1" value="a"> Perbaikan</label><br>
-<label><input type="radio" name="q1" value="b"> Pemeriksaan</label><br>
-<label><input type="radio" name="q1" value="c"> Penggantian</label><br>
-
-<hr>
+const bankSoal = [
+  {
+    soal: "「点検」の意味はどれですか。",
+    opsi: ["Perbaikan", "Pemeriksaan", "Penggantian"],
+    jawaban: 1
+  },
+  {
+    soal: "「整備」の意味はどれですか。",
+    opsi: ["Pemeriksaan", "Perawatan", "Kerusakan"],
+    jawaban: 1
+  },
+  {
+    soal: "「修理」の意味はどれですか。",
+    opsi: ["Perbaikan", "Pemeriksaan", "Keselamatan"],
+    jawaban: 0
+  }
+];
 
 <!-- 👉 NANTI KAMU GANTI SOAL SESUAI TRY OUT -->
 
@@ -76,6 +87,9 @@ function mulai() {
   document.getElementById("startBox").style.display = "none";
   document.getElementById("quizForm").style.display = "block";
 
+  soalUjian = bankSoal; // nanti bisa diacak & slice 50
+  renderSoal();
+
   const timerEl = document.getElementById("timer");
 
   function update() {
@@ -90,6 +104,7 @@ function mulai() {
   interval = setInterval(update, 1000);
 }
 
+
 /* ===== KUNCI JAWABAN (CONTOH) ===== */
 const jawaban = {
   q1: "b"
@@ -100,26 +115,45 @@ function selesai() {
   clearInterval(interval);
 
   let skor = 0;
-  const total = Object.keys(jawaban).length;
+  soalUjian.forEach((s, i) => {
+    const p = document.querySelector(`input[name="q${i}"]:checked`);
+    if (p && parseInt(p.value) === s.jawaban) skor++;
+  });
 
-  for (let k in jawaban) {
-    const p = document.querySelector(`input[name="${k}"]:checked`);
-    if (p && p.value === jawaban[k]) skor++;
-  }
-
-  const nilai = Math.round((skor / total) * 100);
+  const nilai = Math.round((skor / soalUjian.length) * 100);
   const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
 
   const hasil = document.getElementById("hasil");
   hasil.style.display = "block";
   hasil.innerHTML = `
     <h2>📊 Hasil Try Out</h2>
-    <p>Benar: ${skor} / ${total}</p>
+    <p>Benar: ${skor} / ${soalUjian.length}</p>
     <p><b>Nilai: ${nilai}</b></p>
     <p>Status: <b>${status}</b></p>
   `;
 
   window.scrollTo({ top: hasil.offsetTop, behavior: "smooth" });
+}
+
+let soalUjian = [];
+
+function renderSoal() {
+  const box = document.getElementById("soalContainer");
+  box.innerHTML = "";
+
+  soalUjian.forEach((s, i) => {
+    let html = `<p><b>${i + 1}. ${s.soal}</b></p>`;
+    s.opsi.forEach((o, idx) => {
+      html += `
+        <label>
+          <input type="radio" name="q${i}" value="${idx}">
+          ${o}
+        </label><br>
+      `;
+    });
+    html += "<hr>";
+    box.innerHTML += html;
+  });
 }
 </script>
 
