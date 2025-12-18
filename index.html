@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- Judul yang muncul di tab browser -->
+  <!-- Judul tab browser -->
   <title>SSW Manabu Mantappu</title>
 
-  <!-- Supaya tampilan rapi di HP -->
+  <!-- Responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- HUBUNGKAN ke style.css -->
+  <!-- CSS utama -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,19 +24,20 @@
     </p>
   </header>
 
-  <!-- ===== MENU ===== -->
+  <!-- ===== NAVBAR ===== -->
   <nav>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">SSW</a></li>
-      <li><a href="#">Belajar</a></li>
-      <li><a href="#">Latihan</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ssw/index.html">SSW</a></li>
+      <li><a href="ssw/bahasa-bengkel.html">Belajar</a></li>
+      <li><a href="ssw/latihan-bahasa-bengkel.html">Latihan</a></li>
     </ul>
   </nav>
 
   <!-- ===== ISI ===== -->
   <div class="container">
 
+    <!-- PROGRESS -->
     <div class="card">
       <h2>📊 Progress Belajar</h2>
       <p>Kamu sedang berada di tahap awal belajar SSW.</p>
@@ -48,6 +49,7 @@
       <p class="score">Skor Simulasi: 60 / 100</p>
     </div>
 
+    <!-- TAHAPAN -->
     <div class="card">
       <h2>🧭 Tahapan Belajar SSW</h2>
       <ol>
@@ -58,7 +60,15 @@
         <li>Siap Kerja ke Jepang</li>
       </ol>
 
-      <a href="#" class="btn">Mulai Belajar</a>
+      <p>
+        Mulai dari bidang <b>SSW Jidōsha Seibi</b>,
+        lalu lanjutkan ke materi dan latihan.
+      </p>
+
+      <!-- TOMBOL AKTIF -->
+      <a href="ssw/jidousha-seibi.html" class="btn">
+        🚗 Mulai Belajar Jidōsha Seibi
+      </a>
     </div>
 
   </div>
