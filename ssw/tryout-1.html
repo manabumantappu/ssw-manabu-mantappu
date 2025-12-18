@@ -24,6 +24,7 @@
 
 <div class="container">
 
+<!-- TIMER -->
 <div class="card">
   <h2>⏱️ Waktu</h2>
   <p id="timer" style="font-size:1.3rem;font-weight:bold;color:#b00020;">
@@ -31,6 +32,7 @@
   </p>
 </div>
 
+<!-- START -->
 <div class="card" id="startBox">
   <p>
     Ini adalah simulasi Try Out SSW.  
@@ -39,11 +41,30 @@
   <button class="btn" onclick="mulai()">▶️ Mulai Try Out</button>
 </div>
 
+<!-- FORM SOAL -->
 <form id="quizForm" class="card" style="display:none;">
+  <h2>Soal</h2>
 
-<h2>Soal</h2>
+  <div id="soalContainer"></div>
 
-<!-- ===== CONTOH SOAL ===== -->
+  <button type="button" class="btn" onclick="selesai()">
+    📊 Selesai & Lihat Nilai
+  </button>
+</form>
+
+<!-- HASIL -->
+<div id="hasil" class="card" style="display:none;"></div>
+
+</div>
+
+<footer>
+  © 2025 Manabu Mantappu – Try Out SSW
+</footer>
+
+<script>
+/* ================================================= */
+/* BANK SOAL (CONTOH 5 SOAL — GANTI JADI 50) */
+/* ================================================= */
 const bankSoal = [
   {
     soal: "「点検」の意味はどれですか。",
@@ -52,91 +73,36 @@ const bankSoal = [
   },
   {
     soal: "「整備」の意味はどれですか。",
-    opsi: ["Pemeriksaan", "Perawatan", "Kerusakan"],
-    jawaban: 1
+    opsi: ["Perawatan", "Pemeriksaan", "Kerusakan"],
+    jawaban: 0
   },
   {
     soal: "「修理」の意味はどれですか。",
-    opsi: ["Perbaikan", "Pemeriksaan", "Keselamatan"],
-    jawaban: 0
+    opsi: ["Pemeriksaan", "Perbaikan", "Keselamatan"],
+    jawaban: 1
+  },
+  {
+    soal: "「安全」の意味はどれですか。",
+    opsi: ["Bahaya", "Keselamatan", "Kerusakan"],
+    jawaban: 1
+  },
+  {
+    soal: "「工具」の意味はどれですか。",
+    opsi: ["Mesin", "Alat", "Pemeriksaan"],
+    jawaban: 1
   }
 ];
 
-<!-- 👉 NANTI KAMU GANTI SOAL SESUAI TRY OUT -->
-
-<button type="button" class="btn" onclick="selesai()">
-  📊 Selesai & Lihat Nilai
-</button>
-
-</form>
-
-<div id="hasil" class="card" style="display:none;"></div>
-
-</div>
-
-<footer>
-  © 2025 Manabu Mantappu – Try Out
-</footer>
-
-<script>
-/* ===== TIMER ===== */
+/* ================================================= */
+/* VARIABEL */
+/* ================================================= */
+let soalUjian = [];
 let waktu = 50 * 60;
 let interval = null;
 
-function mulai() {
-  document.getElementById("startBox").style.display = "none";
-  document.getElementById("quizForm").style.display = "block";
-
-  soalUjian = bankSoal; // nanti bisa diacak & slice 50
-  renderSoal();
-
-  const timerEl = document.getElementById("timer");
-
-  function update() {
-    const m = Math.floor(waktu / 60);
-    const s = waktu % 60;
-    timerEl.textContent = `${m}:${s.toString().padStart(2,"0")}`;
-    if (waktu <= 0) selesai();
-    waktu--;
-  }
-
-  update();
-  interval = setInterval(update, 1000);
-}
-
-
-/* ===== KUNCI JAWABAN (CONTOH) ===== */
-const jawaban = {
-  q1: "b"
-};
-
-/* ===== HITUNG NILAI ===== */
-function selesai() {
-  clearInterval(interval);
-
-  let skor = 0;
-  soalUjian.forEach((s, i) => {
-    const p = document.querySelector(`input[name="q${i}"]:checked`);
-    if (p && parseInt(p.value) === s.jawaban) skor++;
-  });
-
-  const nilai = Math.round((skor / soalUjian.length) * 100);
-  const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
-
-  const hasil = document.getElementById("hasil");
-  hasil.style.display = "block";
-  hasil.innerHTML = `
-    <h2>📊 Hasil Try Out</h2>
-    <p>Benar: ${skor} / ${soalUjian.length}</p>
-    <p><b>Nilai: ${nilai}</b></p>
-    <p>Status: <b>${status}</b></p>
-  `;
-
-  window.scrollTo({ top: hasil.offsetTop, behavior: "smooth" });
-}
-
-let soalUjian = [];
-
+/* ================================================= */
+/* RENDER SOAL */
+/* ================================================= */
 function renderSoal() {
   const box = document.getElementById("soalContainer");
   box.innerHTML = "";
@@ -154,6 +120,77 @@ function renderSoal() {
     html += "<hr>";
     box.innerHTML += html;
   });
+}
+
+/* ================================================= */
+/* MULAI TRY OUT */
+/* ================================================= */
+function mulai() {
+  document.getElementById("startBox").style.display = "none";
+  document.getElementById("quizForm").style.display = "block";
+
+  // Ambil 50 soal (acak)
+  soalUjian = bankSoal
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 50);
+
+  renderSoal();
+
+  const timerEl = document.getElementById("timer");
+
+  function update() {
+    const m = Math.floor(waktu / 60);
+    const s = waktu % 60;
+    timerEl.textContent = `${m}:${s.toString().padStart(2,"0")}`;
+
+    if (waktu <= 0) {
+      selesai();
+    }
+    waktu--;
+  }
+
+  update();
+  interval = setInterval(update, 1000);
+}
+
+/* ================================================= */
+/* SELESAI + HITUNG NILAI */
+/* ================================================= */
+function selesai() {
+  clearInterval(interval);
+
+  let benar = 0;
+
+  soalUjian.forEach((s, i) => {
+    const p = document.querySelector(`input[name="q${i}"]:checked`);
+    if (p && parseInt(p.value) === s.jawaban) {
+      benar++;
+    }
+  });
+
+  const nilai = Math.round((benar / soalUjian.length) * 100);
+  const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
+
+  document.getElementById("quizForm").style.display = "none";
+
+  const hasil = document.getElementById("hasil");
+  hasil.style.display = "block";
+  hasil.innerHTML = `
+    <h2>📊 Hasil Try Out</h2>
+    <p>Jawaban benar: <b>${benar}</b> / ${soalUjian.length}</p>
+    <p><b>Nilai: ${nilai}</b></p>
+    <p>Status: <b>${status}</b></p>
+
+    <a href="bahasa-bengkel.html" class="btn">
+      📘 Lanjut Belajar
+    </a>
+
+    <a href="tryout-menu.html" class="btn" style="margin-top:10px;">
+      🔁 Kembali ke Menu Try Out
+    </a>
+  `;
+
+  window.scrollTo({ top: hasil.offsetTop, behavior: "smooth" });
 }
 </script>
 
