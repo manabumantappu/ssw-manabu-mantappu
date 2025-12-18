@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Try Out Acak – SSW Jidōsha Seibi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>📝 Try Out Acak SSW</h1>
+  <p>SSW Jidōsha Seibi | 50 Soal | Soal Acak</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="jidousha-seibi.html">Jidōsha Seibi</a></li>
+    <li><a href="tryout-menu.html">Menu Try Out</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<div class="card">
+  <h2>⏱️ Waktu</h2>
+  <p id="timer" style="font-size:1.3rem;font-weight:bold;color:#b00020;">50:00</p>
+</div>
+
+<div class="card" id="startBox">
+  <p>Soal akan diacak dari bank soal. Setiap percobaan berbeda.</p>
+  <button class="btn" onclick="mulai()">▶️ Mulai Try Out</button>
+</div>
+
+<form id="quizForm" class="card" style="display:none;">
+  <h2>Soal</h2>
+  <div id="soalContainer"></div>
+
+  <button type="button" class="btn" onclick="selesai()">
+    📊 Selesai & Lihat Nilai
+  </button>
+</form>
+
+<div id="hasil" class="card" style="display:none;"></div>
+
+</div>
+
+<footer>
+  © 2025 Manabu Mantappu – Try Out Acak
+</footer>
+
+<script>
+/* ========================= */
+/* BANK SOAL (CONTOH 15) */
+/* 👉 NANTI TINGGAL TAMBAH */
+/* ========================= */
+const bankSoal = [
+  {
+    soal: "「点検」の意味はどれですか。",
+    opsi: ["Perbaikan", "Pemeriksaan", "Penggantian", "Kerusakan"],
+    jawaban: 1
+  },
+  {
+    soal: "「修理」artinya adalah …",
+    opsi: ["Pemeriksaan", "Keselamatan", "Perbaikan", "Pekerjaan"],
+    jawaban: 2
+  },
+  {
+    soal: "「故障」意味は？",
+    opsi: ["Keselamatan", "Alat", "Kerusakan", "Pemeriksaan"],
+    jawaban: 2
+  },
+  {
+    soal: "「レンチ」adalah …",
+    opsi: ["Obeng", "Kunci", "Palu", "Dongkrak"],
+    jawaban: 1
+  },
+  {
+    soal: "「ブレーキ」意味は？",
+    opsi: ["Mesin", "Rem", "Ban", "Kopling"],
+    jawaban: 1
+  },
+  {
+    soal: "「安全」artinya …",
+    opsi: ["Bahaya", "Kerja", "Keselamatan", "Rusak"],
+    jawaban: 2
+  },
+  {
+    soal: "「交換」意味は？",
+    opsi: ["Perbaikan", "Penggantian", "Pemeriksaan", "Pembersihan"],
+    jawaban: 1
+  },
+  {
+    soal: "「工具」意味は？",
+    opsi: ["Kotak", "Alat", "Mesin", "Bengkel"],
+    jawaban: 1
+  },
+  {
+    soal: "「タイヤ」artinya …",
+    opsi: ["Mesin", "Rem", "Ban", "Velg"],
+    jawaban: 2
+  },
+  {
+    soal: "「エンジン」adalah …",
+    opsi: ["Rem", "Mesin", "Ban", "Lampu"],
+    jawaban: 1
+  }
+  // 👉 tambahkan sampai minimal 50–100 soal
+];
+
+/* ========================= */
+/* VARIABEL */
+/* ========================= */
+let soalDipakai = [];
+let waktu = 50 * 60;
+let timerInterval = null;
+
+/* ========================= */
+/* MULAI */
+/* ========================= */
+function mulai() {
+  document.getElementById("startBox").style.display = "none";
+  document.getElementById("quizForm").style.display = "block";
+
+  acakSoal();
+  tampilkanSoal();
+  startTimer();
+}
+
+/* ========================= */
+/* ACAK SOAL */
+/* ========================= */
+function acakSoal() {
+  const shuffled = [...bankSoal].sort(() => Math.random() - 0.5);
+  soalDipakai = shuffled.slice(0, 50);
+}
+
+/* ========================= */
+/* TAMPILKAN SOAL */
+/* ========================= */
+function tampilkanSoal() {
+  const container = document.getElementById("soalContainer");
+  container.innerHTML = "";
+
+  soalDipakai.forEach((s, i) => {
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <p><b>${i+1}. ${s.soal}</b></p>
+      ${s.opsi.map((o, idx) => `
+        <label>
+          <input type="radio" name="q${i}" value="${idx}">
+          ${o}
+        </label><br>
+      `).join("")}
+      <hr>
+    `;
+    container.appendChild(div);
+  });
+}
+
+/* ========================= */
+/* TIMER */
+/* ========================= */
+function startTimer() {
+  const timerEl = document.getElementById("timer");
+
+  function update() {
+    const m = Math.floor(waktu / 60);
+    const s = waktu % 60;
+    timerEl.textContent = `${m}:${s.toString().padStart(2,"0")}`;
+    if (waktu <= 0) selesai();
+    waktu--;
+  }
+
+  update();
+  timerInterval = setInterval(update, 1000);
+}
+
+/* ========================= */
+/* SELESAI */
+/* ========================= */
+function selesai() {
+  clearInterval(timerInterval);
+
+  let skor = 0;
+  soalDipakai.forEach((s, i) => {
+    const pilih = document.querySelector(`input[name="q${i}"]:checked`);
+    if (pilih && parseInt(pilih.value) === s.jawaban) skor++;
+  });
+
+  const nilai = Math.round((skor / soalDipakai.length) * 100);
+
+  const hasil = document.getElementById("hasil");
+  hasil.style.display = "block";
+  hasil.innerHTML = `
+    <h2>📊 Hasil Try Out Acak</h2>
+    <p>Benar: ${skor} / ${soalDipakai.length}</p>
+    <p><b>Nilai: ${nilai}</b></p>
+  `;
+
+  window.scrollTo({ top: hasil.offsetTop, behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
