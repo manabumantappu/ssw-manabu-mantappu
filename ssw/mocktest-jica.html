@@ -38,6 +38,7 @@
 <form id="quizForm" class="card" style="display:none;">
   <h2>Soal Ujian</h2>
   <div id="soalContainer"></div>
+  <div id="hasilBox" class="card" style="display:none;"></div>
 
   <br>
   <button type="button" class="btn" onclick="submitUjian()">
@@ -1633,14 +1634,42 @@ function submitUjian() {
   });
 
   const nilai = Math.round((benar / soalUjian.length) * 100);
-  const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
+  const status = nilai >= 70;
 
-  alert(
-    `HASIL MOCK TEST\n\n` +
-    `Benar: ${benar} / ${soalUjian.length}\n` +
-    `Nilai: ${nilai}\n` +
-    `Status: ${status}`
-  );
+  // sembunyikan soal
+  document.getElementById("quizForm").style.display = "none";
+
+  // tampilkan hasil
+  const hasilBox = document.getElementById("hasilBox");
+  hasilBox.style.display = "block";
+
+  if (lulus) {
+    hasilBox.innerHTML = `
+      <h2>🎉 SELAMAT!</h2>
+      <p><b>Nilai kamu:</b> ${nilai}</p>
+      <p>Status: <b style="color:green;">LULUS</b></p>
+
+      <a href="tryout-menu.html" class="btn">
+        🔁 Kerjakan Try Out Lain
+      </a>
+    `;
+  } else {
+    hasilBox.innerHTML = `
+      <h2>❌ BELUM LULUS</h2>
+      <p><b>Nilai kamu:</b> ${nilai}</p>
+      <p>Status: <b style="color:red;">BELUM LULUS</b></p>
+
+      <p>💡 Jangan menyerah. Pelajari materi di bawah ini lalu coba lagi.</p>
+
+      <a href="bahasa-bengkel.html" class="btn">
+        📘 Lanjut Belajar Materi
+      </a>
+
+      <a href="tryout-random.html" class="btn" style="margin-top:10px;">
+        📝 Coba Try Out Acak
+      </a>
+    `;
+  }
 }
 </script>
 
