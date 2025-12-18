@@ -87,3 +87,15 @@ footer {
   padding: 15px;
   font-size: 0.9rem;
 }
+
+/* FIX TOMBOL TIDAK BISA DIKLIK */
+#startBox {
+  position: relative;
+  z-index: 9999;
+}
+
+#startBox button {
+  position: relative;
+  z-index: 10000;
+  pointer-events: auto;
+}
