@@ -328,64 +328,55 @@
 /* VARIABEL GLOBAL */
 /* ================================================= */
 let ujianDimulai = false;
+let waktu = 50 * 60;
+let timerInterval = null;
 
-// simpan pelanggaran agar tidak reset saat refresh
+// pelanggaran fullscreen (tidak reset saat refresh)
 let pelanggaranFullscreen = sessionStorage.getItem("pelanggaranFS")
   ? parseInt(sessionStorage.getItem("pelanggaranFS"))
   : 0;
 
 /* ================================================= */
-/* TIMER UJIAN (TIDAK JALAN SEBELUM MULAI) */
+/* TIMER */
 /* ================================================= */
-let waktu = 50 * 60; // 50 menit
-let timerInterval = null;
-
 function startTimer() {
   const timerEl = document.getElementById("timer");
 
   function updateTimer() {
     const menit = Math.floor(waktu / 60);
     const detik = waktu % 60;
-    timerEl.textContent = `${menit}:${detik.toString().padStart(2, "0")}`;
+    timerEl.textContent = `${menit}:${detik.toString().padStart(2,"0")}`;
 
     if (waktu <= 0) {
       clearInterval(timerInterval);
-      alert("⏰ Waktu habis! Ujian akan dinilai.");
-      hitungNilai(false); // auto submit
+      hitungNilai(false);
     }
     waktu--;
   }
 
-  updateTimer(); // tampilkan waktu awal
+  updateTimer();
   timerInterval = setInterval(updateTimer, 1000);
 }
 
 /* ================================================= */
-/* MULAI UJIAN (FULLSCREEN + TIMER) */
+/* MULAI UJIAN */
 /* ================================================= */
 function mulaiUjian() {
-  // reset pelanggaran
   sessionStorage.removeItem("pelanggaranFS");
   pelanggaranFullscreen = 0;
 
-  // fullscreen
   const elem = document.documentElement;
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  }
+  if (elem.requestFullscreen) elem.requestFullscreen();
 
   ujianDimulai = true;
-
-  // tampilkan soal
   document.getElementById("startBox").style.display = "none";
   document.getElementById("quizForm").style.display = "block";
 
-  // mulai timer
   startTimer();
 }
 
 /* ================================================= */
-/* AUTO SUBMIT JIKA KELUAR FULLSCREEN */
+/* AUTO SUBMIT FULLSCREEN */
 /* ================================================= */
 document.addEventListener("fullscreenchange", () => {
   if (!ujianDimulai) return;
@@ -394,20 +385,11 @@ document.addEventListener("fullscreenchange", () => {
     pelanggaranFullscreen++;
     sessionStorage.setItem("pelanggaranFS", pelanggaranFullscreen);
 
-    if (pelanggaranFullscreen < 3) {
-      alert(
-        "⚠️ Anda keluar dari mode ujian.\n" +
-        "Pelanggaran: " + pelanggaranFullscreen + " / 3"
-      );
-
-      document.documentElement.requestFullscreen();
+    if (pelanggaranFullscreen >= 3) {
+      hitungNilai(false);
     } else {
-      alert(
-        "❌ Anda keluar dari mode ujian 3 kali.\n" +
-        "Ujian akan otomatis diselesaikan."
-      );
-
-      hitungNilai(false); // auto submit
+      alert(`⚠️ Keluar fullscreen (${pelanggaranFullscreen}/3)`);
+      document.documentElement.requestFullscreen();
     }
   }
 });
@@ -429,59 +411,67 @@ const jawaban = {
 };
 
 /* ================================================= */
-/* SUBMIT MANUAL (CEK SOAL KOSONG) */
+/* SUBMIT MANUAL */
 /* ================================================= */
 function submitManual() {
   for (let k in jawaban) {
-    const pilih = document.querySelector(`input[name="${k}"]:checked`);
-    if (!pilih) {
-      alert("⚠️ Masih ada soal yang belum dijawab.\nSilakan periksa kembali.");
+    if (!document.querySelector(`input[name="${k}"]:checked`)) {
+      alert("⚠️ Masih ada soal yang belum dijawab");
       return;
     }
   }
-
-  hitungNilai(true); // tampilkan kunci jawaban
+  hitungNilai(true);
 }
 
 /* ================================================= */
-/* HITUNG NILAI */
+/* HITUNG NILAI + SIMPAN */
 /* ================================================= */
 function hitungNilai(tampilkanJawaban) {
+  clearInterval(timerInterval);
+
   let skor = 0;
   const total = Object.keys(jawaban).length;
 
   for (let k in jawaban) {
     const pilih = document.querySelector(`input[name="${k}"]:checked`);
-    if (pilih && pilih.value === jawaban[k]) {
-      skor++;
-    }
+    if (pilih && pilih.value === jawaban[k]) skor++;
   }
 
   const nilai = Math.round((skor / total) * 100);
-  const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
+  const waktuTerpakai = 50*60 - waktu;
 
-  alert(`Hasil Ujian\n\nNilai: ${nilai}\nStatus: ${status}`);
+  // SIMPAN KE localStorage
+  const hasil = {
+    tanggal: new Date().toLocaleString(),
+    nilai: nilai,
+    skor: skor,
+    waktu: waktuTerpakai
+  };
 
-  if (tampilkanJawaban) {
-    tampilkanKunciJawaban();
-  }
+  const riwayat = JSON.parse(localStorage.getItem("riwayatUjian")) || [];
+  riwayat.push(hasil);
+  localStorage.setItem("riwayatUjian", JSON.stringify(riwayat));
+
+  alert(`Nilai: ${nilai}`);
+
+  if (tampilkanJawaban) tampilkanKoreksi();
 }
 
 /* ================================================= */
-/* TAMPILKAN KUNCI JAWABAN */
+/* TAMPILKAN KOREKSI JAWABAN (FIXED) */
 /* ================================================= */
-function tampilkanKunciJawaban() {
+function tampilkanKoreksi() {
   for (let k in jawaban) {
     const opsi = document.querySelectorAll(`input[name="${k}"]`);
 
     opsi.forEach(opt => {
-      const label = opt.parentElement;
+      const textNode = opt.nextSibling;
 
       if (opt.value === jawaban[k]) {
-        label.style.color = "green";
-        label.style.fontWeight = "bold";
-      } else if (opt.checked && opt.value !== jawaban[k]) {
-        label.style.color = "red";
+        textNode.parentElement.style.color = "green";
+        textNode.parentElement.style.fontWeight = "bold";
+      } else if (opt.checked) {
+        textNode.parentElement.style.color = "red";
       }
 
       opt.disabled = true;
@@ -489,6 +479,7 @@ function tampilkanKunciJawaban() {
   }
 }
 </script>
+
 
 
 </body>
