@@ -327,14 +327,19 @@
 /* ============================= */
 /* VARIABEL GLOBAL */
 /* ============================= */
-let pelanggaranFullscreen = 0;
+let pelanggaranFullscreen = sessionStorage.getItem("pelanggaranFS")
+  ? parseInt(sessionStorage.getItem("pelanggaranFS"))
+  : 0;
 let ujianDimulai = false;
 
 /* ============================= */
 /* TIMER UJIAN */
 /* ============================= */
-document.addEventListener("DOMContentLoaded", () => {
-  let waktu = 50 * 60;
+
+  let waktu = 50 * 60; // 50 menit
+let timerInterval = null;
+
+function startTimer() {
   const timerEl = document.getElementById("timer");
 
   function updateTimer() {
@@ -350,24 +355,34 @@ document.addEventListener("DOMContentLoaded", () => {
     waktu--;
   }
 
-  updateTimer();
-  window.timerInterval = setInterval(updateTimer, 1000);
+  updateTimer(); // tampilkan 50:00
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+
+ 
 });
 
 /* ============================= */
 /* MODE FULL SCREEN + START */
 /* ============================= */
-function mulaiUjian() {
-  const elem = document.documentElement;
+ function mulaiUjian() {
+   // reset pelanggaran
+    sessionStorage.removeItem("pelanggaranFS");
+pelanggaranFullscreen = 0;
+
+     // fullscreen
+   const elem = document.documentElement;
 
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   }
 
   ujianDimulai = true;
-
+// tampilkan soal
   document.getElementById("startBox").style.display = "none";
   document.getElementById("quizForm").style.display = "block";
+  startTimer();
 }
 
 /* ============================= */
@@ -378,6 +393,7 @@ document.addEventListener("fullscreenchange", () => {
 
   if (!document.fullscreenElement) {
     pelanggaranFullscreen++;
+sessionStorage.setItem("pelanggaranFS", pelanggaranFullscreen);
 
     if (pelanggaranFullscreen < 3) {
       alert(
