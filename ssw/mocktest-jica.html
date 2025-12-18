@@ -9,9 +9,24 @@
 
 <body>
 
+ <script>
+if (localStorage.getItem("loginSSW") !== "true") {
+  window.location.href = "login.html";
+}
+</script>
+ 
 <header>
   <h1>📝 Mock Test JICA</h1>
   <p>SSW Jidōsha Seibi – 150 Soal (Real Test)</p>
+  <button class="btn" onclick="logout()">🚪 Logout</button>
+
+<script>
+function logout() {
+  localStorage.removeItem("loginSSW");
+  window.location.href = "login.html";
+}
+</script>
+
 </header>
 
 <div class="container">
