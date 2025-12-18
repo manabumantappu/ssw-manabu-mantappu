@@ -41,12 +41,13 @@
     Harap siapkan diri Anda.
   </p>
 
- <div class="btn" onclick="alert('DIKLIK')" style="cursor:pointer;">
-  ▶️ Mulai Ujian
+ <div class="btn" onclick="mulaiUjian()" style="cursor:pointer;">
+    ▶️ Mulai Ujian
+  </div>
 </div>
 
 <form id="quizForm" class="card" style="display:none;">
-
+  
 <h2>Soal (1–50)</h2>
 
 <!-- ================= SOAL 1–10 ================= -->
@@ -342,19 +343,18 @@ const hitungMundur = setInterval(() => {
 /* ===== PENILAIAN ===== */
 function hitungNilai() {
   const jawaban = {
-    q1:"b",q2:"c",q3:"b",q4:"a",q5:"b",
-    q6:"a",q7:"b",q8:"c",q9:"a",q10:"b",
-    q11:"a",q12:"b",q13:"a",q14:"c",q15:"b",
-    q16:"a",q17:"b",q18:"c",q19:"a",q20:"b"
-    q21:"a", q22:"b", q23:"c", q24:"a", q25:"b",
-    q26:"a", q27:"c", q28:"b", q29:"a", q30:"b",
-    q31:"a", q32:"b", q33:"a", q34:"b", q35:"a",
-    q36:"b", q37:"a", q38:"b", q39:"a", q40:"b",
-    q41:"a", q42:"b", q43:"a", q44:"b", q45:"a",
-    q46:"b", q47:"a", q48:"b", q49:"a", q50:"b"
+  q1:"b", q2:"c", q3:"b", q4:"a", q5:"b",
+  q6:"a", q7:"b", q8:"c", q9:"a", q10:"b",
+  q11:"a", q12:"b", q13:"a", q14:"c", q15:"b",
+  q16:"a", q17:"b", q18:"c", q19:"a", q20:"b",
+  q21:"a", q22:"b", q23:"c", q24:"a", q25:"b",
+  q26:"a", q27:"c", q28:"b", q29:"a", q30:"b",
+  q31:"a", q32:"b", q33:"a", q34:"b", q35:"a",
+  q36:"b", q37:"a", q38:"b", q39:"a", q40:"b",
+  q41:"a", q42:"b", q43:"a", q44:"b", q45:"a",
+  q46:"b", q47:"a", q48:"b", q49:"a", q50:"b"
+};
 
-    /* Soal 21–50 mengikuti pola yang sama */
-  };
 
   let skor = 0;
   const total = Object.keys(jawaban).length;
@@ -406,32 +406,6 @@ document.addEventListener("fullscreenchange", () => {
 });
   </script>
 
-  <script>
-/* ===== MODE FULL SCREEN UJIAN ===== */
-function mulaiUjian() {
-  console.log("Mulai ujian diklik");
-
-  const elem = document.documentElement;
-
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
-    elem.msRequestFullscreen();
-  }
-
-  document.getElementById("startBox").style.display = "none";
-  document.getElementById("quizForm").style.display = "block";
-}
-
-/* DETEKSI KELUAR FULLSCREEN */
-document.addEventListener("fullscreenchange", () => {
-  if (!document.fullscreenElement) {
-    alert("⚠️ Anda keluar dari mode ujian!");
-  }
-});
-</script>
 
 </body>
 </html>
