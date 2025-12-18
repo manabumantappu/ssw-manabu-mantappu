@@ -323,20 +323,20 @@
   © 2025 Manabu Mantappu — Ujian SSW Jidōsha Seibi
 </footer>
 
- <script>
+<script>
 /* ============================= */
 /* VARIABEL GLOBAL */
 /* ============================= */
 let pelanggaranFullscreen = sessionStorage.getItem("pelanggaranFS")
   ? parseInt(sessionStorage.getItem("pelanggaranFS"))
   : 0;
+
 let ujianDimulai = false;
 
 /* ============================= */
 /* TIMER UJIAN */
 /* ============================= */
-
-  let waktu = 50 * 60; // 50 menit
+let waktu = 50 * 60; // 50 menit
 let timerInterval = null;
 
 function startTimer() {
@@ -355,33 +355,31 @@ function startTimer() {
     waktu--;
   }
 
-  updateTimer(); // tampilkan 50:00
+  updateTimer(); // tampilkan waktu awal
   timerInterval = setInterval(updateTimer, 1000);
 }
-
-
- 
-});
 
 /* ============================= */
 /* MODE FULL SCREEN + START */
 /* ============================= */
- function mulaiUjian() {
-   // reset pelanggaran
-    sessionStorage.removeItem("pelanggaranFS");
-pelanggaranFullscreen = 0;
+function mulaiUjian() {
+  // reset pelanggaran
+  sessionStorage.removeItem("pelanggaranFS");
+  pelanggaranFullscreen = 0;
 
-     // fullscreen
-   const elem = document.documentElement;
-
+  // fullscreen
+  const elem = document.documentElement;
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   }
 
   ujianDimulai = true;
-// tampilkan soal
+
+  // tampilkan soal
   document.getElementById("startBox").style.display = "none";
   document.getElementById("quizForm").style.display = "block";
+
+  // mulai timer
   startTimer();
 }
 
@@ -393,7 +391,7 @@ document.addEventListener("fullscreenchange", () => {
 
   if (!document.fullscreenElement) {
     pelanggaranFullscreen++;
-sessionStorage.setItem("pelanggaranFS", pelanggaranFullscreen);
+    sessionStorage.setItem("pelanggaranFS", pelanggaranFullscreen);
 
     if (pelanggaranFullscreen < 3) {
       alert(
@@ -402,7 +400,6 @@ sessionStorage.setItem("pelanggaranFS", pelanggaranFullscreen);
       );
 
       document.documentElement.requestFullscreen();
-
     } else {
       alert(
         "❌ Anda keluar dari mode ujian 3 kali.\n" +
