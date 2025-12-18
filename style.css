@@ -99,3 +99,27 @@ footer {
   z-index: 10000;
   pointer-events: auto;
 }
+
+.tryout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.tryout-btn {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background: linear-gradient(135deg, #1f4037, #99f2c8);
+  color: #000;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tryout-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
