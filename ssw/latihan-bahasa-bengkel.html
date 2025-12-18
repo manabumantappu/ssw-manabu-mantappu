@@ -324,18 +324,19 @@
 </footer>
 
 <script>
-/* ============================= */
+/* ================================================= */
 /* VARIABEL GLOBAL */
-/* ============================= */
+/* ================================================= */
+let ujianDimulai = false;
+
+// simpan pelanggaran agar tidak reset saat refresh
 let pelanggaranFullscreen = sessionStorage.getItem("pelanggaranFS")
   ? parseInt(sessionStorage.getItem("pelanggaranFS"))
   : 0;
 
-let ujianDimulai = false;
-
-/* ============================= */
-/* TIMER UJIAN */
-/* ============================= */
+/* ================================================= */
+/* TIMER UJIAN (TIDAK JALAN SEBELUM MULAI) */
+/* ================================================= */
 let waktu = 50 * 60; // 50 menit
 let timerInterval = null;
 
@@ -350,7 +351,7 @@ function startTimer() {
     if (waktu <= 0) {
       clearInterval(timerInterval);
       alert("⏰ Waktu habis! Ujian akan dinilai.");
-      hitungNilai();
+      hitungNilai(false); // auto submit
     }
     waktu--;
   }
@@ -359,9 +360,9 @@ function startTimer() {
   timerInterval = setInterval(updateTimer, 1000);
 }
 
-/* ============================= */
-/* MODE FULL SCREEN + START */
-/* ============================= */
+/* ================================================= */
+/* MULAI UJIAN (FULLSCREEN + TIMER) */
+/* ================================================= */
 function mulaiUjian() {
   // reset pelanggaran
   sessionStorage.removeItem("pelanggaranFS");
@@ -383,9 +384,9 @@ function mulaiUjian() {
   startTimer();
 }
 
-/* ============================= */
+/* ================================================= */
 /* AUTO SUBMIT JIKA KELUAR FULLSCREEN */
-/* ============================= */
+/* ================================================= */
 document.addEventListener("fullscreenchange", () => {
   if (!ujianDimulai) return;
 
@@ -406,14 +407,14 @@ document.addEventListener("fullscreenchange", () => {
         "Ujian akan otomatis diselesaikan."
       );
 
-      hitungNilai();
+      hitungNilai(false); // auto submit
     }
   }
 });
 
-/* ============================= */
+/* ================================================= */
 /* KUNCI JAWABAN */
-/* ============================= */
+/* ================================================= */
 const jawaban = {
   q1:"b", q2:"c", q3:"b", q4:"a", q5:"b",
   q6:"a", q7:"b", q8:"c", q9:"a", q10:"b",
@@ -427,10 +428,25 @@ const jawaban = {
   q46:"b", q47:"a", q48:"b", q49:"a", q50:"b"
 };
 
-/* ============================= */
+/* ================================================= */
+/* SUBMIT MANUAL (CEK SOAL KOSONG) */
+/* ================================================= */
+function submitManual() {
+  for (let k in jawaban) {
+    const pilih = document.querySelector(`input[name="${k}"]:checked`);
+    if (!pilih) {
+      alert("⚠️ Masih ada soal yang belum dijawab.\nSilakan periksa kembali.");
+      return;
+    }
+  }
+
+  hitungNilai(true); // tampilkan kunci jawaban
+}
+
+/* ================================================= */
 /* HITUNG NILAI */
-/* ============================= */
-function hitungNilai() {
+/* ================================================= */
+function hitungNilai(tampilkanJawaban) {
   let skor = 0;
   const total = Object.keys(jawaban).length;
 
@@ -445,8 +461,35 @@ function hitungNilai() {
   const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
 
   alert(`Hasil Ujian\n\nNilai: ${nilai}\nStatus: ${status}`);
+
+  if (tampilkanJawaban) {
+    tampilkanKunciJawaban();
+  }
+}
+
+/* ================================================= */
+/* TAMPILKAN KUNCI JAWABAN */
+/* ================================================= */
+function tampilkanKunciJawaban() {
+  for (let k in jawaban) {
+    const opsi = document.querySelectorAll(`input[name="${k}"]`);
+
+    opsi.forEach(opt => {
+      const label = opt.parentElement;
+
+      if (opt.value === jawaban[k]) {
+        label.style.color = "green";
+        label.style.fontWeight = "bold";
+      } else if (opt.checked && opt.value !== jawaban[k]) {
+        label.style.color = "red";
+      }
+
+      opt.disabled = true;
+    });
+  }
 }
 </script>
+
 
 </body>
 </html>
