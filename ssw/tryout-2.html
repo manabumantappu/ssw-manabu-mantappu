@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Try Out 2 – SSW Jidōsha Seibi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>📝 Try Out 2 – SSW Jidōsha Seibi</h1>
+  <p>Paket B | 50 Soal | Waktu 50 Menit</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="jidousha-seibi.html">Jidōsha Seibi</a></li>
+    <li><a href="bahasa-bengkel.html">Materi</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<!-- INFO -->
+<div class="card">
+  <h2>⏱️ Waktu Ujian</h2>
+  <p id="timer" style="font-size:1.3rem;font-weight:bold;color:#b00020;">
+    50:00
+  </p>
+</div>
+
+<!-- MULAI -->
+<div class="card" id="startBox">
+  <p>
+    Try Out ini mensimulasikan ujian SSW Jidōsha Seibi.  
+    Waktu akan berjalan setelah tombol ditekan.
+  </p>
+  <button class="btn" onclick="mulaiTryOut()">▶️ Mulai Try Out 2</button>
+</div>
+
+<!-- FORM SOAL -->
+<form id="quizForm" class="card" style="display:none;">
+
+<h2>Soal 51–100</h2>
+
+<!-- CONTOH SOAL (51–55) -->
+<p><b>51. 「点検」の意味はどれですか。</b></p>
+<label><input type="radio" name="q51" value="a"> Perbaikan</label><br>
+<label><input type="radio" name="q51" value="b"> Pemeriksaan</label><br>
+<label><input type="radio" name="q51" value="c"> Penggantian</label><br>
+<label><input type="radio" name="q51" value="d"> Kerusakan</label>
+
+<hr>
+
+<p><b>52. 「修理」artinya adalah …</b></p>
+<label><input type="radio" name="q52" value="a"> Pemeriksaan</label><br>
+<label><input type="radio" name="q52" value="b"> Keselamatan</label><br>
+<label><input type="radio" name="q52" value="c"> Perbaikan</label><br>
+<label><input type="radio" name="q52" value="d"> Pekerjaan</label>
+
+<hr>
+
+<p><b>53. 「故障」意味は？</b></p>
+<label><input type="radio" name="q53" value="a"> Keselamatan</label><br>
+<label><input type="radio" name="q53" value="b"> Alat</label><br>
+<label><input type="radio" name="q53" value="c"> Kerusakan</label><br>
+<label><input type="radio" name="q53" value="d"> Pemeriksaan</label>
+
+<hr>
+
+<p><b>54. 「作業」artinya …</b></p>
+<label><input type="radio" name="q54" value="a"> Pekerjaan / Proses kerja</label><br>
+<label><input type="radio" name="q54" value="b"> Alat</label><br>
+<label><input type="radio" name="q54" value="c"> Mesin</label><br>
+<label><input type="radio" name="q54" value="d"> Mobil</label>
+
+<hr>
+
+<p><b>55. 「交換」意味は？</b></p>
+<label><input type="radio" name="q55" value="a"> Perbaikan</label><br>
+<label><input type="radio" name="q55" value="b"> Penggantian</label><br>
+<label><input type="radio" name="q55" value="c"> Pemeriksaan</label><br>
+<label><input type="radio" name="q55" value="d"> Pembersihan</label>
+
+<hr>
+
+<!-- NANTI: LANJUTKAN SOAL 56–100 -->
+
+<button type="button" class="btn" onclick="selesaiTryOut()">
+  📊 Selesai & Lihat Nilai
+</button>
+
+</form>
+
+<!-- HASIL -->
+<div id="hasilBox" class="card" style="display:none;"></div>
+
+</div>
+
+<footer>
+  © 2025 Manabu Mantappu – Try Out 2
+</footer>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+/* ========================= */
+/* TIMER */
+/* ========================= */
+let waktu = 50 * 60;
+let timerInterval = null;
+
+function mulaiTryOut() {
+  document.getElementById("startBox").style.display = "none";
+  document.getElementById("quizForm").style.display = "block";
+
+  const timerEl = document.getElementById("timer");
+
+  function updateTimer() {
+    const m = Math.floor(waktu / 60);
+    const s = waktu % 60;
+    timerEl.textContent = `${m}:${s.toString().padStart(2,"0")}`;
+
+    if (waktu <= 0) {
+      clearInterval(timerInterval);
+      alert("⏰ Waktu habis!");
+      selesaiTryOut();
+    }
+    waktu--;
+  }
+
+  updateTimer();
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+/* ========================= */
+/* KUNCI JAWABAN TRY OUT 2 */
+/* ========================= */
+const jawaban = {
+  q51:"b",
+  q52:"c",
+  q53:"c",
+  q54:"a",
+  q55:"b"
+  // lanjutkan sampai q100
+};
+
+/* ========================= */
+/* HITUNG NILAI */
+/* ========================= */
+function selesaiTryOut() {
+  clearInterval(timerInterval);
+
+  let skor = 0;
+  let total = Object.keys(jawaban).length;
+
+  for (let k in jawaban) {
+    const pilih = document.querySelector(`input[name="${k}"]:checked`);
+    if (pilih && pilih.value === jawaban[k]) skor++;
+  }
+
+  const nilai = Math.round((skor / total) * 100);
+  const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
+
+  const hasilBox = document.getElementById("hasilBox");
+  hasilBox.style.display = "block";
+  hasilBox.innerHTML = `
+    <h2>📊 Hasil Try Out 2</h2>
+    <p>Benar: ${skor} / ${total}</p>
+    <p><b>Nilai: ${nilai}</b></p>
+    <p>Status: <b>${status}</b></p>
+  `;
+
+  window.scrollTo({ top: hasilBox.offsetTop, behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
