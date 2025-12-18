@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Try Out 2 – SSW Jidōsha Seibi</title>
+<title>Try Out 1 – SSW Jidōsha Seibi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../style.css">
 </head>
@@ -10,170 +10,403 @@
 <body>
 
 <header>
-  <h1>📝 Try Out 2 – SSW Jidōsha Seibi</h1>
-  <p>Paket B | 50 Soal | Waktu 50 Menit</p>
+  <h1>📝 Try Out 1</h1>
+  <p>SSW Jidōsha Seibi | 50 Soal | 50 Menit</p>
 </header>
 
 <nav>
   <ul>
     <li><a href="../index.html">Home</a></li>
     <li><a href="jidousha-seibi.html">Jidōsha Seibi</a></li>
-    <li><a href="bahasa-bengkel.html">Materi</a></li>
+    <li><a href="tryout-menu.html">Menu Try Out</a></li>
   </ul>
 </nav>
 
 <div class="container">
 
-<!-- INFO -->
+<!-- TIMER -->
 <div class="card">
-  <h2>⏱️ Waktu Ujian</h2>
+  <h2>⏱️ Waktu</h2>
   <p id="timer" style="font-size:1.3rem;font-weight:bold;color:#b00020;">
     50:00
   </p>
 </div>
 
-<!-- MULAI -->
+<!-- START -->
 <div class="card" id="startBox">
   <p>
-    Try Out ini mensimulasikan ujian SSW Jidōsha Seibi.  
+    Ini adalah simulasi Try Out SSW.  
     Waktu akan berjalan setelah tombol ditekan.
   </p>
-  <button class="btn" onclick="mulaiTryOut()">▶️ Mulai Try Out 2</button>
+  <button class="btn" onclick="mulai()">▶️ Mulai Try Out</button>
 </div>
 
 <!-- FORM SOAL -->
 <form id="quizForm" class="card" style="display:none;">
+  <h2>Soal</h2>
 
-<h2>Soal 51–100</h2>
+  <div id="soalContainer"></div>
 
-<!-- CONTOH SOAL (51–55) -->
-<p><b>51. 「点検」の意味はどれですか。</b></p>
-<label><input type="radio" name="q51" value="a"> Perbaikan</label><br>
-<label><input type="radio" name="q51" value="b"> Pemeriksaan</label><br>
-<label><input type="radio" name="q51" value="c"> Penggantian</label><br>
-<label><input type="radio" name="q51" value="d"> Kerusakan</label>
-
-<hr>
-
-<p><b>52. 「修理」artinya adalah …</b></p>
-<label><input type="radio" name="q52" value="a"> Pemeriksaan</label><br>
-<label><input type="radio" name="q52" value="b"> Keselamatan</label><br>
-<label><input type="radio" name="q52" value="c"> Perbaikan</label><br>
-<label><input type="radio" name="q52" value="d"> Pekerjaan</label>
-
-<hr>
-
-<p><b>53. 「故障」意味は？</b></p>
-<label><input type="radio" name="q53" value="a"> Keselamatan</label><br>
-<label><input type="radio" name="q53" value="b"> Alat</label><br>
-<label><input type="radio" name="q53" value="c"> Kerusakan</label><br>
-<label><input type="radio" name="q53" value="d"> Pemeriksaan</label>
-
-<hr>
-
-<p><b>54. 「作業」artinya …</b></p>
-<label><input type="radio" name="q54" value="a"> Pekerjaan / Proses kerja</label><br>
-<label><input type="radio" name="q54" value="b"> Alat</label><br>
-<label><input type="radio" name="q54" value="c"> Mesin</label><br>
-<label><input type="radio" name="q54" value="d"> Mobil</label>
-
-<hr>
-
-<p><b>55. 「交換」意味は？</b></p>
-<label><input type="radio" name="q55" value="a"> Perbaikan</label><br>
-<label><input type="radio" name="q55" value="b"> Penggantian</label><br>
-<label><input type="radio" name="q55" value="c"> Pemeriksaan</label><br>
-<label><input type="radio" name="q55" value="d"> Pembersihan</label>
-
-<hr>
-
-<!-- NANTI: LANJUTKAN SOAL 56–100 -->
-
-<button type="button" class="btn" onclick="selesaiTryOut()">
-  📊 Selesai & Lihat Nilai
-</button>
-
+  <button type="button" class="btn" onclick="selesai()">
+    📊 Selesai & Lihat Nilai
+  </button>
 </form>
 
 <!-- HASIL -->
-<div id="hasilBox" class="card" style="display:none;"></div>
+<div id="hasil" class="card" style="display:none;"></div>
 
 </div>
 
 <footer>
-  © 2025 Manabu Mantappu – Try Out 2
+  © 2025 Manabu Mantappu – Try Out SSW
 </footer>
 
-<!-- ================= SCRIPT ================= -->
 <script>
-/* ========================= */
-/* TIMER */
-/* ========================= */
-let waktu = 50 * 60;
-let timerInterval = null;
+/* ================================================= */
+/* BANK SOAL (CONTOH 5 SOAL — GANTI JADI 50) */
+/* ================================================= */
+const bankSoal = [
 
-function mulaiTryOut() {
+// 21
+{
+  soal: "作業前（さぎょうまえ）に点検表（てんけんひょう）を確認（かくにん）する目的（もくてき）は何（なん）ですか。",
+  opsi: [
+    "時間（じかん）を短（みじか）くするため",
+    "危険（きけん）を事前（じぜん）に防（ふせ）ぐため",
+    "作業（さぎょう）を早（はや）く始（はじ）めるため",
+    "記録（きろく）を省（はぶ）くため"
+  ],
+  jawaban: 1
+},
+
+ // 22
+{
+  soal: "作業中（さぎょうちゅう）に保護手袋（ほごてぶくろ）を使（つか）う理由（りゆう）はどれですか。",
+  opsi: [
+    "手（て）を汚（よご）さないため",
+    "けがや切創（せっそう）を防（ふせ）ぐため",
+    "作業（さぎょう）を楽（らく）にするため",
+    "見（み）た目（め）をよくするため"
+  ],
+  jawaban: 1
+},
+
+ // 23
+{
+  soal: "回転（かいてん）する機械（きかい）の近（ちか）くで注意（ちゅうい）することはどれですか。",
+  opsi: [
+    "ゆるい服（ふく）を着（き）る",
+    "長（なが）い髪（かみ）をそのままにする",
+    "袖口（そでぐち）を締（し）める",
+    "近（ちか）づいて話（はな）す"
+  ],
+  jawaban: 2
+},
+
+ // 24
+{
+  soal: "作業場（さぎょうば）で水（みず）や油（あぶら）を見（み）つけた時（とき）の正（ただ）しい行動（こうどう）はどれですか。",
+  opsi: [
+    "そのままにする",
+    "注意表示（ちゅういひょうじ）を出（だ）すだけ",
+    "すぐ清掃（せいそう）する",
+    "作業（さぎょう）を続（つづ）ける"
+  ],
+  jawaban: 2
+},
+
+ // 25
+{
+  soal: "持（も）ち上（あ）げ作業（さぎょう）で二人（ふたり）作業（さぎょう）が必要（ひつよう）なのはどんな時（とき）ですか。",
+  opsi: [
+    "軽（かる）い物（もの）の時",
+    "一人（ひとり）で持（も）てる時",
+    "重量（じゅうりょう）が大（おお）きい時",
+    "時間（じかん）がない時"
+  ],
+  jawaban: 2
+},
+
+ // 26
+{
+  soal: "作業中（さぎょうちゅう）に通路（つうろ）を確保（かくほ）する理由（りゆう）はどれですか。",
+  opsi: [
+    "見（み）た目（め）をよくするため",
+    "移動（いどう）を早（はや）くするため",
+    "転倒（てんとう）や衝突（しょうとつ）を防（ふせ）ぐため",
+    "工具（こうぐ）を置（お）くため"
+  ],
+  jawaban: 2
+},
+
+ // 27
+{
+  soal: "作業前（さぎょうまえ）のKY活動（かつどう）（危険予知（きけんよち））の目的（もくてき）は何（なん）ですか。",
+  opsi: [
+    "作業（さぎょう）を省略（しょうりゃく）するため",
+    "危険（きけん）を予測（よそく）し対策（たいさく）するため",
+    "記録（きろく）を減（へ）らすため",
+    "作業時間（さぎょうじかん）を短（みじか）くするため"
+  ],
+  jawaban: 1
+},
+
+ // 28
+{
+  soal: "作業中（さぎょうちゅう）に体調（たいちょう）が悪（わる）くなった場合（ばあい）、どうしますか。",
+  opsi: [
+    "我慢（がまん）して続（つづ）ける",
+    "休憩（きゅうけい）し上司（じょうし）に報告（ほうこく）する",
+    "早（はや）く終（お）わらせる",
+    "無視（むし）する"
+  ],
+  jawaban: 1
+},
+
+ // 29
+{
+  soal: "作業場（さぎょうば）での整理整頓（せいりせいとん）の効果（こうか）はどれですか。",
+  opsi: [
+    "作業（さぎょう）が増（ふ）える",
+    "事故（じこ）の危険（きけん）が高（たか）くなる",
+    "安全性（あんぜんせい）と効率（こうりつ）が向上（こうじょう）する",
+    "時間（じかん）がかかる"
+  ],
+  jawaban: 2
+},
+
+ // 30
+{
+  soal: "作業後（さぎょうご）に確認（かくにん）すべきことはどれですか。",
+  opsi: [
+    "電源（でんげん）を切（き）ったか",
+    "工具（こうぐ）を置（お）いたままか",
+    "記録（きろく）をしないこと",
+    "すぐ帰（かえ）ること"
+  ],
+  jawaban: 0
+},
+
+ // 31
+{
+  soal: "作業前（さぎょうまえ）に工具（こうぐ）の状態（じょうたい）を確認（かくにん）する理由（りゆう）は何（なん）ですか。",
+  opsi: [
+    "作業（さぎょう）を早（はや）く終（お）わらせるため",
+    "工具（こうぐ）の故障（こしょう）による事故（じこ）を防（ふせ）ぐため",
+    "見（み）た目（め）をよくするため",
+    "工具（こうぐ）を新（あたら）しくするため"
+  ],
+  jawaban: 1
+},
+
+ // 32
+{
+  soal: "電動工具（でんどうこうぐ）を使（つか）う前（まえ）に注意（ちゅうい）することはどれですか。",
+  opsi: [
+    "コードの破損（はそん）がないか確認（かくにん）する",
+    "すぐ電源（でんげん）を入（い）れる",
+    "片手（かたて）で使（つか）う",
+    "周（まわ）りを見（み）ない"
+  ],
+  jawaban: 0
+},
+
+ // 33
+{
+  soal: "作業中（さぎょうちゅう）に火花（ひばな）が出（で）る作業（さぎょう）で必要（ひつよう）なことはどれですか。",
+  opsi: [
+    "保護眼鏡（ほごがんきょう）を着用（ちゃくよう）する",
+    "周（まわ）りに可燃物（かねんぶつ）を置（お）く",
+    "目（め）を閉（と）じて作業（さぎょう）する",
+    "早（はや）く終（お）わらせる"
+  ],
+  jawaban: 0
+},
+
+ // 34
+{
+  soal: "可燃物（かねんぶつ）の近（ちか）くで作業（さぎょう）する時（とき）、正（ただ）しい行動（こうどう）はどれですか。",
+  opsi: [
+    "そのまま作業（さぎょう）する",
+    "火気（かき）を使用（しよう）しない",
+    "無視（むし）する",
+    "急（いそ）いで終（お）わらせる"
+  ],
+  jawaban: 1
+},
+
+ // 35
+{
+  soal: "作業場（さぎょうば）で換気（かんき）を行（おこな）う目的（もくてき）は何（なん）ですか。",
+  opsi: [
+    "音（おと）を小（ちい）さくするため",
+    "有害（ゆうがい）なガスや臭（にお）いを減（へ）らすため",
+    "照明（しょうめい）を明（あか）るくするため",
+    "作業（さぎょう）を早（はや）くするため"
+  ],
+  jawaban: 1
+},
+
+ // 36
+{
+  soal: "溶接作業（ようせつさぎょう）の後（あと）に確認（かくにん）すべきことはどれですか。",
+  opsi: [
+    "火種（ひだね）が残（のこ）っていないか",
+    "すぐ帰（かえ）ること",
+    "工具（こうぐ）を置（お）いたままにする",
+    "記録（きろく）をしない"
+  ],
+  jawaban: 0
+},
+
+ // 37
+{
+  soal: "作業中（さぎょうちゅう）に第三者（だいさんしゃ）が近（ちか）づいた場合（ばあい）、どうしますか。",
+  opsi: [
+    "そのまま作業（さぎょう）を続（つづ）ける",
+    "注意（ちゅうい）して離（はな）れてもらう",
+    "無視（むし）する",
+    "急（いそ）いで終（お）わらせる"
+  ],
+  jawaban: 1
+},
+
+ // 38
+{
+  soal: "保護眼鏡（ほごがんきょう）を使（つか）う理由（りゆう）はどれですか。",
+  opsi: [
+    "目（め）を保護（ほご）するため",
+    "作業（さぎょう）を楽（らく）にするため",
+    "見（み）た目（め）をよくするため",
+    "時間（じかん）を短（みじか）くするため"
+  ],
+  jawaban: 0
+},
+
+ // 39
+{
+  soal: "作業前（さぎょうまえ）に周囲（しゅうい）を整理整頓（せいりせいとん）する効果（こうか）はどれですか。",
+  opsi: [
+    "作業（さぎょう）が遅（おそ）くなる",
+    "事故（じこ）の危険（きけん）が減（へ）る",
+    "疲（つか）れやすくなる",
+    "道具（どうぐ）が増（ふ）える"
+  ],
+  jawaban: 1
+},
+
+ // 40
+{
+  soal: "作業終了後（さぎょうしゅうりょうご）に最終確認（さいしゅうかくにん）として行（おこな）うべきことはどれですか。",
+  opsi: [
+    "電源（でんげん）・火気（かき）・工具（こうぐ）の確認（かくにん）",
+    "すぐ帰宅（きたく）する",
+    "記録（きろく）を省略（しょうりゃく）する",
+    "次（つぎ）の作業（さぎょう）を始（はじ）める"
+  ],
+  jawaban: 0
+}  
+
+];
+
+/* ================================================= */
+/* VARIABEL */
+/* ================================================= */
+let soalUjian = [];
+let waktu = 50 * 60;
+let interval = null;
+
+/* ================================================= */
+/* RENDER SOAL */
+/* ================================================= */
+function renderSoal() {
+  const box = document.getElementById("soalContainer");
+  box.innerHTML = "";
+
+  soalUjian.forEach((s, i) => {
+    let html = `<p><b>${i + 1}. ${s.soal}</b></p>`;
+    s.opsi.forEach((o, idx) => {
+      html += `
+        <label>
+          <input type="radio" name="q${i}" value="${idx}">
+          ${o}
+        </label><br>
+      `;
+    });
+    html += "<hr>";
+    box.innerHTML += html;
+  });
+}
+
+/* ================================================= */
+/* MULAI TRY OUT */
+/* ================================================= */
+function mulai() {
   document.getElementById("startBox").style.display = "none";
   document.getElementById("quizForm").style.display = "block";
 
+  // Ambil 50 soal (acak)
+  soalUjian = bankSoal
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 50);
+
+  renderSoal();
+
   const timerEl = document.getElementById("timer");
 
-  function updateTimer() {
+  function update() {
     const m = Math.floor(waktu / 60);
     const s = waktu % 60;
     timerEl.textContent = `${m}:${s.toString().padStart(2,"0")}`;
 
     if (waktu <= 0) {
-      clearInterval(timerInterval);
-      alert("⏰ Waktu habis!");
-      selesaiTryOut();
+      selesai();
     }
     waktu--;
   }
 
-  updateTimer();
-  timerInterval = setInterval(updateTimer, 1000);
+  update();
+  interval = setInterval(update, 1000);
 }
 
-/* ========================= */
-/* KUNCI JAWABAN TRY OUT 2 */
-/* ========================= */
-const jawaban = {
-  q51:"b",
-  q52:"c",
-  q53:"c",
-  q54:"a",
-  q55:"b"
-  // lanjutkan sampai q100
-};
+/* ================================================= */
+/* SELESAI + HITUNG NILAI */
+/* ================================================= */
+function selesai() {
+  clearInterval(interval);
 
-/* ========================= */
-/* HITUNG NILAI */
-/* ========================= */
-function selesaiTryOut() {
-  clearInterval(timerInterval);
+  let benar = 0;
 
-  let skor = 0;
-  let total = Object.keys(jawaban).length;
+  soalUjian.forEach((s, i) => {
+    const p = document.querySelector(`input[name="q${i}"]:checked`);
+    if (p && parseInt(p.value) === s.jawaban) {
+      benar++;
+    }
+  });
 
-  for (let k in jawaban) {
-    const pilih = document.querySelector(`input[name="${k}"]:checked`);
-    if (pilih && pilih.value === jawaban[k]) skor++;
-  }
-
-  const nilai = Math.round((skor / total) * 100);
+  const nilai = Math.round((benar / soalUjian.length) * 100);
   const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
 
-  const hasilBox = document.getElementById("hasilBox");
-  hasilBox.style.display = "block";
-  hasilBox.innerHTML = `
-    <h2>📊 Hasil Try Out 2</h2>
-    <p>Benar: ${skor} / ${total}</p>
+  document.getElementById("quizForm").style.display = "none";
+
+  const hasil = document.getElementById("hasil");
+  hasil.style.display = "block";
+  hasil.innerHTML = `
+    <h2>📊 Hasil Try Out</h2>
+    <p>Jawaban benar: <b>${benar}</b> / ${soalUjian.length}</p>
     <p><b>Nilai: ${nilai}</b></p>
     <p>Status: <b>${status}</b></p>
+
+    <a href="bahasa-bengkel.html" class="btn">
+      📘 Lanjut Belajar
+    </a>
+
+    <a href="tryout-menu.html" class="btn" style="margin-top:10px;">
+      🔁 Kembali ke Menu Try Out
+    </a>
   `;
 
-  window.scrollTo({ top: hasilBox.offsetTop, behavior: "smooth" });
+  window.scrollTo({ top: hasil.offsetTop, behavior: "smooth" });
 }
 </script>
 
