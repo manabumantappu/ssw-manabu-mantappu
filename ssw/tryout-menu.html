@@ -8,7 +8,12 @@
 </head>
 
 <body>
-
+<script>
+if (localStorage.getItem("loginSSW") !== "true") {
+  window.location.href = "login.html";
+}
+</script>
+  
 <header>
   <h1>📝 Menu Try Out SSW</h1>
   <p>SSW Jidōsha Seibi – Latihan & Simulasi Ujian</p>
@@ -53,6 +58,15 @@
 <footer>
   © 2025 Manabu Mantappu — SSW Jidōsha Seibi
 </footer>
+
+  <button class="btn" onclick="logout()">🚪 Logout</button>
+
+<script>
+function logout() {
+  localStorage.removeItem("loginSSW");
+  window.location.href = "login.html";
+}
+</script>
 
 </body>
 </html>
