@@ -328,7 +328,7 @@
 /* VARIABEL GLOBAL */
 /* ================================================= */
 let ujianDimulai = false;
-let waktu = 50 * 60;
+let waktu = 50 * 60; // 50 menit
 let timerInterval = null;
 
 // pelanggaran fullscreen (tidak reset saat refresh)
@@ -337,7 +337,7 @@ let pelanggaranFullscreen = sessionStorage.getItem("pelanggaranFS")
   : 0;
 
 /* ================================================= */
-/* TIMER */
+/* TIMER (TIDAK JALAN SEBELUM MULAI) */
 /* ================================================= */
 function startTimer() {
   const timerEl = document.getElementById("timer");
@@ -345,10 +345,11 @@ function startTimer() {
   function updateTimer() {
     const menit = Math.floor(waktu / 60);
     const detik = waktu % 60;
-    timerEl.textContent = `${menit}:${detik.toString().padStart(2,"0")}`;
+    timerEl.textContent = `${menit}:${detik.toString().padStart(2, "0")}`;
 
     if (waktu <= 0) {
       clearInterval(timerInterval);
+      alert("⏰ Waktu habis! Ujian otomatis diselesaikan.");
       hitungNilai(false);
     }
     waktu--;
@@ -362,21 +363,26 @@ function startTimer() {
 /* MULAI UJIAN */
 /* ================================================= */
 function mulaiUjian() {
+  // reset pelanggaran
   sessionStorage.removeItem("pelanggaranFS");
   pelanggaranFullscreen = 0;
 
+  // fullscreen
   const elem = document.documentElement;
   if (elem.requestFullscreen) elem.requestFullscreen();
 
   ujianDimulai = true;
+
+  // tampilkan soal
   document.getElementById("startBox").style.display = "none";
   document.getElementById("quizForm").style.display = "block";
 
+  // mulai timer
   startTimer();
 }
 
 /* ================================================= */
-/* AUTO SUBMIT FULLSCREEN */
+/* AUTO SUBMIT JIKA KELUAR FULLSCREEN */
 /* ================================================= */
 document.addEventListener("fullscreenchange", () => {
   if (!ujianDimulai) return;
@@ -386,6 +392,7 @@ document.addEventListener("fullscreenchange", () => {
     sessionStorage.setItem("pelanggaranFS", pelanggaranFullscreen);
 
     if (pelanggaranFullscreen >= 3) {
+      alert("❌ Anda keluar fullscreen 3 kali. Ujian diselesaikan.");
       hitungNilai(false);
     } else {
       alert(`⚠️ Keluar fullscreen (${pelanggaranFullscreen}/3)`);
@@ -411,12 +418,12 @@ const jawaban = {
 };
 
 /* ================================================= */
-/* SUBMIT MANUAL */
+/* SUBMIT MANUAL (CEK SOAL KOSONG) */
 /* ================================================= */
 function submitManual() {
   for (let k in jawaban) {
     if (!document.querySelector(`input[name="${k}"]:checked`)) {
-      alert("⚠️ Masih ada soal yang belum dijawab");
+      alert("⚠️ Masih ada soal yang belum dijawab.\nPeriksa kembali.");
       return;
     }
   }
@@ -426,7 +433,7 @@ function submitManual() {
 /* ================================================= */
 /* HITUNG NILAI + SIMPAN */
 /* ================================================= */
-function hitungNilai(tampilkanJawaban) {
+function hitungNilai(tampilkanReview) {
   clearInterval(timerInterval);
 
   let skor = 0;
@@ -438,9 +445,9 @@ function hitungNilai(tampilkanJawaban) {
   }
 
   const nilai = Math.round((skor / total) * 100);
-  const waktuTerpakai = 50*60 - waktu;
+  const waktuTerpakai = 50 * 60 - waktu;
 
-  // SIMPAN KE localStorage
+  // simpan ke localStorage
   const hasil = {
     tanggal: new Date().toLocaleString(),
     nilai: nilai,
@@ -452,33 +459,77 @@ function hitungNilai(tampilkanJawaban) {
   riwayat.push(hasil);
   localStorage.setItem("riwayatUjian", JSON.stringify(riwayat));
 
-  alert(`Nilai: ${nilai}`);
+  alert(`📊 HASIL UJIAN\n\nNilai: ${nilai}\nSkor: ${skor}/${total}`);
 
-  if (tampilkanJawaban) tampilkanKoreksi();
+  // tampilkan koreksi & review
+  tampilkanKoreksi();
+  if (tampilkanReview) tampilkanReviewPerSoal();
 }
 
 /* ================================================= */
-/* TAMPILKAN KOREKSI JAWABAN (FIXED) */
+/* KOREKSI WARNA DI SOAL */
 /* ================================================= */
 function tampilkanKoreksi() {
   for (let k in jawaban) {
     const opsi = document.querySelectorAll(`input[name="${k}"]`);
 
     opsi.forEach(opt => {
-      const textNode = opt.nextSibling;
+      const label = opt.parentElement;
 
       if (opt.value === jawaban[k]) {
-        textNode.parentElement.style.color = "green";
-        textNode.parentElement.style.fontWeight = "bold";
+        label.style.color = "green";
+        label.style.fontWeight = "bold";
       } else if (opt.checked) {
-        textNode.parentElement.style.color = "red";
+        label.style.color = "red";
       }
 
       opt.disabled = true;
     });
   }
 }
+
+/* ================================================= */
+/* REVIEW PER SOAL */
+/* ================================================= */
+function tampilkanReviewPerSoal() {
+  const box = document.getElementById("reviewBox");
+  const content = document.getElementById("reviewContent");
+
+  content.innerHTML = "";
+  box.style.display = "block";
+
+  for (let k in jawaban) {
+    const nomor = k.replace("q", "");
+    const benar = jawaban[k];
+    const dipilih = document.querySelector(`input[name="${k}"]:checked`);
+    const user = dipilih ? dipilih.value : "-";
+
+    const status = user === benar;
+    const ikon = status ? "✅" : "❌";
+
+    let teksUser = "-";
+    let teksBenar = "-";
+
+    document.querySelectorAll(`input[name="${k}"]`).forEach(opt => {
+      const teks = opt.parentElement.innerText.trim();
+      if (opt.value === user) teksUser = teks;
+      if (opt.value === benar) teksBenar = teks;
+    });
+
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <p>
+        <b>${ikon} Soal ${nomor} — ${status ? "BENAR" : "SALAH"}</b><br>
+        Jawaban kamu: <span style="color:${status ? "green" : "red"}">${teksUser}</span><br>
+        Jawaban benar: <b style="color:green">${teksBenar}</b>
+      </p>
+      <hr>
+    `;
+    content.appendChild(div);
+  }
+}
 </script>
+
 
 
 
