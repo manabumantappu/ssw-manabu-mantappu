@@ -7,44 +7,6 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 
-  <script>
-/* ===== TIMER ===== */
-let waktu = 50 * 60;
-const timerEl = document.getElementById("timer");
-
-setInterval(() => {
-  const menit = Math.floor(waktu / 60);
-  const detik = waktu % 60;
-  timerEl.textContent = `${menit}:${detik.toString().padStart(2,"0")}`;
-  waktu--;
-}, 1000);
-
-/* ===== FULL SCREEN + START ===== */
-function mulaiUjian() {
-  const elem = document.documentElement;
-  if (elem.requestFullscreen) elem.requestFullscreen();
-
-  document.getElementById("startBox").style.display = "none";
-  document.getElementById("quizForm").style.display = "block";
-}
-
-/* ===== NILAI ===== */
-function hitungNilai() {
-  let skor = 0;
-  const total = Object.keys(jawaban).length;
-
-  for (let k in jawaban) {
-    const pilih = document.querySelector(`input[name="${k}"]:checked`);
-    if (!pilih) {
-      alert("⚠️ Harap jawab semua soal.");
-      return;
-    }
-    if (pilih.value === jawaban[k]) skor++;
-  }
-
-  alert(`Nilai kamu: ${Math.round((skor/total)*100)}`);
-}
-</script>
 
 <body>
 
@@ -362,26 +324,47 @@ function hitungNilai() {
 </footer>
 
 <script>
-/* ===== TIMER 50 MENIT ===== */
-let waktu = 50 * 60;
-const timerEl = document.getElementById("timer");
+/* ============================= */
+/* TIMER UJIAN */
+/* ============================= */
+document.addEventListener("DOMContentLoaded", () => {
+  let waktu = 50 * 60; // 50 menit
+  const timerEl = document.getElementById("timer");
 
-const hitungMundur = setInterval(() => {
-  const menit = Math.floor(waktu / 60);
-  const detik = waktu % 60;
-  timerEl.textContent = `${menit}:${detik.toString().padStart(2,"0")}`;
-  waktu--;
+  function updateTimer() {
+    const menit = Math.floor(waktu / 60);
+    const detik = waktu % 60;
+    timerEl.textContent = `${menit}:${detik.toString().padStart(2, "0")}`;
 
-  if (waktu < 0) {
-    clearInterval(hitungMundur);
-    alert("⏰ Waktu habis! Ujian akan dinilai.");
-    hitungNilai();
+    if (waktu <= 0) {
+      clearInterval(timerInterval);
+      alert("⏰ Waktu habis! Ujian akan dinilai.");
+      hitungNilai();
+    }
+    waktu--;
   }
-}, 1000);
 
-/* ===== PENILAIAN ===== */
-function hitungNilai() {
-  const jawaban = {
+  updateTimer();
+  window.timerInterval = setInterval(updateTimer, 1000);
+});
+
+/* ============================= */
+/* MODE FULL SCREEN + START */
+/* ============================= */
+function mulaiUjian() {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  }
+
+  document.getElementById("startBox").style.display = "none";
+  document.getElementById("quizForm").style.display = "block";
+}
+
+/* ============================= */
+/* KUNCI JAWABAN */
+/* ============================= */
+const jawaban = {
   q1:"b", q2:"c", q3:"b", q4:"a", q5:"b",
   q6:"a", q7:"b", q8:"c", q9:"a", q10:"b",
   q11:"a", q12:"b", q13:"a", q14:"c", q15:"b",
@@ -394,56 +377,29 @@ function hitungNilai() {
   q46:"b", q47:"a", q48:"b", q49:"a", q50:"b"
 };
 
-
+/* ============================= */
+/* HITUNG NILAI */
+/* ============================= */
+function hitungNilai() {
   let skor = 0;
   const total = Object.keys(jawaban).length;
 
   for (let k in jawaban) {
     const pilih = document.querySelector(`input[name="${k}"]:checked`);
     if (!pilih) {
-      alert("⚠️ Harap jawab semua soal terlebih dahulu.");
+      alert("⚠️ Harap jawab semua soal.");
       return;
     }
     if (pilih.value === jawaban[k]) skor++;
   }
 
   const nilai = Math.round((skor / total) * 100);
-  const status = nilai >= 70 ? "✅ LULUS" : "❌ BELUM LULUS";
+  const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
 
-  const hasil = document.getElementById("hasil");
-  hasil.style.display = "block";
-  hasil.innerHTML = `
-    <h2>📊 Hasil Ujian</h2>
-    <p>Jawaban benar: <b>${skor}</b> dari ${total}</p>
-    <p><b>Nilai: ${nilai}</b></p>
-    <p>Status: <b>${status}</b></p>
-  `;
+  alert(`Hasil Ujian\n\nNilai: ${nilai}\nStatus: ${status}`);
 }
+</script>
 
-  <script>
-// ===== FULL SCREEN MODE =====
-function mulaiUjian() {
-  const elem = document.documentElement;
-
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
-    elem.msRequestFullscreen();
-  }
-
-  document.getElementById("startBox").style.display = "none";
-  document.getElementById("quizForm").style.display = "block";
-}
-
-// DETEKSI KELUAR FULLSCREEN
-document.addEventListener("fullscreenchange", () => {
-  if (!document.fullscreenElement) {
-    alert("⚠️ Anda keluar dari mode layar penuh. Harap kembali ke mode ujian.");
-  }
-});
-  </script>
 
 
 </body>
