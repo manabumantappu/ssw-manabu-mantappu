@@ -9,10 +9,24 @@
 
 <body>
 
+<script>
+if (localStorage.getItem("loginSSW") !== "true") {
+  window.location.href = "login.html";
+}
+</script>
+
 <header>
   <h1>📝 Try Out Acak SSW</h1>
   <p>SSW Jidōsha Seibi | 50 Soal | Soal Acak</p>
-</header>
+   <button class="btn" onclick="logout()">🚪 Logout</button>
+
+<script>
+function logout() {
+  localStorage.removeItem("loginSSW");
+  window.location.href = "login.html";
+}
+</script>
+ </header>
 
 <nav>
   <ul>
@@ -1556,7 +1570,7 @@ const bankSoal = [
     "次（つぎ）の作業（さぎょう）を始（はじ）める"
   ],
   jawaban: 0
-},
+}
   
  // 👉 tambahkan sampai minimal 50–100 soal
 ];
