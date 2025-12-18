@@ -1,25 +1,12 @@
-/* =========================
-   GLOBAL STYLE
-========================= */
+/* ===== GLOBAL ===== */
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background: #f4f7fb;
   color: #333;
 }
 
-a {
-  text-decoration: none;
-  color: #1d70a2;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* =========================
-   HEADER
-========================= */
+/* ===== HEADER ===== */
 header {
   background: linear-gradient(135deg, #0b3c5d, #1d70a2);
   color: white;
@@ -27,86 +14,76 @@ header {
   text-align: center;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2.2rem;
-}
-
-header p {
-  max-width: 700px;
-  margin: 10px auto 0;
-  line-height: 1.6;
-}
-
-/* =========================
-   NAVIGATION
-========================= */
+/* ===== NAV ===== */
 nav {
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 nav ul {
   list-style: none;
-  margin: 0;
-  padding: 10px 20px;
   display: flex;
-  gap: 20px;
   justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  margin: 0;
 }
 
-nav li a {
+nav a {
+  text-decoration: none;
   font-weight: bold;
+  color: #1d70a2;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* ===== CONTENT ===== */
 .container {
-  max-width: 1000px;
+  max-width: 900px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 30px 20px;
 }
 
-h2 {
-  color: #0b3c5d;
-}
-
-/* =========================
-   CARD
-========================= */
 .card {
   background: white;
   padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  border-radius: 12px;
   margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
-/* =========================
-   BUTTON
-========================= */
+/* ===== PROGRESS ===== */
+.progress-bar {
+  background: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 22px;
+  margin: 10px 0;
+}
+
+.progress {
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(90deg, #1d70a2, #f9a826);
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ===== BUTTON ===== */
 .btn {
   display: inline-block;
   margin-top: 15px;
   padding: 12px 24px;
   background: #1d70a2;
   color: white;
-  border-radius: 30px;
-  font-weight: bold;
+  border-radius: 25px;
+  text-decoration: none;
 }
 
-.btn:hover {
-  background: #0b3c5d;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* ===== FOOTER ===== */
 footer {
   background: #0f2027;
   color: #ccc;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   font-size: 0.9rem;
 }
