@@ -41,9 +41,8 @@
     Harap siapkan diri Anda.
   </p>
 
-  <button type="button" class="btn" onclick="mulaiUjian()">
+ <div class="btn" onclick="alert('DIKLIK')" style="cursor:pointer;">
   ▶️ Mulai Ujian
-</button>
 </div>
 
 <form id="quizForm" class="card" style="display:none;">
@@ -403,6 +402,33 @@ function mulaiUjian() {
 document.addEventListener("fullscreenchange", () => {
   if (!document.fullscreenElement) {
     alert("⚠️ Anda keluar dari mode layar penuh. Harap kembali ke mode ujian.");
+  }
+});
+  </script>
+
+  <script>
+/* ===== MODE FULL SCREEN UJIAN ===== */
+function mulaiUjian() {
+  console.log("Mulai ujian diklik");
+
+  const elem = document.documentElement;
+
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen();
+  }
+
+  document.getElementById("startBox").style.display = "none";
+  document.getElementById("quizForm").style.display = "block";
+}
+
+/* DETEKSI KELUAR FULLSCREEN */
+document.addEventListener("fullscreenchange", () => {
+  if (!document.fullscreenElement) {
+    alert("⚠️ Anda keluar dari mode ujian!");
   }
 });
 </script>
