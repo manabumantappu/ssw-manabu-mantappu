@@ -7,6 +7,45 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 
+  <script>
+/* ===== TIMER ===== */
+let waktu = 50 * 60;
+const timerEl = document.getElementById("timer");
+
+setInterval(() => {
+  const menit = Math.floor(waktu / 60);
+  const detik = waktu % 60;
+  timerEl.textContent = `${menit}:${detik.toString().padStart(2,"0")}`;
+  waktu--;
+}, 1000);
+
+/* ===== FULL SCREEN + START ===== */
+function mulaiUjian() {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) elem.requestFullscreen();
+
+  document.getElementById("startBox").style.display = "none";
+  document.getElementById("quizForm").style.display = "block";
+}
+
+/* ===== NILAI ===== */
+function hitungNilai() {
+  let skor = 0;
+  const total = Object.keys(jawaban).length;
+
+  for (let k in jawaban) {
+    const pilih = document.querySelector(`input[name="${k}"]:checked`);
+    if (!pilih) {
+      alert("⚠️ Harap jawab semua soal.");
+      return;
+    }
+    if (pilih.value === jawaban[k]) skor++;
+  }
+
+  alert(`Nilai kamu: ${Math.round((skor/total)*100)}`);
+}
+</script>
+
 <body>
 
 <header>
