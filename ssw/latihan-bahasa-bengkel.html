@@ -34,7 +34,19 @@
   <p>⛔ Waktu habis → ujian otomatis selesai</p>
 </div>
 
-<form id="quizForm" class="card">
+  <div class="card" id="startBox">
+  <h2>🔒 Mode Ujian</h2>
+  <p>
+    Ujian akan dimulai dalam <b>mode layar penuh</b>.
+    Harap siapkan diri Anda.
+  </p>
+
+  <button class="btn" onclick="mulaiUjian()">
+    ▶️ Mulai Ujian
+  </button>
+</div>
+
+<form id="quizForm" class="card" style="display:none;">
 
 <h2>Soal (1–50)</h2>
 
@@ -369,6 +381,30 @@ function hitungNilai() {
     <p>Status: <b>${status}</b></p>
   `;
 }
+
+  <script>
+// ===== FULL SCREEN MODE =====
+function mulaiUjian() {
+  const elem = document.documentElement;
+
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen();
+  }
+
+  document.getElementById("startBox").style.display = "none";
+  document.getElementById("quizForm").style.display = "block";
+}
+
+// DETEKSI KELUAR FULLSCREEN
+document.addEventListener("fullscreenchange", () => {
+  if (!document.fullscreenElement) {
+    alert("⚠️ Anda keluar dari mode layar penuh. Harap kembali ke mode ujian.");
+  }
+});
 </script>
 
 </body>
