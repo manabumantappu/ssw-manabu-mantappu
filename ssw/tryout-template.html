@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Try Out TEMPLATE – SSW Jidōsha Seibi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>📝 Try Out TEMPLATE</h1>
+  <p>SSW Jidōsha Seibi | 50 Soal | 50 Menit</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="jidousha-seibi.html">Jidōsha Seibi</a></li>
+    <li><a href="tryout-menu.html">Menu Try Out</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<div class="card">
+  <h2>⏱️ Waktu</h2>
+  <p id="timer" style="font-size:1.3rem;font-weight:bold;color:#b00020;">
+    50:00
+  </p>
+</div>
+
+<div class="card" id="startBox">
+  <p>
+    Ini adalah simulasi Try Out SSW.  
+    Waktu akan berjalan setelah tombol ditekan.
+  </p>
+  <button class="btn" onclick="mulai()">▶️ Mulai Try Out</button>
+</div>
+
+<form id="quizForm" class="card" style="display:none;">
+
+<h2>Soal</h2>
+
+<!-- ===== CONTOH SOAL ===== -->
+<p><b>1. 「点検」の意味はどれですか。</b></p>
+<label><input type="radio" name="q1" value="a"> Perbaikan</label><br>
+<label><input type="radio" name="q1" value="b"> Pemeriksaan</label><br>
+<label><input type="radio" name="q1" value="c"> Penggantian</label><br>
+
+<hr>
+
+<!-- 👉 NANTI KAMU GANTI SOAL SESUAI TRY OUT -->
+
+<button type="button" class="btn" onclick="selesai()">
+  📊 Selesai & Lihat Nilai
+</button>
+
+</form>
+
+<div id="hasil" class="card" style="display:none;"></div>
+
+</div>
+
+<footer>
+  © 2025 Manabu Mantappu – Try Out
+</footer>
+
+<script>
+/* ===== TIMER ===== */
+let waktu = 50 * 60;
+let interval = null;
+
+function mulai() {
+  document.getElementById("startBox").style.display = "none";
+  document.getElementById("quizForm").style.display = "block";
+
+  const timerEl = document.getElementById("timer");
+
+  function update() {
+    const m = Math.floor(waktu / 60);
+    const s = waktu % 60;
+    timerEl.textContent = `${m}:${s.toString().padStart(2,"0")}`;
+    if (waktu <= 0) selesai();
+    waktu--;
+  }
+
+  update();
+  interval = setInterval(update, 1000);
+}
+
+/* ===== KUNCI JAWABAN (CONTOH) ===== */
+const jawaban = {
+  q1: "b"
+};
+
+/* ===== HITUNG NILAI ===== */
+function selesai() {
+  clearInterval(interval);
+
+  let skor = 0;
+  const total = Object.keys(jawaban).length;
+
+  for (let k in jawaban) {
+    const p = document.querySelector(`input[name="${k}"]:checked`);
+    if (p && p.value === jawaban[k]) skor++;
+  }
+
+  const nilai = Math.round((skor / total) * 100);
+  const status = nilai >= 70 ? "LULUS ✅" : "BELUM LULUS ❌";
+
+  const hasil = document.getElementById("hasil");
+  hasil.style.display = "block";
+  hasil.innerHTML = `
+    <h2>📊 Hasil Try Out</h2>
+    <p>Benar: ${skor} / ${total}</p>
+    <p><b>Nilai: ${nilai}</b></p>
+    <p>Status: <b>${status}</b></p>
+  `;
+
+  window.scrollTo({ top: hasil.offsetTop, behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
