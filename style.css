@@ -1,0 +1,112 @@
+/* =========================
+   GLOBAL STYLE
+========================= */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f7fb;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #1d70a2;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+  background: linear-gradient(135deg, #0b3c5d, #1d70a2);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+header p {
+  max-width: 700px;
+  margin: 10px auto 0;
+  line-height: 1.6;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+nav {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+nav li a {
+  font-weight: bold;
+}
+
+/* =========================
+   CONTENT
+========================= */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+h2 {
+  color: #0b3c5d;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 24px;
+  background: #1d70a2;
+  color: white;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #0b3c5d;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  background: #0f2027;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
