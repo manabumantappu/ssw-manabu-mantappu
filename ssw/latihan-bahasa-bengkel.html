@@ -324,6 +324,9 @@
 </footer>
 
   let pelanggaranFullscreen = 0;
+  let ujianDimulai = false;
+let pelanggaranFullscreen = 0;
+
 <script>
 /* ============================= */
 /* TIMER UJIAN */
@@ -354,30 +357,36 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ============================= */
 function mulaiUjian() {
   const elem = document.documentElement;
+
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   }
+
+  ujianDimulai = true; // ⬅️ TANDA UJIAN DIMULAI
 
   document.getElementById("startBox").style.display = "none";
   document.getElementById("quizForm").style.display = "block";
 }
 
-  document.addEventListener("fullscreenchange", () => {
+
+ document.addEventListener("fullscreenchange", () => {
+  if (!ujianDimulai) return; // ⬅️ belum ujian, abaikan
+
   if (!document.fullscreenElement) {
     pelanggaranFullscreen++;
 
     if (pelanggaranFullscreen < 3) {
       alert(
         "⚠️ Anda keluar dari mode ujian.\n" +
-        "Pelanggaran: " + pelanggaranFullscreen + " / 3\n\n" +
-        "Jika keluar lagi, ujian akan otomatis dikumpulkan."
+        "Pelanggaran: " + pelanggaranFullscreen + " / 3"
       );
 
+      // paksa balik fullscreen
       document.documentElement.requestFullscreen();
 
     } else {
       alert(
-        "❌ Anda keluar dari mode ujian 3 kali.\n" +
+        "❌ Anda keluar dari mode ujian sebanyak 3 kali.\n" +
         "Ujian akan otomatis diselesaikan."
       );
 
