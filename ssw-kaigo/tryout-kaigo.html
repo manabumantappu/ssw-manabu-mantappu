@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Try Out SSW Kaigo | Manabu Mantappu</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.timer {
+  font-size:1.4rem;
+  font-weight:bold;
+  color:#b00020;
+  text-align:center;
+  margin-bottom:20px;
+}
+.quiz-box {
+  background:#fff;
+  padding:18px;
+  border-radius:12px;
+  margin-bottom:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+.quiz-box p {
+  font-weight:600;
+}
+button {
+  padding:14px 24px;
+  border:none;
+  border-radius:10px;
+  background:#1e88e5;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  display:block;
+  margin:30px auto;
+}
+.result {
+  font-size:1.5rem;
+  font-weight:bold;
+  text-align:center;
+  margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>TRY OUT SSW KAIGO</h1>
+  <p>50 Soal | Waktu 60 Menit</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="index.html">Kaigo</a></li>
+    <li><a href="kosakata.html">Kosakata</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<div id="timer" class="timer">⏱️ 60:00</div>
+
+<form id="tryoutForm">
+
+<!-- ================= BAB 1 : TUBUH ================= -->
+<div class="quiz-box">
+<p>1. 「腰（こし）」 artinya …</p>
+<label><input type="radio" name="q1" value="1"> Pinggang</label><br>
+<label><input type="radio" name="q1" value="0"> Bahu</label><br>
+<label><input type="radio" name="q1" value="0"> Dada</label>
+</div>
+
+<div class="quiz-box">
+<p>2. 「背中（せなか）」 adalah …</p>
+<label><input type="radio" name="q2" value="1"> Punggung</label><br>
+<label><input type="radio" name="q2" value="0"> Dada</label><br>
+<label><input type="radio" name="q2" value="0"> Perut</label>
+</div>
+
+<div class="quiz-box">
+<p>3. 「関節（かんせつ）」 berarti …</p>
+<label><input type="radio" name="q3" value="1"> Sendi</label><br>
+<label><input type="radio" name="q3" value="0"> Otot</label><br>
+<label><input type="radio" name="q3" value="0"> Tulang</label>
+</div>
+
+<!-- ================= BAB 2 : MOBILISASI ================= -->
+<div class="quiz-box">
+<p>4. 車いす（くるまいす）は何ですか。</p>
+<label><input type="radio" name="q4" value="1"> Kursi roda</label><br>
+<label><input type="radio" name="q4" value="0"> Tongkat</label><br>
+<label><input type="radio" name="q4" value="0"> Tempat tidur</label>
+</div>
+
+<div class="quiz-box">
+<p>5. 移動介助の前に一番大切なことはどれですか。</p>
+<label><input type="radio" name="q5" value="1"> 声をかけて確認する</label><br>
+<label><input type="radio" name="q5" value="0"> いきなり立たせる</label><br>
+<label><input type="radio" name="q5" value="0"> 早く動かす</label>
+</div>
+
+<div class="quiz-box">
+<p>6. 「支える（ささえる）」の意味はどれですか。</p>
+<label><input type="radio" name="q6" value="1"> Menopang</label><br>
+<label><input type="radio" name="q6" value="0"> Mendorong</label><br>
+<label><input type="radio" name="q6" value="0"> Mengangkat</label>
+</div>
+
+<!-- ================= BAB 3 : MAKAN ================= -->
+<div class="quiz-box">
+<p>7. 「主食（しゅしょく）」 artinya …</p>
+<label><input type="radio" name="q7" value="1"> Makanan pokok</label><br>
+<label><input type="radio" name="q7" value="0"> Lauk tambahan</label><br>
+<label><input type="radio" name="q7" value="0"> Minuman</label>
+</div>
+
+<div class="quiz-box">
+<p>8. 食事介助で一番大切なことはどれですか。</p>
+<label><input type="radio" name="q8" value="1"> 安全とペースを守る</label><br>
+<label><input type="radio" name="q8" value="0"> 早く食べさせる</label><br>
+<label><input type="radio" name="q8" value="0"> 量を多くする</label>
+</div>
+
+<div class="quiz-box">
+<p>9. 「飲み込む（のみこむ）」の意味は？</p>
+<label><input type="radio" name="q9" value="1"> Menelan</label><br>
+<label><input type="radio" name="q9" value="0"> Mengunyah</label><br>
+<label><input type="radio" name="q9" value="0"> Memotong</label>
+</div>
+
+<!-- ================= BAB 4 : TOILET ================= -->
+<div class="quiz-box">
+<p>10. 排泄（はいせつ）とは何ですか。</p>
+<label><input type="radio" name="q10" value="1"> Buang air</label><br>
+<label><input type="radio" name="q10" value="0"> Mandi</label><br>
+<label><input type="radio" name="q10" value="0"> Tidur</label>
+</div>
+
+<div class="quiz-box">
+<p>11. トイレ介助で正しい声かけはどれですか。</p>
+<label><input type="radio" name="q11" value="1"> ゆっくりで大丈夫ですよ</label><br>
+<label><input type="radio" name="q11" value="0"> 早くしてください</label><br>
+<label><input type="radio" name="q11" value="0"> 急ぎなさい</label>
+</div>
+
+<div class="quiz-box">
+<p>12. 「失禁（しっきん）」の意味は？</p>
+<label><input type="radio" name="q12" value="1"> 我慢できない排泄</label><br>
+<label><input type="radio" name="q12" value="0"> 便秘</label><br>
+<label><input type="radio" name="q12" value="0"> 下痢</label>
+</div>
+
+<!-- ================= BAB 5 : PAKAIAN ================= -->
+<div class="quiz-box">
+<p>13. 着脱介助で正しい行動はどれですか。</p>
+<label><input type="radio" name="q13" value="1"> 本人のペースに合わせる</label><br>
+<label><input type="radio" name="q13" value="0"> 無理に急がせる</label><br>
+<label><input type="radio" name="q13" value="0"> 声をかけない</label>
+</div>
+
+<div class="quiz-box">
+<p>14. 「脱ぐ（ぬぐ）」の意味は？</p>
+<label><input type="radio" name="q14" value="1"> Melepas pakaian</label><br>
+<label><input type="radio" name="q14" value="0"> Memakai</label><br>
+<label><input type="radio" name="q14" value="0"> Mencuci</label>
+</div>
+
+<!-- ================= BAB 6 : MANDI ================= -->
+<div class="quiz-box">
+<p>15. 入浴介助で最も大切なことはどれですか。</p>
+<label><input type="radio" name="q15" value="1"> 見守りと安全</label><br>
+<label><input type="radio" name="q15" value="0"> 早く終わらせる</label><br>
+<label><input type="radio" name="q15" value="0"> 一人にする</label>
+</div>
+
+<div class="quiz-box">
+<p>16. 「清潔（せいけつ）」の意味は？</p>
+<label><input type="radio" name="q16" value="1"> Bersih</label><br>
+<label><input type="radio" name="q16" value="0"> Berbahaya</label><br>
+<label><input type="radio" name="q16" value="0"> Licin</label>
+</div>
+
+<!-- ================= BAB 7 & 8 ================= -->
+<div class="quiz-box">
+<p>17. 利用者との会話で大切なことはどれですか。</p>
+<label><input type="radio" name="q17" value="1"> 丁寧に話す</label><br>
+<label><input type="radio" name="q17" value="0"> 命令する</label><br>
+<label><input type="radio" name="q17" value="0"> 無視する</label>
+</div>
+
+<div class="quiz-box">
+<p>18. 「注意（ちゅうい）」の意味は？</p>
+<label><input type="radio" name="q18" value="1"> Hati-hati</label><br>
+<label><input type="radio" name="q18" value="0"> Aman</label><br>
+<label><input type="radio" name="q18" value="0"> Lambat</label>
+</div>
+
+<div class="quiz-box">
+<p>19. シフトとは何ですか。</p>
+<label><input type="radio" name="q19" value="1"> Jadwal kerja</label><br>
+<label><input type="radio" name="q19" value="0"> Ruang makan</label><br>
+<label><input type="radio" name="q19" value="0"> Alat mandi</label>
+</div>
+
+<div class="quiz-box">
+<p>20. 介護で最も大切な考え方はどれですか。</p>
+<label><input type="radio" name="q20" value="1"> 安全と尊重</label><br>
+<label><input type="radio" name="q20" value="0"> 早さ</label><br>
+<label><input type="radio" name="q20" value="0"> 効率のみ</label>
+</div>
+
+<div class="quiz-box">
+<p>21. 「膝（ひざ）」 artinya …</p>
+<label><input type="radio" name="q21" value="1"> Lutut</label><br>
+<label><input type="radio" name="q21" value="0"> Pergelangan</label><br>
+<label><input type="radio" name="q21" value="0"> Tumit</label>
+</div>
+
+<div class="quiz-box">
+<p>22. 移動介助で使う道具はどれですか。</p>
+<label><input type="radio" name="q22" value="1"> 歩行器</label><br>
+<label><input type="radio" name="q22" value="0"> 茶碗</label><br>
+<label><input type="radio" name="q22" value="0"> 枕</label>
+</div>
+
+<div class="quiz-box">
+<p>23. 「立つ（たつ）」の意味は？</p>
+<label><input type="radio" name="q23" value="1"> Berdiri</label><br>
+<label><input type="radio" name="q23" value="0"> Duduk</label><br>
+<label><input type="radio" name="q23" value="0"> Tidur</label>
+</div>
+
+<div class="quiz-box">
+<p>24. 食事介助の前に確認することはどれですか。</p>
+<label><input type="radio" name="q24" value="1"> 姿勢と安全</label><br>
+<label><input type="radio" name="q24" value="0"> 量を増やす</label><br>
+<label><input type="radio" name="q24" value="0"> 早く食べさせる</label>
+</div>
+
+<div class="quiz-box">
+<p>25. 「副菜（ふくさい）」はどれですか。</p>
+<label><input type="radio" name="q25" value="1"> Lauk tambahan</label><br>
+<label><input type="radio" name="q25" value="0"> Nasi</label><br>
+<label><input type="radio" name="q25" value="0"> Minuman</label>
+</div>
+
+<div class="quiz-box">
+<p>26. トイレ介助で転倒を防ぐために大切なことは？</p>
+<label><input type="radio" name="q26" value="1"> 声かけと見守り</label><br>
+<label><input type="radio" name="q26" value="0"> 急がせる</label><br>
+<label><input type="radio" name="q26" value="0"> 一人にする</label>
+</div>
+
+<div class="quiz-box">
+<p>27. 「便秘（べんぴ）」の意味は？</p>
+<label><input type="radio" name="q27" value="1"> Sembelit</label><br>
+<label><input type="radio" name="q27" value="0"> Diare</label><br>
+<label><input type="radio" name="q27" value="0"> Mual</label>
+</div>
+
+<div class="quiz-box">
+<p>28. 着脱介助で最も大切なことは？</p>
+<label><input type="radio" name="q28" value="1"> 本人の尊重</label><br>
+<label><input type="radio" name="q28" value="0"> 早さ</label><br>
+<label><input type="radio" name="q28" value="0"> 強制</label>
+</div>
+
+<div class="quiz-box">
+<p>29. 「靴下（くつした）」はどれですか。</p>
+<label><input type="radio" name="q29" value="1"> Kaus kaki</label><br>
+<label><input type="radio" name="q29" value="0"> Sepatu</label><br>
+<label><input type="radio" name="q29" value="0"> Celana</label>
+</div>
+
+<div class="quiz-box">
+<p>30. 入浴介助で必要なものはどれですか。</p>
+<label><input type="radio" name="q30" value="1"> タオル</label><br>
+<label><input type="radio" name="q30" value="0"> 箸</label><br>
+<label><input type="radio" name="q30" value="0"> 茶碗</label>
+</div>
+
+<div class="quiz-box">
+<p>31. 入浴中に一番注意することは？</p>
+<label><input type="radio" name="q31" value="1"> 転倒防止</label><br>
+<label><input type="radio" name="q31" value="0"> 時間短縮</label><br>
+<label><input type="radio" name="q31" value="0"> 会話しない</label>
+</div>
+
+<div class="quiz-box">
+<p>32. 「見守り（みまもり）」とは？</p>
+<label><input type="radio" name="q32" value="1"> そばで安全を確認する</label><br>
+<label><input type="radio" name="q32" value="0"> 放置する</label><br>
+<label><input type="radio" name="q32" value="0"> 命令する</label>
+</div>
+
+<div class="quiz-box">
+<p>33. 利用者に話すときの正しい態度は？</p>
+<label><input type="radio" name="q33" value="1"> 丁寧でゆっくり</label><br>
+<label><input type="radio" name="q33" value="0"> 命令口調</label><br>
+<label><input type="radio" name="q33" value="0"> 無言</label>
+</div>
+
+<div class="quiz-box">
+<p>34. 「挨拶（あいさつ）」の意味は？</p>
+<label><input type="radio" name="q34" value="1"> Salam</label><br>
+<label><input type="radio" name="q34" value="0"> Laporan</label><br>
+<label><input type="radio" name="q34" value="0"> Perintah</label>
+</div>
+
+<div class="quiz-box">
+<p>35. 「職員（しょくいん）」とは？</p>
+<label><input type="radio" name="q35" value="1"> Staf</label><br>
+<label><input type="radio" name="q35" value="0"> Keluarga</label><br>
+<label><input type="radio" name="q35" value="0"> Tamu</label>
+</div>
+
+<div class="quiz-box">
+<p>36. シフトの意味は？</p>
+<label><input type="radio" name="q36" value="1"> Jadwal kerja</label><br>
+<label><input type="radio" name="q36" value="0"> Waktu makan</label><br>
+<label><input type="radio" name="q36" value="0"> Jam tidur</label>
+</div>
+
+<div class="quiz-box">
+<p>37. 「病気（びょうき）」はどれですか。</p>
+<label><input type="radio" name="q37" value="1"> Penyakit</label><br>
+<label><input type="radio" name="q37" value="0"> Cedera</label><br>
+<label><input type="radio" name="q37" value="0"> Kelelahan</label>
+</div>
+
+<div class="quiz-box">
+<p>38. 利用者が不安なときの正しい対応は？</p>
+<label><input type="radio" name="q38" value="1"> 声をかけて安心させる</label><br>
+<label><input type="radio" name="q38" value="0"> 放置する</label><br>
+<label><input type="radio" name="q38" value="0"> 叱る</label>
+</div>
+
+<div class="quiz-box">
+<p>39. 「確認（かくにん）」の意味は？</p>
+<label><input type="radio" name="q39" value="1"> Mengecek</label><br>
+<label><input type="radio" name="q39" value="0"> Menyuruh</label><br>
+<label><input type="radio" name="q39" value="0"> Membiarkan</label>
+</div>
+
+<div class="quiz-box">
+<p>40. 転倒（てんとう）とは？</p>
+<label><input type="radio" name="q40" value="1"> Jatuh</label><br>
+<label><input type="radio" name="q40" value="0"> Duduk</label><br>
+<label><input type="radio" name="q40" value="0"> Tidur</label>
+</div>
+
+<div class="quiz-box">
+<p>41. 介護で最も大切な考え方は？</p>
+<label><input type="radio" name="q41" value="1"> 利用者の尊重</label><br>
+<label><input type="radio" name="q41" value="0"> 効率のみ</label><br>
+<label><input type="radio" name="q41" value="0"> 早さ優先</label>
+</div>
+
+<div class="quiz-box">
+<p>42. 「安全（あんぜん）」の意味は？</p>
+<label><input type="radio" name="q42" value="1"> Aman</label><br>
+<label><input type="radio" name="q42" value="0"> Cepat</label><br>
+<label><input type="radio" name="q42" value="0"> Berat</label>
+</div>
+
+<div class="quiz-box">
+<p>43. 利用者の状態を伝えることを何と言いますか。</p>
+<label><input type="radio" name="q43" value="1"> 報告</label><br>
+<label><input type="radio" name="q43" value="0"> 命令</label><br>
+<label><input type="radio" name="q43" value="0"> 放置</label>
+</div>
+
+<div class="quiz-box">
+<p>44. 「家族（かぞく）」の意味は？</p>
+<label><input type="radio" name="q44" value="1"> Keluarga</label><br>
+<label><input type="radio" name="q44" value="0"> Staf</label><br>
+<label><input type="radio" name="q44" value="0"> Tetangga</label>
+</div>
+
+<div class="quiz-box">
+<p>45. 利用者が痛みを訴えたときの対応は？</p>
+<label><input type="radio" name="q45" value="1"> 職員に報告する</label><br>
+<label><input type="radio" name="q45" value="0"> 無視する</label><br>
+<label><input type="radio" name="q45" value="0"> 我慢させる</label>
+</div>
+
+<div class="quiz-box">
+<p>46. 「注意（ちゅうい）」の意味は？</p>
+<label><input type="radio" name="q46" value="1"> Hati-hati</label><br>
+<label><input type="radio" name="q46" value="0"> Tenang</label><br>
+<label><input type="radio" name="q46" value="0"> Aman</label>
+</div>
+
+<div class="quiz-box">
+<p>47. 利用者に声をかける理由は？</p>
+<label><input type="radio" name="q47" value="1"> 安心してもらうため</label><br>
+<label><input type="radio" name="q47" value="0"> 急がせるため</label><br>
+<label><input type="radio" name="q47" value="0"> 命令するため</label>
+</div>
+
+<div class="quiz-box">
+<p>48. 「生活環境（せいかつかんきょう）」とは？</p>
+<label><input type="radio" name="q48" value="1"> 生活する周りの環境</label><br>
+<label><input type="radio" name="q48" value="0"> 仕事道具</label><br>
+<label><input type="radio" name="q48" value="0"> 医療器具</label>
+</div>
+
+<div class="quiz-box">
+<p>49. Kaigoの仕事でしてはいけないことは？</p>
+<label><input type="radio" name="q49" value="1"> 利用者を無視する</label><br>
+<label><input type="radio" name="q49" value="0"> 声をかける</label><br>
+<label><input type="radio" name="q49" value="0"> 見守る</label>
+</div>
+
+<div class="quiz-box">
+<p>50. SSW Kaigoで求められる姿勢はどれですか。</p>
+<label><input type="radio" name="q50" value="1"> 安全・尊重・思いやり</label><br>
+<label><input type="radio" name="q50" value="0"> 早さ重視</label><br>
+<label><input type="radio" name="q50" value="0"> 一人判断</label>
+</div>
+
+<button type="button" onclick="finishTryout()">Selesai & Lihat Hasil</button>
+
+</form>
+
+<div id="result" class="result"></div>
+</div>
+
+<footer>
+  <p>© Manabu Mantappu – SSW Kaigo</p>
+</footer>
+
+<script>
+let time = 60 * 60;
+const timerEl = document.getElementById("timer");
+
+const countdown = setInterval(() => {
+  let m = Math.floor(time / 60);
+  let s = time % 60;
+  timerEl.textContent = "⏱️ " + m + ":" + (s < 10 ? "0" : "") + s;
+  time--;
+  if (time < 0) {
+    clearInterval(countdown);
+    finishTryout();
+  }
+}, 1000);
+
+function finishTryout() {
+  clearInterval(countdown);
+  let score = 0;
+  document
+    .querySelectorAll('input[type=radio]:checked')
+    .forEach(a => score += parseInt(a.value));
+
+  document.getElementById("result").innerHTML =
+    "🎯 Skor Akhir: <b>" + score + "/50</b><br>" +
+    (score >= 35
+      ? "✅ <span style='color:green'>LULUS SSW KAIGO</span>"
+      : "❌ <span style='color:red'>BELUM LULUS</span>");
+
+  window.scrollTo(0, document.body.scrollHeight);
+}
+</script>
+
+</body>
+</html>
