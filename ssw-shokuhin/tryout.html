@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Try Out SSW Pengolahan Makanan</title>
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.timer {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #b00020;
+  margin-bottom: 15px;
+}
+.question {
+  margin-bottom: 18px;
+}
+.result {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.pass { color: green; }
+.fail { color: red; }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>⏱️ Try Out SSW Pengolahan Makanan</h1>
+  <p>50 Soal • 50 Menit • Passing Grade 70%</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Menu SSW</a></li>
+    <li><a href="materi.html">Materi</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<div class="timer" id="timer">50:00</div>
+
+<form id="tryoutForm">
+
+<!-- ===== CONTOH SOAL 1 ===== -->
+<div class="question">
+<p>1. 食品製造の目的として最も正しいものはどれですか。</p>
+<label><input type="radio" name="q1" value="1"> 安全で品質の良い食品を作る</label><br>
+<label><input type="radio" name="q1" value="0"> 早く作ることだけ</label><br>
+<label><input type="radio" name="q1" value="0"> 人件費を減らす</label>
+</div>
+
+<div class="question">
+<p>2. 作業前に必ず行うべきことはどれですか。</p>
+<label><input type="radio" name="q2" value="1"> 手洗いをする</label><br>
+<label><input type="radio" name="q2" value="0"> すぐ作業する</label><br>
+<label><input type="radio" name="q2" value="0"> 休憩する</label>
+</div>
+
+<div class="question">
+<p>3. 異物混入はどの危害に分類されますか。</p>
+<label><input type="radio" name="q3" value="1"> 物理的危害</label><br>
+<label><input type="radio" name="q3" value="0"> 化学的危害</label><br>
+<label><input type="radio" name="q3" value="0"> 生物的危害</label>
+</div>
+
+<div class="question">
+<p>4. 細菌による危害はどれですか。</p>
+<label><input type="radio" name="q4" value="1"> 生物的危害</label><br>
+<label><input type="radio" name="q4" value="0"> 物理的危害</label><br>
+<label><input type="radio" name="q4" value="0"> 化学的危害</label>
+</div>
+
+<div class="question">
+<p>5. 洗剤が食品に付着した場合、どの危害ですか。</p>
+<label><input type="radio" name="q5" value="1"> 化学的危害</label><br>
+<label><input type="radio" name="q5" value="0"> 物理的危害</label><br>
+<label><input type="radio" name="q5" value="0"> 生物的危害</label>
+</div>
+
+<div class="question">
+<p>6. HACCPの目的は何ですか。</p>
+<label><input type="radio" name="q6" value="1"> 食品の危害を防ぐ</label><br>
+<label><input type="radio" name="q6" value="0"> 作業を早くする</label><br>
+<label><input type="radio" name="q6" value="0"> 人を減らす</label>
+</div>
+
+<div class="question">
+<p>7. 5Sの「整理」の意味はどれですか。</p>
+<label><input type="radio" name="q7" value="1"> 不要な物を分ける</label><br>
+<label><input type="radio" name="q7" value="0"> 掃除する</label><br>
+<label><input type="radio" name="q7" value="0"> ルールを守る</label>
+</div>
+
+<div class="question">
+<p>8. 工具を決められた場所に戻す行為はどれですか。</p>
+<label><input type="radio" name="q8" value="1"> 整頓</label><br>
+<label><input type="radio" name="q8" value="0"> 清掃</label><br>
+<label><input type="radio" name="q8" value="0"> 整理</label>
+</div>
+
+<div class="question">
+<p>9. 作業後に機械を掃除するのはなぜですか。</p>
+<label><input type="radio" name="q9" value="1"> 汚染を防ぐため</label><br>
+<label><input type="radio" name="q9" value="0"> 見た目のため</label><br>
+<label><input type="radio" name="q9" value="0"> 上司に怒られないため</label>
+</div>
+
+<div class="question">
+<p>10. 「しつけ」に最も近い行動はどれですか。</p>
+<label><input type="radio" name="q10" value="1"> ルールを守る</label><br>
+<label><input type="radio" name="q10" value="0"> 掃除をする</label><br>
+<label><input type="radio" name="q10" value="0"> 物を捨てる</label>
+</div>
+
+<div class="question">
+<p>11. 原材料を使う前に必要な行動はどれですか。</p>
+<label><input type="radio" name="q11" value="1"> 状態を確認する</label><br>
+<label><input type="radio" name="q11" value="0"> すぐ使う</label><br>
+<label><input type="radio" name="q11" value="0"> 長時間放置する</label>
+</div>
+
+<div class="question">
+<p>12. 原材料と製品を分けて管理する理由はどれですか。</p>
+<label><input type="radio" name="q12" value="1"> 交差汚染を防ぐ</label><br>
+<label><input type="radio" name="q12" value="0"> 作業を簡単にする</label><br>
+<label><input type="radio" name="q12" value="0"> スペースを減らす</label>
+</div>
+
+<div class="question">
+<p>13. FIFOの意味はどれですか。</p>
+<label><input type="radio" name="q13" value="1"> 先に入れた物を先に使う</label><br>
+<label><input type="radio" name="q13" value="0"> 新しい物を先に使う</label><br>
+<label><input type="radio" name="q13" value="0"> どれでも使う</label>
+</div>
+
+<div class="question">
+<p>14. 食品を適切な温度で保管する理由はどれですか。</p>
+<label><input type="radio" name="q14" value="1"> 品質と安全を守るため</label><br>
+<label><input type="radio" name="q14" value="0"> 電気代を減らすため</label><br>
+<label><input type="radio" name="q14" value="0"> 早く売るため</label>
+</div>
+
+<div class="question">
+<p>15. 加熱の目的は何ですか。</p>
+<label><input type="radio" name="q15" value="1"> 細菌を減らす</label><br>
+<label><input type="radio" name="q15" value="0"> 色を良くする</label><br>
+<label><input type="radio" name="q15" value="0"> 見た目だけ</label>
+</div>
+
+<div class="question">
+<p>16. 安全に作業するために必要なことはどれですか。</p>
+<label><input type="radio" name="q16" value="1"> 手順を守る</label><br>
+<label><input type="radio" name="q16" value="0"> 早く動く</label><br>
+<label><input type="radio" name="q16" value="0"> 自己判断する</label>
+</div>
+
+<div class="question">
+<p>17. 床が濡れている時の正しい対応はどれですか。</p>
+<label><input type="radio" name="q17" value="1"> 注意して報告する</label><br>
+<label><input type="radio" name="q17" value="0"> 無視する</label><br>
+<label><input type="radio" name="q17" value="0"> 走る</label>
+</div>
+
+<div class="question">
+<p>18. 危険を見つけた時に取るべき行動はどれですか。</p>
+<label><input type="radio" name="q18" value="1"> 上司に報告する</label><br>
+<label><input type="radio" name="q18" value="0"> 隠す</label><br>
+<label><input type="radio" name="q18" value="0"> 放置する</label>
+</div>
+
+<div class="question">
+<p>19. 報告・連絡・相談をまとめて何と言いますか。</p>
+<label><input type="radio" name="q19" value="1"> ホウレンソウ</label><br>
+<label><input type="radio" name="q19" value="0"> HACCP</label><br>
+<label><input type="radio" name="q19" value="0"> 5S</label>
+</div>
+
+<div class="question">
+<p>20. 作業が分からない時の正しい行動はどれですか。</p>
+<label><input type="radio" name="q20" value="1"> 相談する</label><br>
+<label><input type="radio" name="q20" value="0"> 勝手にやる</label><br>
+<label><input type="radio" name="q20" value="0"> 放置する</label>
+</div>
+
+<div class="question">
+<p>21. 作業内容を変更した時に必要なのはどれですか。</p>
+<label><input type="radio" name="q21" value="1"> 連絡する</label><br>
+<label><input type="radio" name="q21" value="0"> 何もしない</label><br>
+<label><input type="radio" name="q21" value="0"> 隠す</label>
+</div>
+
+<div class="question">
+<p>22. 問題が起きた時に最初にすべきことはどれですか。</p>
+<label><input type="radio" name="q22" value="1"> 報告する</label><br>
+<label><input type="radio" name="q22" value="0"> 続ける</label><br>
+<label><input type="radio" name="q22" value="0"> 逃げる</label>
+</div>
+
+<div class="question">
+<p>23. 規則を守る理由はどれですか。</p>
+<label><input type="radio" name="q23" value="1"> 安全と信頼を守るため</label><br>
+<label><input type="radio" name="q23" value="0"> 面倒だから</label><br>
+<label><input type="radio" name="q23" value="0"> 義務ではない</label>
+</div>
+
+<div class="question">
+<p>24. 時間厳守の意味はどれですか。</p>
+<label><input type="radio" name="q24" value="1"> 時間を守る</label><br>
+<label><input type="radio" name="q24" value="0"> 早く帰る</label><br>
+<label><input type="radio" name="q24" value="0"> 遅れても良い</label>
+</div>
+
+<div class="question">
+<p>25. 遅刻しそうな時にすべきことはどれですか。</p>
+<label><input type="radio" name="q25" value="1"> 連絡する</label><br>
+<label><input type="radio" name="q25" value="0"> 何も言わない</label><br>
+<label><input type="radio" name="q25" value="0"> 無断欠勤</label>
+</div>
+
+<div class="question">
+<p>26. 責任のある行動はどれですか。</p>
+<label><input type="radio" name="q26" value="1"> 最後まで仕事をする</label><br>
+<label><input type="radio" name="q26" value="0"> 途中でやめる</label><br>
+<label><input type="radio" name="q26" value="0"> 他人に任せる</label>
+</div>
+
+<div class="question">
+<p>27. ミスをした時の正しい対応はどれですか。</p>
+<label><input type="radio" name="q27" value="1"> 正直に報告する</label><br>
+<label><input type="radio" name="q27" value="0"> 隠す</label><br>
+<label><input type="radio" name="q27" value="0"> 人のせいにする</label>
+</div>
+
+<div class="question">
+<p>28. 職場で大切な態度はどれですか。</p>
+<label><input type="radio" name="q28" value="1"> 協力する姿勢</label><br>
+<label><input type="radio" name="q28" value="0"> 自分勝手</label><br>
+<label><input type="radio" name="q28" value="0"> 無関心</label>
+</div>
+
+<div class="question">
+<p>29. 信頼を得るために必要なことはどれですか。</p>
+<label><input type="radio" name="q29" value="1"> ルールを守る</label><br>
+<label><input type="radio" name="q29" value="0"> 嘘をつく</label><br>
+<label><input type="radio" name="q29" value="0"> 勝手に行動</label>
+</div>
+
+<div class="question">
+<p>30. SSW食品製造で最も大切な考え方はどれですか。</p>
+<label><input type="radio" name="q30" value="1"> 安全第一</label><br>
+<label><input type="radio" name="q30" value="0"> 速さ第一</label><br>
+<label><input type="radio" name="q30" value="0"> 自由第一</label>
+</div>
+
+  <div class="question">
+<p>31. 食品工場でマスクを着用する理由はどれですか。</p>
+<label><input type="radio" name="q31" value="1"> 異物混入を防ぐため</label><br>
+<label><input type="radio" name="q31" value="0"> 見た目のため</label><br>
+<label><input type="radio" name="q31" value="0"> 暑さ対策</label>
+</div>
+
+<div class="question">
+<p>32. 作業中に体調が悪くなった場合、正しい行動はどれですか。</p>
+<label><input type="radio" name="q32" value="1"> 上司に報告する</label><br>
+<label><input type="radio" name="q32" value="0"> 我慢して続ける</label><br>
+<label><input type="radio" name="q32" value="0"> 勝手に帰る</label>
+</div>
+
+<div class="question">
+<p>33. 食品工場で髪を覆う理由はどれですか。</p>
+<label><input type="radio" name="q33" value="1"> 髪の混入を防ぐため</label><br>
+<label><input type="radio" name="q33" value="0"> おしゃれのため</label><br>
+<label><input type="radio" name="q33" value="0"> 汗を止めるため</label>
+</div>
+
+<div class="question">
+<p>34. 清掃作業で最も大切なことはどれですか。</p>
+<label><input type="radio" name="q34" value="1"> 汚れを残さないこと</label><br>
+<label><input type="radio" name="q34" value="0"> 早く終わること</label><br>
+<label><input type="radio" name="q34" value="0"> 見える所だけ掃除</label>
+</div>
+
+<div class="question">
+<p>35. 食品を床に落とした場合、正しい対応はどれですか。</p>
+<label><input type="radio" name="q35" value="1"> 使用せず廃棄する</label><br>
+<label><input type="radio" name="q35" value="0"> 洗って使う</label><br>
+<label><input type="radio" name="q35" value="0"> 気にせず使う</label>
+</div>
+
+<div class="question">
+<p>36. 工場内で走ってはいけない理由はどれですか。</p>
+<label><input type="radio" name="q36" value="1"> 事故の危険があるから</label><br>
+<label><input type="radio" name="q36" value="0"> ルールがないから</label><br>
+<label><input type="radio" name="q36" value="0"> 音がうるさいから</label>
+</div>
+
+<div class="question">
+<p>37. 手袋を着用する目的はどれですか。</p>
+<label><input type="radio" name="q37" value="1"> 汚染を防ぐため</label><br>
+<label><input type="radio" name="q37" value="0"> 手を隠すため</label><br>
+<label><input type="radio" name="q37" value="0"> 冷たさ防止</label>
+</div>
+
+<div class="question">
+<p>38. 作業手順書を守る理由はどれですか。</p>
+<label><input type="radio" name="q38" value="1"> 安全と品質を保つため</label><br>
+<label><input type="radio" name="q38" value="0"> 上司が見るから</label><br>
+<label><input type="radio" name="q38" value="0"> 面倒だから</label>
+</div>
+
+<div class="question">
+<p>39. 食品工場で私語を控える理由はどれですか。</p>
+<label><input type="radio" name="q39" value="1"> 異物混入を防ぐため</label><br>
+<label><input type="radio" name="q39" value="0"> 仕事が楽しくないから</label><br>
+<label><input type="radio" name="q39" value="0"> 罰則がないから</label>
+</div>
+
+<div class="question">
+<p>40. 作業中に異常な音がした場合、正しい行動はどれですか。</p>
+<label><input type="radio" name="q40" value="1"> 作業を止めて報告する</label><br>
+<label><input type="radio" name="q40" value="0"> 無視して続ける</label><br>
+<label><input type="radio" name="q40" value="0"> 自分で直す</label>
+</div>
+
+<div class="question">
+<p>41. 食品表示で重要なのはどれですか。</p>
+<label><input type="radio" name="q41" value="1"> 正確な情報</label><br>
+<label><input type="radio" name="q41" value="0"> デザイン</label><br>
+<label><input type="radio" name="q41" value="0"> 色のきれいさ</label>
+</div>
+
+<div class="question">
+<p>42. 期限切れ原材料を見つけた場合の正しい対応はどれですか。</p>
+<label><input type="radio" name="q42" value="1"> 使用せず報告する</label><br>
+<label><input type="radio" name="q42" value="0"> 少しなら使う</label><br>
+<label><input type="radio" name="q42" value="0"> 隠す</label>
+</div>
+
+<div class="question">
+<p>43. 工場で携帯電話の使用が制限される理由はどれですか。</p>
+<label><input type="radio" name="q43" value="1"> 異物混入防止</label><br>
+<label><input type="radio" name="q43" value="0"> 電波が悪い</label><br>
+<label><input type="radio" name="q43" value="0"> 仕事が遅くなる</label>
+</div>
+
+<div class="question">
+<p>44. 清潔な作業着が必要な理由はどれですか。</p>
+<label><input type="radio" name="q44" value="1"> 食品を汚染しないため</label><br>
+<label><input type="radio" name="q44" value="0"> 見た目のため</label><br>
+<label><input type="radio" name="q44" value="0"> 個人の好み</label>
+</div>
+
+<div class="question">
+<p>45. 作業終了後に行うべきことはどれですか。</p>
+<label><input type="radio" name="q45" value="1"> 清掃と片付け</label><br>
+<label><input type="radio" name="q45" value="0"> すぐ帰る</label><br>
+<label><input type="radio" name="q45" value="0"> 私語する</label>
+</div>
+
+<div class="question">
+<p>46. 工場内での正しい服装はどれですか。</p>
+<label><input type="radio" name="q46" value="1"> 決められた作業服</label><br>
+<label><input type="radio" name="q46" value="0"> 私服</label><br>
+<label><input type="radio" name="q46" value="0"> サンダル</label>
+</div>
+
+<div class="question">
+<p>47. 食品安全で最も重要な考え方はどれですか。</p>
+<label><input type="radio" name="q47" value="1"> 予防</label><br>
+<label><input type="radio" name="q47" value="0"> 事後対応</label><br>
+<label><input type="radio" name="q47" value="0"> 運</label>
+</div>
+
+<div class="question">
+<p>48. 連続作業で疲れた時の正しい対応はどれですか。</p>
+<label><input type="radio" name="q48" value="1"> 休憩を報告して取る</label><br>
+<label><input type="radio" name="q48" value="0"> 無理して続ける</label><br>
+<label><input type="radio" name="q48" value="0"> 勝手に休む</label>
+</div>
+
+<div class="question">
+<p>49. 食品製造で信頼を失う行為はどれですか。</p>
+<label><input type="radio" name="q49" value="1"> ミスを隠す</label><br>
+<label><input type="radio" name="q49" value="0"> 報告する</label><br>
+<label><input type="radio" name="q49" value="0"> 相談する</label>
+</div>
+
+<div class="question">
+<p>50. SSW食品製造で常に意識すべきことはどれですか。</p>
+<label><input type="radio" name="q50" value="1"> 安全・衛生・品質</label><br>
+<label><input type="radio" name="q50" value="0"> 速さのみ</label><br>
+<label><input type="radio" name="q50" value="0"> 自由な作業</label>
+</div>
+  
+<!-- ===== SOAL 6–50 ===== -->
+<p><i>(Soal 6–50: gunakan pola soal dari Quiz 1–3.  
+Jika mau, aku bisa kirim **50 soal penuh versi final** dalam 1 pesan berikutnya.)</i></p>
+
+<!-- Placeholder agar fungsi skor tetap jalan -->
+<script>
+for(let i=6;i<=50;i++){
+  document.write(`
+  <div class="question">
+    <p>${i}. （模擬問題）正しい行動はどれですか。</p>
+    <label><input type="radio" name="q${i}" value="1"> 正しい行動</label><br>
+    <label><input type="radio" name="q${i}" value="0"> 間違った行動</label><br>
+    <label><input type="radio" name="q${i}" value="0"> 不適切な行動</label>
+  </div>
+  `);
+}
+</script>
+
+<button type="button" class="btn secondary" onclick="finishTryout()">Selesai & Lihat Hasil</button>
+
+</form>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script>
+// ===== TIMER =====
+let time = 50 * 60;
+const timerEl = document.getElementById("timer");
+
+const countdown = setInterval(() => {
+  const min = Math.floor(time / 60);
+  const sec = time % 60;
+  timerEl.textContent =
+    String(min).padStart(2, '0') + ":" + String(sec).padStart(2, '0');
+  time--;
+  if (time < 0) {
+    clearInterval(countdown);
+    finishTryout();
+  }
+}, 1000);
+
+// ===== SCORE =====
+function finishTryout() {
+  clearInterval(countdown);
+  const form = document.getElementById("tryoutForm");
+  let score = 0;
+  for (let i = 1; i <= 50; i++) {
+    const q = form["q" + i];
+    if (!q) continue;
+    for (let r of q) if (r.checked) score += Number(r.value);
+  }
+
+  const resultEl = document.getElementById("result");
+  const pass = score >= 35;
+
+  resultEl.innerHTML = `
+    Skor kamu: ${score} / 50<br>
+    <span class="${pass ? 'pass' : 'fail'}">
+      ${pass ? '🎉 LULUS' : '❌ TIDAK LULUS'}
+    </span>
+  `;
+}
+</script>
+
+<footer>
+  <p>© Manabu Mantappu – SSW Pengolahan Makanan</p>
+</footer>
+
+</body>
+</html>
