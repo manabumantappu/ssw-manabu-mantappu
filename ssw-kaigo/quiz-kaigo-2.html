@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz SSW Kaigo 2 | Bab 1–8</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.quiz-box {
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+button {
+  padding:10px 18px;
+  border:none;
+  border-radius:8px;
+  background:#1e88e5;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:15px;
+}
+.result {
+  font-size:1.2rem;
+  font-weight:bold;
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Quiz SSW Kaigo ②</h1>
+  <p>Bab 1–8 | Latihan Lanjutan</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="index.html">Kaigo</a></li>
+    <li><a href="quiz-kaigo-1.html">Quiz 1</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+<form id="quizForm">
+
+<!-- 11 -->
+<div class="quiz-box">
+<p>11. 「背中（せなか）」 artinya …</p>
+<label><input type="radio" name="q11" value="1"> Punggung</label><br>
+<label><input type="radio" name="q11" value="0"> Pinggang</label><br>
+<label><input type="radio" name="q11" value="0"> Bahu</label>
+</div>
+
+<!-- 12 -->
+<div class="quiz-box">
+<p>12. 歩行器（ほこうき）は何ですか。</p>
+<label><input type="radio" name="q12" value="0"> Kursi roda</label><br>
+<label><input type="radio" name="q12" value="1"> Alat bantu jalan</label><br>
+<label><input type="radio" name="q12" value="0"> Tongkat</label>
+</div>
+
+<!-- 13 -->
+<div class="quiz-box">
+<p>13. 利用者を支えるとき、正しい行動はどれですか。</p>
+<label><input type="radio" name="q13" value="1"> 転倒しないように注意する</label><br>
+<label><input type="radio" name="q13" value="0"> 急いで動かす</label><br>
+<label><input type="radio" name="q13" value="0"> 声をかけない</label>
+</div>
+
+<!-- 14 -->
+<div class="quiz-box">
+<p>14. 「副菜（ふくさい）」の意味はどれですか。</p>
+<label><input type="radio" name="q14" value="0"> Makanan pokok</label><br>
+<label><input type="radio" name="q14" value="1"> Lauk tambahan</label><br>
+<label><input type="radio" name="q14" value="0"> Minuman</label>
+</div>
+
+<!-- 15 -->
+<div class="quiz-box">
+<p>15. 食事介助で正しい声かけはどれですか。</p>
+<label><input type="radio" name="q15" value="1"> ゆっくり食べましょう</label><br>
+<label><input type="radio" name="q15" value="0"> 早く食べて</label><br>
+<label><input type="radio" name="q15" value="0"> 食べなさい</label>
+</div>
+
+<!-- 16 -->
+<div class="quiz-box">
+<p>16. 「便秘（べんぴ）」 berarti …</p>
+<label><input type="radio" name="q16" value="1"> Sembelit</label><br>
+<label><input type="radio" name="q16" value="0"> Diare</label><br>
+<label><input type="radio" name="q16" value="0"> Mual</label>
+</div>
+
+<!-- 17 -->
+<div class="quiz-box">
+<p>17. トイレ介助で最も大切なことはどれですか。</p>
+<label><input type="radio" name="q17" value="1"> 安全を確認する</label><br>
+<label><input type="radio" name="q17" value="0"> 早く終わらせる</label><br>
+<label><input type="radio" name="q17" value="0"> 声をかけない</label>
+</div>
+
+<!-- 18 -->
+<div class="quiz-box">
+<p>18. 「脱ぐ（ぬぐ）」の意味はどれですか。</p>
+<label><input type="radio" name="q18" value="0"> Memakai</label><br>
+<label><input type="radio" name="q18" value="1"> Melepas pakaian</label><br>
+<label><input type="radio" name="q18" value="0"> Mencuci</label>
+</div>
+
+<!-- 19 -->
+<div class="quiz-box">
+<p>19. 入浴介助で注意すべきことはどれですか。</p>
+<label><input type="radio" name="q19" value="1"> 転倒しないようにする</label><br>
+<label><input type="radio" name="q19" value="0"> 一人にする</label><br>
+<label><input type="radio" name="q19" value="0"> 急がせる</label>
+</div>
+
+<!-- 20 -->
+<div class="quiz-box">
+<p>20. 「注意（ちゅうい）」の意味はどれですか。</p>
+<label><input type="radio" name="q20" value="1"> Hati-hati</label><br>
+<label><input type="radio" name="q20" value="0"> Aman</label><br>
+<label><input type="radio" name="q20" value="0"> Cepat</label>
+</div>
+
+<button type="button" onclick="checkScore()">Lihat Nilai</button>
+
+</form>
+
+<div id="result" class="result"></div>
+</div>
+
+<footer>
+  <p>© Manabu Mantappu – SSW Kaigo</p>
+</footer>
+
+<script>
+function checkScore() {
+  let score = 0;
+  const answers = document.querySelectorAll('input[type=radio]:checked');
+  answers.forEach(a => score += parseInt(a.value));
+  document.getElementById("result").innerHTML =
+    "Skor kamu: <b>" + score + "/20</b><br>" +
+    (score >= 14 ? "✅ LULUS" : "❌ BELUM LULUS");
+}
+</script>
+
+</body>
+</html>
