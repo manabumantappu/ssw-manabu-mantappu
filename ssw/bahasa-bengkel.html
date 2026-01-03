@@ -4,33 +4,123 @@
   <meta charset="UTF-8">
   <title>Bahasa Bengkel Jepang | SSW Jidōsha Seibi</title>
 
-  <!-- Responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- CSS global -->
   <link rel="stylesheet" href="../style.css">
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7KJR3702Y1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KJR3702Y1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7KJR3702Y1');
+  </script>
 
-  gtag('config', 'G-7KJR3702Y1');
-</script>
-  
+  <!-- ===== STYLE TAMBAHAN (AMAN) ===== -->
+  <style>
+    /* ===== TABEL KOSAKATA ===== */
+    .kosakata-table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:14px;
+      font-size:.95rem;
+    }
+    .kosakata-table th{
+      background:#1e3a8a;
+      color:#fff;
+      padding:10px;
+      text-align:left;
+    }
+    .kosakata-table td{
+      padding:9px 10px;
+      border-bottom:1px solid #e5e7eb;
+    }
+    .kosakata-table tr:nth-child(even){
+      background:#f8fafc;
+    }
+    .kosakata-table tr:hover{
+      background:#e0f2fe;
+    }
+
+    /* ===== SHINY LATIHAN MENU ===== */
+    .latihan-wrap{
+      background:#ffffff;
+      border-radius:18px;
+      padding:26px 24px;
+      box-shadow:0 20px 45px rgba(0,0,0,.12);
+      margin-top:30px;
+    }
+    .latihan-wrap h2{
+      margin-top:0;
+      color:#0f172a;
+    }
+    .latihan-wrap p{
+      color:#475569;
+      margin-bottom:22px;
+    }
+    .latihan-btns{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+    .latihan-btn{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:600;
+      color:#fff;
+      text-decoration:none;
+      overflow:hidden;
+      transition:.3s ease;
+      box-shadow:0 8px 20px rgba(0,0,0,.25);
+    }
+    .latihan-btn::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-120%;
+      width:60%;
+      height:100%;
+      background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.55),
+        transparent
+      );
+      transition:.6s;
+    }
+    .latihan-btn:hover::before{
+      left:140%;
+    }
+    .latihan-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-latihan{
+      background:linear-gradient(135deg,#2563eb,#1e40af);
+    }
+    .btn-tryout{
+      background:linear-gradient(135deg,#0ea5e9,#0369a1);
+    }
+    .btn-smartlink{
+      background:linear-gradient(135deg,#22c55e,#15803d);
+    }
+  </style>
+
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
 <header>
-  <h1>🔧 Kosakata Jidousha Seibi</h1>
+  <h1>🔧 Kosakata Jidōsha Seibi</h1>
   <p>Materi dasar kosakata bengkel untuk SSW Jidōsha Seibi</p>
 </header>
 
-<!-- ===== NAVBAR ===== -->
 <nav>
   <ul>
     <li><a href="../index.html">Home</a></li>
@@ -40,19 +130,12 @@
   </ul>
 </nav>
 
-<!-- ===== CONTENT ===== -->
 <div class="container">
 
-  <!-- KOSAKATA DASAR -->
   <div class="card">
     <h2>📘 Kosakata Dasar Bengkel</h2>
-
-    <table width="100%">
-      <tr>
-        <th>Bahasa Jepang</th>
-        <th>Bacaan</th>
-        <th>Arti Indonesia</th>
-      </tr>
+    <table class="kosakata-table">
+      <tr><th>Bahasa Jepang</th><th>Bacaan</th><th>Arti Indonesia</th></tr>
       <tr><td>自動車</td><td>じどうしゃ</td><td>Kendaraan / Mobil</td></tr>
       <tr><td>整備</td><td>せいび</td><td>Perawatan / Servis</td></tr>
       <tr><td>点検</td><td>てんけん</td><td>Pemeriksaan</td></tr>
@@ -65,16 +148,10 @@
     </table>
   </div>
 
-  <!-- ALAT BENGKEL -->
   <div class="card">
     <h2>🔧 Kosakata Alat Bengkel</h2>
-
-    <table width="100%">
-      <tr>
-        <th>Bahasa Jepang</th>
-        <th>Bacaan</th>
-        <th>Arti Indonesia</th>
-      </tr>
+    <table class="kosakata-table">
+      <tr><th>Bahasa Jepang</th><th>Bacaan</th><th>Arti Indonesia</th></tr>
       <tr><td>レンチ</td><td>renchi</td><td>Kunci (wrench)</td></tr>
       <tr><td>スパナ</td><td>supana</td><td>Kunci pas</td></tr>
       <tr><td>ドライバー</td><td>doraibā</td><td>Obeng</td></tr>
@@ -84,16 +161,10 @@
     </table>
   </div>
 
-  <!-- BAGIAN MOBIL -->
   <div class="card">
     <h2>🚘 Kosakata Bagian Mobil</h2>
-
-    <table width="100%">
-      <tr>
-        <th>Bahasa Jepang</th>
-        <th>Bacaan</th>
-        <th>Arti Indonesia</th>
-      </tr>
+    <table class="kosakata-table">
+      <tr><th>Bahasa Jepang</th><th>Bacaan</th><th>Arti Indonesia</th></tr>
       <tr><td>エンジン</td><td>enjin</td><td>Mesin</td></tr>
       <tr><td>ブレーキ</td><td>burēki</td><td>Rem</td></tr>
       <tr><td>タイヤ</td><td>taiya</td><td>Ban</td></tr>
@@ -103,74 +174,41 @@
     </table>
   </div>
 
-  <!-- CATATAN -->
   <div class="card">
     <h2>📌 Catatan Penting</h2>
-    <p>
-      Kosakata di atas sering muncul di
-      <b>bengkel Jepang</b> dan
-      <b>ujian SSW Jidōsha Seibi</b>.
-    </p>
-    <p>
-      Cara belajar efektif:
-      <b>kanji → bacaan → arti → bayangkan bendanya</b>.
-    </p>
+    <p>Kosakata di atas sering muncul di <b>bengkel Jepang</b> dan <b>ujian SSW Jidōsha Seibi</b>.</p>
+    <p><b>Kanji → Bacaan → Arti → Bayangkan bendanya</b>.</p>
   </div>
 
-  <!-- CTA -->
-  <div class="card">
-    <h2>Latihan</h2>
-    <p>
-      Setelah memahami kosakata, lanjutkan ke latihan
-      untuk menguji pemahaman kamu.
-    </p>
+  <!-- ===== LATIHAN SHINY + SMARTLINK ===== -->
+  <div class="latihan-wrap">
+    <h2>🚀 Latihan & Try Out</h2>
+    <p>Uji pemahaman kamu dengan latihan dan try out SSW.</p>
 
-    <a href="latihan-bahasa-bengkel.html" class="btn">
-      📝 Mulai Latihan Pilihan Ganda
-    </a>
+    <div class="latihan-btns">
+      <a href="latihan-bahasa-bengkel.html" class="latihan-btn btn-latihan">
+        📝 Mulai Latihan Pilihan Ganda
+      </a>
 
-     <a href="tryout-menu.html" class="btn">
-    📝 Menu Try Out SSW
-  </a>
-    
+      <a href="tryout-menu.html" class="latihan-btn btn-tryout">
+        ⏱️ Menu Try Out SSW
+      </a>
+
+      <a href="smartlink.html"
+         class="latihan-btn btn-smartlink"
+         target="_blank"
+         rel="noopener">
+        🔗 Smartlink & Partner
+      </a>
+    </div>
   </div>
 
 </div>
 
- <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <p>© 2025 Manabu Mantappu</p>
   <p><em>Selamat belajar がんばりましょう！！！</em></p>
 </footer>
-  
-  <!-- Native Banner Adsterra -->
-  <div style="margin:40px auto;max-width:1000px;text-align:center;">
-<script async="async" data-cfasync="false" src="https://pl28274097.effectivegatecpm.com/a025500e946b1b3c647de88ab69d003a/invoke.js"></script>
-<div id="container-a025500e946b1b3c647de88ab69d003a"></div>
-
-<div style="text-align:center; margin:30px 0;">
-  <section class="monetization-section">
-  <div class="monetization-outer">
-    <div class="monetization-inner">
-
-      <p class="monetization-label">Sponsor</p>
-
-      <h3 class="monetization-title">
-        Ingin Mulai Menghasilkan dari Website?
-      </h3>
-
-      <p class="monetization-desc">
-        Pelajari cara mendapatkan dollar dari website menggunakan iklan dan
-        affiliate, cocok untuk pemula tanpa modal besar.
-      </p>
-  <a href="earn.html"
-     style="display:inline-block;padding:12px 20px;
-            background:#00e676;color:#000;
-            font-weight:bold;border-radius:10px;
-            text-decoration:none;">
-     💰 Cara Dapat Dollar dari Website
-  </a>
-</div>
 
 </body>
 </html>
