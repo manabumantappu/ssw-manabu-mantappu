@@ -280,7 +280,11 @@
     flex-direction:column;
   }
 }
-/* === KUNCI LAYOUT DUA KOLOM === */
+/* ===== SSW LAYOUT ===== */
+.ssw-section{
+  margin:48px 0;
+}
+
 .ssw-home-layout{
   display:flex;
   gap:24px;
@@ -290,26 +294,63 @@
 
 /* KIRI */
 .official-ssw-card{
-  flex:0 0 340px;   /* lebar tetap card kiri */
+  flex:0 0 340px;
+  background:linear-gradient(135deg,#0b3c66,#1e88e5);
+  color:#fff;
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 0 24px rgba(30,136,229,.6);
+}
+
+.official-ssw-card p{
+  color:#eaf4ff;
+}
+
+/* LINK */
+.official-links{
+  margin-top:16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.official-links a{
+  background:#fff;
+  color:#0b3c66;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:.85rem;
+  font-weight:600;
+  text-decoration:none;
 }
 
 /* KANAN */
 .ssw-table-section{
-  flex:1;           /* ambil semua sisa ruang */
-  min-width:0;      /* PENTING: cegah masuk ke kiri */
-  width:100%;
-  background:#ffffff;
-  padding:20px 24px;
-  border-radius:16px;
+  flex:1;
+  min-width:0;
+  background:#fff;
+  padding:24px;
+  border-radius:18px;
   box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
-/* TABEL FULL */
 .ssw-table-section table{
   width:100%;
-  table-layout:fixed;
+  border-collapse:collapse;
 }
-    
+
+.ssw-table-section th,
+.ssw-table-section td{
+  border:1px solid #cbd5e1;
+  padding:10px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .ssw-home-layout{
+    flex-direction:column;
+  }
+}
+
   </style>
 </head>
 
@@ -452,15 +493,15 @@
     </div>
 
 <!-- KANAN: TABEL -->
-   <section class="ssw-table-section">
-    <h3>📘 Bidang Kerja SSW Jepang</h3>
-
-    <table border="1" cellpadding="8" cellspacing="0" width="100%">
-      <thead>
-        <tr>
-          <th>分野<br><small>Bidang</small></th>
-          <th>仕事内容<br><small>Pekerjaan</small></th>
-        </tr>
+   <div class="ssw-table-section">
+      <h3>📘 Bidang Kerja SSW Jepang</h3>
+    
+      <table>
+        <thead>
+          <tr>
+            <th>分野<br><small>Bidang</small></th>
+            <th>仕事内容<br><small>Pekerjaan</small></th>
+          </tr>
       </thead>
       <tbody>
     <tr>
@@ -592,14 +633,12 @@
       <td>
         レストランなどで接客や料理を運ぶ仕事。<br>
         <small>Melayani pelanggan dan menyajikan makanan.</small>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    </tbody>
+      </table>
+    </div>
+
+  </div>
 </section>
-</div>
-</section>
-</div>
   
  <!-- ===== FOOTER ===== -->
 <footer class="footer">
