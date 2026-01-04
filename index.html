@@ -197,24 +197,43 @@
   }
 }
 /* ===== HEADER SERAGAM ===== */
+/* ===== HEADER CENTER ===== */
 .mm-header{
   background:linear-gradient(180deg,#0b3c66,#0f5fa3);
   color:#ffffff;
-  padding:22px 20px;
+  padding:26px 20px;
 }
 
 .mm-header-inner{
   max-width:1200px;
   margin:0 auto;
   display:flex;
-  align-items:center;
-  gap:16px;
+  flex-direction:column;     /* CENTER */
+  align-items:center;        /* CENTER */
+  gap:8px;
+  text-align:center;
 }
 
 /* LOGO */
 .mm-logo img{
-  height:46px;
+  height:52px;               /* sedikit lebih besar */
   width:auto;
+  margin-bottom:4px;
+}
+
+/* JUDUL */
+.mm-brand h1{
+  margin:0;
+  font-size:1.6rem;          /* tegas & profesional */
+  font-weight:800;
+  letter-spacing:.4px;
+}
+
+/* TAGLINE */
+.mm-brand p{
+  margin:0;
+  font-size:.9rem;
+  opacity:.9;
 }
 
 /* BRAND */
