@@ -172,6 +172,58 @@
   background:#e3f2fd;
   transform:translateY(-2px);
 }
+.official-ssw-card{
+  background:linear-gradient(135deg,#0b3c66,#1e88e5);
+  color:#ffffff;
+  border-radius:22px;
+  padding:28px;
+  animation:sswGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes sswGlow{
+  from{ box-shadow:0 0 14px rgba(30,136,229,.5); }
+  to{ box-shadow:0 0 32px rgba(30,136,229,.9); }
+}
+
+.official-ssw-card h3{
+  margin:10px 0 6px;
+  font-size:1.35rem;
+  color:#ffffff;
+}
+
+.card-desc{
+  font-size:.95rem;
+  line-height:1.5;
+  color:#eaf4ff;
+}
+
+.card-icon{
+  font-size:2rem;
+}
+
+.official-links{
+  margin-top:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.official-links a{
+  background:#ffffff;
+  color:#0b3c66;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:.85rem;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 4px 10px rgba(0,0,0,.15);
+  transition:.2s ease;
+}
+
+.official-links a:hover{
+  background:#e3f2fd;
+  transform:translateY(-2px);
+}
   </style>
 </head>
 
@@ -252,27 +304,66 @@
       </a>
     </div>
 
-    <!-- === MENU BARU: SITUS RESMI SSW === -->
+  <!-- === CARD HOME: SITUS RESMI DUKUNGAN SSW === -->
 <div class="home-card official-ssw-card">
   <div class="card-icon">🏛️</div>
   <h3>Situs Resmi Dukungan SSW</h3>
-  <p>
-    Akses langsung website resmi pemerintah & lembaga Jepang
+  <p class="card-desc">
+    Akses langsung ke website resmi pemerintah dan lembaga Jepang
     sebagai referensi valid ujian dan program SSW.
   </p>
 
   <div class="official-links">
     <a href="https://www.jpf.go.jp/jft-basic/" target="_blank">JFT-Basic</a>
     <a href="https://www.jlpt.jp/" target="_blank">JLPT</a>
-    <a href="https://www.mhlw.go.jp/stf/newpage_000117702.html" target="_blank">SSW Kaigo</a>
+
+    <a href="https://www.mhlw.go.jp/stf/newpage_000117702.html" target="_blank">
+      SSW Kaigo
+    </a>
     <a href="https://www.jaspa.or.jp/mechanic/specific-skill/index.html" target="_blank">
       Jidōsha Seibi
     </a>
     <a href="https://otaff.or.jp/" target="_blank">
       Pengolahan Makanan
     </a>
+    <a href="https://otaff.or.jp/" target="_blank">
+      Restoran / Gaishoku
+    </a>
+
+    <a href="https://www.j-bma.or.jp/qualification-training/zairyu" target="_blank">
+      Building Cleaning
+    </a>
+    <a href="https://www.jac-skill.or.jp/exam.html" target="_blank">
+      Konstruksi
+    </a>
+    <a href="https://www.classnk.or.jp/hp/ja/authentication/evaluation/index.html" target="_blank">
+      Perkapalan
+    </a>
+    <a href="https://www.jaea.or.jp/" target="_blank">
+      Penerbangan
+    </a>
+
+    <a href="https://caipt.or.jp/" target="_blank">
+      Perhotelan
+    </a>
+    <a href="https://asat-nca.jp/" target="_blank">
+      Pertanian
+    </a>
+    <a href="https://suisankai.or.jp/" target="_blank">
+      Perikanan
+    </a>
+
+    <a href="https://www.meti.go.jp/policy/mono_info_service/gaikokujinzai/index.html" target="_blank">
+      Manufaktur
+    </a>
+    <a href="#" target="_blank">Industri Mesin</a>
+    <a href="#" target="_blank">Elektronik</a>
+    <a href="#" target="_blank">Logam</a>
+    <a href="#" target="_blank">Plastik</a>
+    <a href="#" target="_blank">Tekstil</a>
   </div>
 </div>
+
 
   </section>
 
