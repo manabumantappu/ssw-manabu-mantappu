@@ -280,6 +280,36 @@
     flex-direction:column;
   }
 }
+/* === KUNCI LAYOUT DUA KOLOM === */
+.ssw-home-layout{
+  display:flex;
+  gap:24px;
+  align-items:flex-start;
+  width:100%;
+}
+
+/* KIRI */
+.official-ssw-card{
+  flex:0 0 340px;   /* lebar tetap card kiri */
+}
+
+/* KANAN */
+.ssw-table-section{
+  flex:1;           /* ambil semua sisa ruang */
+  min-width:0;      /* PENTING: cegah masuk ke kiri */
+  width:100%;
+  background:#ffffff;
+  padding:20px 24px;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+/* TABEL FULL */
+.ssw-table-section table{
+  width:100%;
+  table-layout:fixed;
+}
+    
   </style>
 </head>
 
