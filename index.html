@@ -3,361 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <title>SSW Manabu Mantappu</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KJR3702Y1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7KJR3702Y1');
-  </script>
-
-  <!-- ===== STYLE HOME KHUSUS ===== -->
+  <!-- ===== BASIC STYLE ===== -->
   <style>
+    body{
+      margin:0;
+      font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:#f1f5f9;
+      color:#0f172a;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    header{
+      text-align:center;
+      padding:40px 20px 20px;
+    }
+
+    nav ul{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      list-style:none;
+      padding:0;
+      margin:0 0 30px;
+    }
+
+    nav a{
+      text-decoration:none;
+      font-weight:600;
+      color:#2563eb;
+    }
+
     /* ===== HERO ===== */
     .home-hero{
       background:linear-gradient(135deg,#1e3a8a,#0ea5e9);
       color:#fff;
       padding:48px 26px;
       border-radius:26px;
-      box-shadow:0 30px 70px rgba(0,0,0,.25);
-      position:relative;
-      overflow:hidden;
       margin-bottom:40px;
     }
-    .home-hero::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:-120%;
-      width:60%;
-      height:100%;
-      background:linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,.35),
-        transparent
-      );
-      animation:shine 6s infinite;
-    }
-    @keyframes shine{
-      0%{left:-120%;}
-      40%{left:140%;}
-      100%{left:140%;}
-    }
-    .home-hero h1{
-      margin:0 0 12px;
-      font-size:2.2rem;
-    }
-    .home-hero p{
-      max-width:700px;
-      font-size:1.05rem;
-      opacity:.95;
-    }
 
-    /* ===== GRID ===== */
+    /* ===== GRID CARD ===== */
     .home-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:24px;
+      margin-bottom:48px;
     }
 
     .home-card{
-      background:#ffffff;
+      background:#fff;
       border-radius:22px;
       padding:26px 24px;
       box-shadow:0 20px 45px rgba(0,0,0,.12);
-      transition:.35s ease;
-    }
-    .home-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 35px 70px rgba(0,0,0,.25);
-    }
-    .home-card h2{
-      margin-top:0;
-    }
-    .home-card p{
-      color:#475569;
     }
 
-    /* ===== PROGRESS ===== */
-    .progress-bar{
-      height:14px;
-      background:#e5e7eb;
-      border-radius:999px;
-      overflow:hidden;
-      margin:14px 0 8px;
-    }
-    .progress-fill{
-      height:100%;
-      width:30%;
-      background:linear-gradient(90deg,#22c55e,#facc15);
+    /* ===== SSW SECTION ===== */
+    .ssw-section{
+      margin:60px 0;
     }
 
-    /* ===== BUTTON ===== */
-    .home-btn{
-      display:inline-block;
+    .ssw-layout{
+      display:flex;
+      gap:24px;
+      align-items:flex-start;
+    }
+
+    /* LEFT CARD */
+    .official-ssw-card{
+      flex:0 0 340px;
+      background:linear-gradient(135deg,#0b3c66,#1e88e5);
+      color:#fff;
+      border-radius:22px;
+      padding:28px;
+      box-shadow:0 0 24px rgba(30,136,229,.6);
+    }
+
+    .official-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
       margin-top:16px;
-      padding:12px 20px;
+    }
+
+    .official-links a{
+      background:#fff;
+      color:#0b3c66;
+      padding:8px 14px;
       border-radius:999px;
+      font-size:.85rem;
       font-weight:600;
       text-decoration:none;
-      color:#fff;
-      background:linear-gradient(135deg,#2563eb,#1e40af);
-      box-shadow:0 10px 25px rgba(0,0,0,.25);
-      transition:.3s ease;
-    }
-    .home-btn:hover{
-      transform:translateY(-2px);
-    }
-    .home-btn.alt{
-      background:linear-gradient(135deg,#22c55e,#15803d);
     }
 
-    .official-ssw-card{
-  background:linear-gradient(135deg,#0f4c81,#1e88e5);
-  color:#fff;
-  border-radius:20px;
-  padding:28px;
-  box-shadow:0 0 0 rgba(30,136,229,.6);
-  animation:glow 2.5s infinite alternate;
-}
+    /* RIGHT TABLE */
+    .ssw-table{
+      flex:1;
+      min-width:0;
+      background:#fff;
+      padding:24px;
+      border-radius:22px;
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+    }
 
-@keyframes glow{
-  from{
-    box-shadow:0 0 12px rgba(30,136,229,.4);
-  }
-  to{
-    box-shadow:0 0 28px rgba(30,136,229,.9);
-  }
-}
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
 
-.card-icon{
-  font-size:2rem;
-}
+    th, td{
+      border:1px solid #cbd5e1;
+      padding:10px;
+      vertical-align:top;
+    }
 
-.official-links{
-  margin-top:16px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
+    th{
+      background:#e2e8f0;
+    }
 
-.official-links a{
-  background:#ffffff;
-  color:#0f4c81;
-  padding:8px 14px;
-  border-radius:999px;
-  font-size:.85rem;
-  font-weight:600;
-  text-decoration:none;
-  transition:.2s;
-}
+    /* FOOTER */
+    footer{
+      text-align:center;
+      padding:40px 20px;
+      background:#0f172a;
+      color:#e5e7eb;
+    }
 
-.official-links a:hover{
-  background:#e3f2fd;
-  transform:translateY(-2px);
-}
-.official-ssw-card{
-  background:linear-gradient(135deg,#0b3c66,#1e88e5);
-  color:#ffffff;
-  border-radius:22px;
-  padding:28px;
-  animation:sswGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes sswGlow{
-  from{ box-shadow:0 0 14px rgba(30,136,229,.5); }
-  to{ box-shadow:0 0 32px rgba(30,136,229,.9); }
-}
-
-.official-ssw-card h3{
-  margin:10px 0 6px;
-  font-size:1.35rem;
-  color:#ffffff;
-}
-
-.card-desc{
-  font-size:.95rem;
-  line-height:1.5;
-  color:#eaf4ff;
-}
-
-.card-icon{
-  font-size:2rem;
-}
-
-.official-links{
-  margin-top:18px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.official-links a{
-  background:#ffffff;
-  color:#0b3c66;
-  padding:8px 14px;
-  border-radius:999px;
-  font-size:.85rem;
-  font-weight:600;
-  text-decoration:none;
-  box-shadow:0 4px 10px rgba(0,0,0,.15);
-  transition:.2s ease;
-}
-
-.official-links a:hover{
-  background:#e3f2fd;
-  transform:translateY(-2px);
-}
-
-.ssw-left{
-  flex:0 0 320px; /* lebar card kiri */
-}
-
-.ssw-right{
-  flex:1;
-  background:#ffffff;
-  padding:16px;
-  border-radius:14px;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
-  overflow-x:auto;
-}
-
-/* RESPONSIVE HP */
-@media(max-width:900px){
-  .ssw-dual-wrap{
-    flex-direction:column;
-  }
-}
-/* ===== HOME: CARD KIRI + SECTION KANAN ===== */
-.ssw-home-layout{
-  display:flex;
-  gap:24px;
-  align-items:flex-start;
-}
-
-/* BIARKAN CARD KIRI APA ADANYA */
-.official-ssw-card{
-  flex:0 0 320px;
-}
-
-/* SECTION KANAN KHUSUS TABEL */
-.ssw-table-section{
-  flex:1;
-  background:#ffffff;
-  padding:16px;
-  border-radius:14px;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
-  overflow-x:auto;
-}
-
-/* RESPONSIVE */
-@media (max-width:900px){
-  .ssw-home-layout{
-    flex-direction:column;
-  }
-}
-/* ===== SSW LAYOUT ===== */
-.ssw-section{
-  margin:48px 0;
-}
-
-.ssw-home-layout{
-  display:flex;
-  gap:24px;
-  align-items:flex-start;
-  width:100%;
-}
-
-/* KIRI */
-.official-ssw-card{
-  flex:0 0 340px;
-  background:linear-gradient(135deg,#0b3c66,#1e88e5);
-  color:#fff;
-  border-radius:22px;
-  padding:28px;
-  box-shadow:0 0 24px rgba(30,136,229,.6);
-}
-
-.official-ssw-card p{
-  color:#eaf4ff;
-}
-
-/* LINK */
-.official-links{
-  margin-top:16px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.official-links a{
-  background:#fff;
-  color:#0b3c66;
-  padding:8px 14px;
-  border-radius:999px;
-  font-size:.85rem;
-  font-weight:600;
-  text-decoration:none;
-}
-
-/* KANAN */
-.ssw-table-section{
-  flex:1;
-  min-width:0;
-  background:#fff;
-  padding:24px;
-  border-radius:18px;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-
-.ssw-table-section table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-.ssw-table-section th,
-.ssw-table-section td{
-  border:1px solid #cbd5e1;
-  padding:10px;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .ssw-home-layout{
-    flex-direction:column;
-  }
-}
-.ssw-section{
-  margin:48px 0;
-}
-
-.ssw-home-layout{
-  display:flex;
-  gap:24px;
-  align-items:flex-start;
-  width:100%;
-}
-
-.official-ssw-card{
-  flex:0 0 340px;
-}
-
-.ssw-table-section{
-  flex:1;
-  min-width:0;
-}
-
-@media(max-width:900px){
-  .ssw-home-layout{
-    flex-direction:column;
-  }
-}
-
+    /* MOBILE */
+    @media(max-width:900px){
+      .ssw-layout{
+        flex-direction:column;
+      }
+    }
   </style>
 </head>
 
@@ -365,18 +148,15 @@
 
 <header>
   <h1>SSW Manabu Mantappu</h1>
-  <p>
-    Platform belajar & latihan SSW Jepang  
-    untuk pejuang kerja ke Jepang 🇯🇵
-  </p>
+  <p>Platform belajar & latihan SSW Jepang 🇯🇵</p>
 </header>
 
 <nav>
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="ssw/index.html">SSW</a></li>
-    <li><a href="ssw/bahasa-bengkel.html">Belajar</a></li>
-    <li><a href="ssw/latihan-bahasa-bengkel.html">Latihan</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">SSW</a></li>
+    <li><a href="#">Belajar</a></li>
+    <li><a href="#">Latihan</a></li>
   </ul>
 </nav>
 
@@ -384,303 +164,66 @@
 
   <!-- HERO -->
   <section class="home-hero">
-    <h1>🇯🇵 Persiapan Kerja ke Jepang via SSW</h1>
-    <p>
-      Belajar bahasa, kosakata kerja, materi SSW,
-      latihan soal, dan try out — semua di satu platform.
-    </p>
+    <h2>Persiapan Kerja ke Jepang via SSW</h2>
+    <p>Belajar bahasa, materi SSW, dan latihan ujian dalam satu platform.</p>
   </section>
 
   <!-- GRID -->
   <section class="home-grid">
+    <div class="home-card">📊 Progress Belajar</div>
+    <div class="home-card">🧭 Tahapan Belajar</div>
+    <div class="home-card">🚀 Try Out & Latihan</div>
+  </section>
 
-    <!-- PROGRESS -->
-    <div class="home-card">
-      <h2>📊 Progress Belajar</h2>
-      <p>Kamu sedang berada di tahap awal belajar SSW.</p>
+  <!-- SSW -->
+  <section class="ssw-section">
+    <div class="ssw-layout">
 
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
+      <!-- LEFT -->
+      <div class="official-ssw-card">
+        <h3>🏛️ Situs Resmi Dukungan SSW</h3>
+        <p>Sumber resmi pemerintah & lembaga Jepang.</p>
+
+        <div class="official-links">
+          <a href="https://www.jpf.go.jp/jft-basic/" target="_blank">JFT-Basic</a>
+          <a href="https://www.jlpt.jp/" target="_blank">JLPT</a>
+          <a href="https://www.mhlw.go.jp/" target="_blank">Kaigo</a>
+          <a href="https://www.jaspa.or.jp/" target="_blank">Jidōsha Seibi</a>
+          <a href="https://otaff.or.jp/" target="_blank">Restoran</a>
+        </div>
       </div>
 
-      <small>
-        Progress: <b>30%</b><br>
-        Skor Simulasi: <b>60 / 100</b>
-      </small>
+      <!-- RIGHT -->
+      <div class="ssw-table">
+        <h3>📘 Bidang Kerja SSW Jepang</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>分野</th>
+              <th>仕事内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>介護</td><td>Perawatan lansia</td></tr>
+            <tr><td>ビルクリーニング</td><td>Pembersihan gedung</td></tr>
+            <tr><td>建設</td><td>Konstruksi</td></tr>
+            <tr><td>自動車整備</td><td>Perawatan kendaraan</td></tr>
+            <tr><td>外食業</td><td>Restoran</td></tr>
+          </tbody>
+        </table>
+
+      </div>
+
     </div>
+  </section>
 
-    <!-- TAHAPAN -->
-    <div class="home-card">
-      <h2>🧭 Tahapan Belajar SSW</h2>
-      <ol style="padding-left:18px;color:#334155;">
-        <li>Bahasa Jepang Dasar</li>
-        <li>Bahasa Kerja Jepang</li>
-        <li>Materi Khusus SSW</li>
-        <li>Latihan & Simulasi Ujian</li>
-        <li>Siap Kerja ke Jepang</li>
-      </ol>
-
-      <a href="ssw/jidousha-seibi.html" class="home-btn">
-        🚗 Mulai Belajar Jidōsha Seibi
-      </a>
-    </div>
-
-    <!-- CTA -->
-    <div class="home-card">
-      <h2>🚀 Siap Uji Kemampuan?</h2>
-      <p>
-        Masuk ke menu latihan dan try out
-        untuk mengukur kesiapan kamu.
-      </p>
-
-      <a href="ssw/latihan-bahasa-bengkel.html" class="home-btn alt">
-       Latihan pemanasan Jidousha seibi
-      </a>
-    </div>
-
-  <!-- === CARD HOME: SITUS RESMI DUKUNGAN SSW === -->
-<section class="ssw-section">
-<section class="ssw-home-layout">
-
-  <!-- KIRI: CARD SITUS RESMI -->
-  <div class="home-card official-ssw-card">
-    <div class="card-icon">🏛️</div>
-
-  <h3 class="ssw-title">Situs Resmi Dukungan SSW</h3>
-
-  <p class="ssw-desc" style="color:#ffffff;">
-    Akses langsung ke website resmi pemerintah dan lembaga Jepang
-    sebagai referensi valid ujian dan program SSW.
-  </p>
-
-  <div class="official-links">
-    <a href="https://www.jpf.go.jp/jft-basic/" target="_blank">JFT-Basic</a>
-    <a href="https://www.jlpt.jp/" target="_blank">JLPT</a>
-
-    <a href="https://www.mhlw.go.jp/stf/newpage_000117702.html" target="_blank">
-      SSW Kaigo 介護
-    </a>
-    <a href="https://www.jaspa.or.jp/mechanic/specific-skill/index.html" target="_blank">
-      Jidōsha Seibi 自動車 整備
-    </a>
-    <a href="https://otaff.or.jp/" target="_blank">
-      Restoran 外食業
-    </a>
-       </a>
-    <a href="https://www.jac-skill.or.jp/exam.html" target="_blank">
-      Konstruksi 建設
-    </a>
-    <a href="https://www.classnk.or.jp/hp/ja/authentication/evaluation/index.html" target="_blank">
-      Perkapalan 造船・ 舶用工業
-    </a>
-    <a href="https://www.jaea.or.jp/" target="_blank">
-      Penerbangan 航空
-    </a>
-
-    <a href="https://caipt.or.jp/" target="_blank">
-      Perhotelan 宿泊
-    </a>
-    <a href="https://asat-nca.jp/" target="_blank">
-      Pertanian 農業
-    </a>
-    <a href="https://suisankai.or.jp/" target="_blank">
-      Perikanan 漁業
-    </a>
-    <a href="https://otaff.or.jp/" target="_blank">
-      Pengolahan Makanan 飲食料品 製造業
-    </a>
-    <a href="https://www.j-bma.or.jp/qualification-training/zairyu" target="_blank">
-      Building Cleaning  ビルクリーニング
-     </a>
-    <a href="https://www.meti.go.jp/policy/mono_info_service/gaikokujinzai/index.html" target="_blank">
-      Manufaktur 素形材・業機械・電気
-    </a>
-     <!-- ===== bisa ditambah ===== -->
-    <a href="#" target="_blank">電子情報関連製造業</a>
-    </div>
-
-<!-- KANAN: TABEL -->
-   <div class="ssw-table-section">
-      <h3>📘 Bidang Kerja SSW Jepang</h3>
-    
-      <table>
-        <thead>
-          <tr>
-            <th>分野<br><small>Bidang</small></th>
-            <th>仕事内容<br><small>Pekerjaan</small></th>
-          </tr>
-      </thead>
-      <tbody>
-    <tr>
-      <td>
-        介護（かいご）<br>
-        <small>Perawatan / Caregiver</small>
-      </td>
-      <td>
-        体が不自由な人をサポートする仕事。<br>
-        <small>Mendukung orang yang memiliki keterbatasan fisik.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        ビルクリーニング<br>
-        <small>Pembersihan Gedung</small>
-      </td>
-      <td>
-        ビルの中を清掃する仕事。<br>
-        <small>Pekerjaan membersihkan bagian dalam gedung.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        素形材・産業機械・電気電子情報関連製造業<br>
-        <small>Manufaktur (logam, mesin, elektronik)</small>
-      </td>
-      <td>
-        部品など、物を作る仕事。<br>
-        <small>Membuat komponen dan berbagai produk.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        建設（けんせつ）<br>
-        <small>Konstruksi</small>
-      </td>
-      <td>
-        家やビルなど、建物を作る仕事。<br>
-        <small>Membangun rumah dan gedung.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        造船・舶用工業<br>
-        <small>Perkapalan</small>
-      </td>
-      <td>
-        船を作る仕事。<br>
-        <small>Pekerjaan membuat kapal.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        自動車整備（じどうしゃせいび）<br>
-        <small>Perawatan Kendaraan</small>
-      </td>
-      <td>
-        自動車を点検・整備する仕事。<br>
-        <small>Memeriksa dan memperbaiki kendaraan.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        航空（こうくう）<br>
-        <small>Penerbangan</small>
-      </td>
-      <td>
-        飛行機の点検や整備、荷物の運搬をする仕事。<br>
-        <small>Perawatan pesawat dan penanganan barang.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        宿泊（しゅくはく）<br>
-        <small>Perhotelan</small>
-      </td>
-      <td>
-        ホテルなどで受付や接客をする仕事。<br>
-        <small>Resepsionis dan pelayanan tamu hotel.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        農業（のうぎょう）<br>
-        <small>Pertanian</small>
-      </td>
-      <td>
-        野菜などを育て、収穫する仕事。<br>
-        <small>Menanam dan memanen hasil pertanian.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        漁業（ぎょぎょう）<br>
-        <small>Perikanan</small>
-      </td>
-      <td>
-        魚を捕ったり、育てたりする仕事。<br>
-        <small>Menangkap dan membudidayakan ikan.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        飲食料品製造業<br>
-        <small>Industri Pengolahan Makanan</small>
-      </td>
-      <td>
-        食べ物を作る仕事。<br>
-        <small>Mengolah dan memproduksi makanan.</small>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        外食業（がいしょくぎょう）<br>
-        <small>Restoran</small>
-      </td>
-      <td>
-        レストランなどで接客や料理を運ぶ仕事。<br>
-        <small>Melayani pelanggan dan menyajikan makanan.</small>
-    </tbody>
-      </table>
-    </div>
-
-  </div>
-</section>
-  
- <!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <p>© 2025 Manabu Mantappu</p>
-  <p><em>Selamat belajar がんばりましょう！！！</em></p>
-</footer>
-  
-  <!-- Native Banner Adsterra -->
-  <div style="margin:40px auto;max-width:1000px;text-align:center;">
-<script async="async" data-cfasync="false" src="https://pl28274097.effectivegatecpm.com/a025500e946b1b3c647de88ab69d003a/invoke.js"></script>
-<div id="container-a025500e946b1b3c647de88ab69d003a"></div>
-
-<div style="text-align:center; margin:30px 0;">
-  <section class="monetization-section">
-  <div class="monetization-outer">
-    <div class="monetization-inner">
-
-      <p class="monetization-label">Sponsor</p>
-
-      <h3 class="monetization-title">
-        Ingin Mulai Menghasilkan dari Website?
-      </h3>
-
-      <p class="monetization-desc">
-        Pelajari cara mendapatkan dollar dari website menggunakan iklan dan
-        affiliate, cocok untuk pemula tanpa modal besar.
-      </p>
-  <a href="earn.html"
-     style="display:inline-block;padding:12px 20px;
-            background:#00e676;color:#000;
-            font-weight:bold;border-radius:10px;
-            text-decoration:none;">
-     💰 Cara Dapat Dollar dari Website
-  </a>
 </div>
+
+<footer>
+  <p>© 2025 Manabu Mantappu</p>
+  <p>がんばりましょう！</p>
+</footer>
 
 </body>
 </html>
