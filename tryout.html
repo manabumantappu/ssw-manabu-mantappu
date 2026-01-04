@@ -4,39 +4,239 @@
   <meta charset="UTF-8">
   <title>Try Out SSW | SSW Manabu Mantappu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      margin:0;
+      font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:#f1f5f9;
+      color:#0f172a;
+    }
+
+    /* ===== HEADER ===== */
+    .mm-header{
+      background:linear-gradient(180deg,#0b3c66,#0f5fa3);
+      color:#ffffff;
+      padding:28px 20px;
+    }
+
+    .mm-header-inner{
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      justify-content:center;
+    }
+
+    .mm-brand-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .mm-logo img{
+      height:52px;
+    }
+
+    .mm-brand h1{
+      margin:0;
+      font-size:1.6rem;
+      font-weight:800;
+    }
+
+    .mm-brand p{
+      margin-top:4px;
+      font-size:.9rem;
+      opacity:.9;
+    }
+
+    /* ===== NAV ===== */
+    .mm-nav{
+      background:#ffffff;
+      display:flex;
+      justify-content:center;
+      gap:32px;
+      padding:18px 12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
+
+    .mm-nav a{
+      text-decoration:none;
+      font-weight:700;
+      font-size:1rem;
+      color:#0f5fa3;
+      padding:8px 18px;
+      border-radius:999px;
+      transition:.25s ease;
+    }
+
+    .mm-nav a:hover{
+      background:#e6f2ff;
+    }
+
+    /* ===== CONTENT ===== */
+    .container{
+      max-width:1100px;
+      margin:40px auto;
+      padding:0 20px;
+    }
+
+    .page-title{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .page-title h2{
+      margin:0;
+      font-size:2rem;
+      color:#0f5fa3;
+    }
+
+    .page-title p{
+      margin-top:10px;
+      color:#475569;
+    }
+
+    /* ===== GRID TRY OUT ===== */
+    .tryout-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px;
+    }
+
+    .tryout-card{
+      background:#ffffff;
+      border-radius:22px;
+      padding:26px;
+      box-shadow:0 18px 40px rgba(0,0,0,.12);
+      text-decoration:none;
+      color:#0f172a;
+      transition:.3s ease;
+    }
+
+    .tryout-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 30px 60px rgba(0,0,0,.18);
+    }
+
+    .tryout-card h3{
+      margin-top:0;
+      color:#1e40af;
+    }
+
+    .tryout-card p{
+      color:#334155;
+      line-height:1.6;
+      font-size:.95rem;
+    }
+
+    .tryout-btn{
+      display:inline-block;
+      margin-top:14px;
+      padding:10px 18px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:.9rem;
+      background:linear-gradient(135deg,#2563eb,#1e40af);
+      color:#ffffff;
+    }
+
+    /* ===== FOOTER ===== */
+    footer{
+      text-align:center;
+      padding:40px 20px;
+      background:#0f172a;
+      color:#e5e7eb;
+      margin-top:60px;
+    }
+
+    /* MOBILE */
+    @media(max-width:600px){
+      .mm-brand-wrap{
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>📝 Try Out & Simulasi Ujian SSW</h1>
-<p>
-Pilih try out sesuai bidang SSW yang ingin kamu ikuti.
-Simulasi ini dibuat untuk membantu persiapan sebelum ujian resmi.
-</p>
+<!-- ===== HEADER ===== -->
+<header class="mm-header">
+  <div class="mm-header-inner">
+    <div class="mm-brand-wrap">
+      <div class="mm-logo">
+        <img src="assets/img/logo-manabu-mantappu.png" alt="Manabu Mantappu Logo">
+      </div>
+      <div class="mm-brand">
+        <h1>SSW Manabu Mantappu</h1>
+        <p>Platform belajar & latihan SSW Jepang 🇯🇵</p>
+      </div>
+    </div>
+  </div>
+</header>
 
-<div class="tryout-grid">
+<!-- ===== NAV ===== -->
+<nav class="mm-nav">
+  <a href="index.html">Home</a>
+  <a href="ssw/index.html">SSW</a>
+  <a href="materi.html">Materi</a>
+  <a href="tryout.html">Try Out</a>
+  <a href="tentang.html">Tentang</a>
+</nav>
 
-  <a href="ssw/tryout/jidousha-seibi.html" class="tryout-card">
-    🚗 Try Out Jidōsha Seibi
-  </a>
+<!-- ===== CONTENT ===== -->
+<div class="container">
 
-  <a href="ssw/tryout/kaigo.html" class="tryout-card">
-    🧑‍⚕️ Try Out Kaigo
-  </a>
+  <div class="page-title">
+    <h2>📝 Try Out & Simulasi Ujian SSW</h2>
+    <p>
+      Pilih try out sesuai bidang SSW yang ingin kamu ikuti.
+      Simulasi ini membantu mengukur kesiapan sebelum ujian resmi.
+    </p>
+  </div>
 
-  <a href="ssw/tryout/food.html" class="tryout-card">
-    🍱 Try Out Pengolahan Makanan
-  </a>
+  <div class="tryout-grid">
 
-  <a href="ssw/tryout/manufaktur.html" class="tryout-card">
-    🏭 Try Out Manufaktur
-  </a>
+    <a href="ssw/tryout/jidousha-seibi.html" class="tryout-card">
+      <h3>🚗 Try Out Jidōsha Seibi</h3>
+      <p>Simulasi ujian SSW bidang otomotif dan bengkel.</p>
+      <span class="tryout-btn">Mulai Try Out</span>
+    </a>
 
-  <a href="ssw/tryout/index.html" class="tryout-card">
-    📚 Semua Try Out SSW
-  </a>
+    <a href="ssw/tryout/kaigo.html" class="tryout-card">
+      <h3>🧑‍⚕️ Try Out Kaigo（介護）</h3>
+      <p>Simulasi ujian SSW perawatan lansia.</p>
+      <span class="tryout-btn">Mulai Try Out</span>
+    </a>
+
+    <a href="ssw/tryout/food.html" class="tryout-card">
+      <h3>🍱 Try Out Pengolahan Makanan</h3>
+      <p>Simulasi ujian industri pengolahan makanan.</p>
+      <span class="tryout-btn">Mulai Try Out</span>
+    </a>
+
+    <a href="ssw/tryout/manufaktur.html" class="tryout-card">
+      <h3>🏭 Try Out Manufaktur</h3>
+      <p>Simulasi ujian bidang manufaktur dan produksi.</p>
+      <span class="tryout-btn">Mulai Try Out</span>
+    </a>
+
+    <a href="ssw/tryout/index.html" class="tryout-card">
+      <h3>📚 Semua Try Out SSW</h3>
+      <p>Lihat seluruh try out dari semua bidang SSW.</p>
+      <span class="tryout-btn">Lihat Semua</span>
+    </a>
+
+  </div>
 
 </div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2025 Manabu Mantappu</p>
+  <p><em>がんばりましょう！</em></p>
+</footer>
 
 </body>
 </html>
