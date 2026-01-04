@@ -162,7 +162,6 @@
   opacity:.9;
 }
 
-/* ===== NAV DI BAWAH HEADER ===== */
 /* ===== NAVBAR LEBIH BESAR ===== */
 .mm-nav{
   background:#ffffff;
@@ -205,26 +204,28 @@
 .mm-header{
   background:linear-gradient(180deg,#0b3c66,#0f5fa3);
   color:#ffffff;
-  padding:26px 20px;
+  padding:28px 20px;
 }
 
+/* WRAPPER UTAMA */
 .mm-header-inner{
   max-width:1200px;
   margin:0 auto;
   display:flex;
-  flex-direction:column;     /* CENTER */
-  align-items:center;        /* CENTER */
-  gap:8px;
-  text-align:center;
+  justify-content:center; /* CENTER HORIZONTAL */
 }
-
+/* LOGO + BRAND */
+.mm-brand-wrap{
+  display:flex;
+  align-items:center;
+  gap:14px;               /* jarak logo & teks */
+  text-align:left;
+}
 /* LOGO */
 .mm-logo img{
-  height:52px;               /* sedikit lebih besar */
+  height:52px;
   width:auto;
-  margin-bottom:4px;
 }
-
 /* JUDUL */
 .mm-brand h1{
   margin:0;
@@ -235,32 +236,23 @@
 
 /* TAGLINE */
 .mm-brand p{
-  margin:0;
+  margin-top:4px;
   font-size:.9rem;
   opacity:.9;
 }
-
-/* BRAND */
-.mm-brand h1{
-  margin:0;
-  font-size:1.5rem;
-  font-weight:800;
-  letter-spacing:.4px;
-}
-
-.mm-brand p{
-  margin-top:4px;
-  font-size:.85rem;
-  opacity:.9;
-}
-
 /* MOBILE */
 @media(max-width:600px){
-  .mm-header-inner{
+  .mm-brand-wrap{
     flex-direction:column;
     text-align:center;
   }
+
+  .mm-logo img{
+    height:48px;
+  }
 }
+
+    
 .mm-nav{
   background:#ffffff;
   display:flex;
@@ -293,19 +285,20 @@
 <header class="mm-header">
   <div class="mm-header-inner">
 
-    <!-- LOGO -->
-    <div class="mm-logo">
-      <img src="assets/img/logo.png" alt="Manabu Mantappu Logo">
-    </div>
+    <div class="mm-brand-wrap">
+      <div class="mm-logo">
+        <img src="assets/img/logo-manabu-mantappu.png" alt="Manabu Mantappu Logo">
+      </div>
 
-    <!-- BRAND -->
-    <div class="mm-brand">
-      <h1>SSW Manabu Mantappu</h1>
-      <p>Platform belajar & latihan SSW Jepang 🇯🇵</p>
+      <div class="mm-brand">
+        <h1>SSW Manabu Mantappu</h1>
+        <p>Platform belajar & latihan SSW Jepang</p>
+      </div>
     </div>
 
   </div>
 </header>
+
 
 <nav class="mm-nav">
   <a href="index.html">Home</a>
