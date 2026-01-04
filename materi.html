@@ -1,142 +1,275 @@
-<table border="1" cellpadding="10" cellspacing="0" width="100%">
-  <thead style="background:#f3c1b3;">
-    <tr>
-      <th>分野（ぶんや）<br><small>Bidang</small></th>
-      <th>仕事内容（しごとのないよう）<br><small>Isi Pekerjaan</small></th>
-    </tr>
-  </thead>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Materi SSW | SSW Manabu Mantappu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <tbody>
-    <tr>
-      <td>
-        介護（かいご）<br>
-        <small>Perawatan / Caregiver</small>
-      </td>
-      <td>
-        体が不自由な人をサポートする仕事。<br>
-        <small>Mendukung orang yang memiliki keterbatasan fisik.</small>
-      </td>
-    </tr>
+  <style>
+    body{
+      margin:0;
+      font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:#f1f5f9;
+      color:#0f172a;
+    }
 
-    <tr>
-      <td>
-        ビルクリーニング<br>
-        <small>Pembersihan Gedung</small>
-      </td>
-      <td>
-        ビルの中を清掃する仕事。<br>
-        <small>Pekerjaan membersihkan bagian dalam gedung.</small>
-      </td>
-    </tr>
+    /* ===== HEADER ===== */
+    .mm-header{
+      background:linear-gradient(180deg,#0b3c66,#0f5fa3);
+      color:#ffffff;
+      padding:28px 20px;
+    }
 
-    <tr>
-      <td>
-        素形材・産業機械・電気電子情報関連製造業<br>
-        <small>Manufaktur (logam, mesin, elektronik)</small>
-      </td>
-      <td>
-        部品など、物を作る仕事。<br>
-        <small>Membuat komponen dan berbagai produk.</small>
-      </td>
-    </tr>
+    .mm-header-inner{
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      justify-content:center;
+    }
 
-    <tr>
-      <td>
-        建設（けんせつ）<br>
-        <small>Konstruksi</small>
-      </td>
-      <td>
-        家やビルなど、建物を作る仕事。<br>
-        <small>Membangun rumah dan gedung.</small>
-      </td>
-    </tr>
+    .mm-brand-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
 
-    <tr>
-      <td>
-        造船・舶用工業<br>
-        <small>Perkapalan</small>
-      </td>
-      <td>
-        船を作る仕事。<br>
-        <small>Pekerjaan membuat kapal.</small>
-      </td>
-    </tr>
+    .mm-logo img{
+      height:52px;
+    }
 
-    <tr>
-      <td>
-        自動車整備（じどうしゃせいび）<br>
-        <small>Perawatan Kendaraan</small>
-      </td>
-      <td>
-        自動車を点検・整備する仕事。<br>
-        <small>Memeriksa dan memperbaiki kendaraan.</small>
-      </td>
-    </tr>
+    .mm-brand h1{
+      margin:0;
+      font-size:1.6rem;
+      font-weight:800;
+    }
 
-    <tr>
-      <td>
-        航空（こうくう）<br>
-        <small>Penerbangan</small>
-      </td>
-      <td>
-        飛行機の点検や整備、荷物の運搬をする仕事。<br>
-        <small>Perawatan pesawat dan penanganan barang.</small>
-      </td>
-    </tr>
+    .mm-brand p{
+      margin-top:4px;
+      font-size:.9rem;
+      opacity:.9;
+    }
 
-    <tr>
-      <td>
-        宿泊（しゅくはく）<br>
-        <small>Perhotelan</small>
-      </td>
-      <td>
-        ホテルなどで受付や接客をする仕事。<br>
-        <small>Resepsionis dan pelayanan tamu hotel.</small>
-      </td>
-    </tr>
+    /* ===== NAV ===== */
+    .mm-nav{
+      background:#ffffff;
+      display:flex;
+      justify-content:center;
+      gap:32px;
+      padding:18px 12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
 
-    <tr>
-      <td>
-        農業（のうぎょう）<br>
-        <small>Pertanian</small>
-      </td>
-      <td>
-        野菜などを育て、収穫する仕事。<br>
-        <small>Menanam dan memanen hasil pertanian.</small>
-      </td>
-    </tr>
+    .mm-nav a{
+      text-decoration:none;
+      font-weight:700;
+      font-size:1rem;
+      color:#0f5fa3;
+      padding:8px 18px;
+      border-radius:999px;
+      transition:.25s ease;
+    }
 
-    <tr>
-      <td>
-        漁業（ぎょぎょう）<br>
-        <small>Perikanan</small>
-      </td>
-      <td>
-        魚を捕ったり、育てたりする仕事。<br>
-        <small>Menangkap dan membudidayakan ikan.</small>
-      </td>
-    </tr>
+    .mm-nav a:hover{
+      background:#e6f2ff;
+    }
 
-    <tr>
-      <td>
-        飲食料品製造業<br>
-        <small>Industri Pengolahan Makanan</small>
-      </td>
-      <td>
-        食べ物を作る仕事。<br>
-        <small>Mengolah dan memproduksi makanan.</small>
-      </td>
-    </tr>
+    /* ===== CONTENT ===== */
+    .container{
+      max-width:1100px;
+      margin:40px auto;
+      padding:0 20px;
+    }
 
-    <tr>
-      <td>
-        外食業（がいしょくぎょう）<br>
-        <small>Restoran</small>
-      </td>
-      <td>
-        レストランなどで接客や料理を運ぶ仕事。<br>
-        <small>Melayani pelanggan dan menyajikan makanan.</small>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    .page-title{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .page-title h2{
+      margin:0;
+      font-size:2rem;
+      color:#0f5fa3;
+    }
+
+    .page-title p{
+      margin-top:10px;
+      color:#475569;
+    }
+
+    /* ===== GRID MATERI ===== */
+    .materi-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px;
+    }
+
+    .materi-card{
+      background:#ffffff;
+      border-radius:22px;
+      padding:26px;
+      box-shadow:0 18px 40px rgba(0,0,0,.12);
+      transition:.3s ease;
+    }
+
+    .materi-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 30px 60px rgba(0,0,0,.18);
+    }
+
+    .materi-card h3{
+      margin-top:0;
+      color:#1e40af;
+    }
+
+    .materi-card p{
+      color:#334155;
+      line-height:1.6;
+    }
+
+    .materi-card a{
+      display:inline-block;
+      margin-top:14px;
+      text-decoration:none;
+      font-weight:700;
+      color:#ffffff;
+      background:linear-gradient(135deg,#2563eb,#1e40af);
+      padding:10px 18px;
+      border-radius:999px;
+      font-size:.9rem;
+    }
+
+    .materi-card a:hover{
+      opacity:.9;
+    }
+
+    /* ===== FOOTER ===== */
+    footer{
+      text-align:center;
+      padding:40px 20px;
+      background:#0f172a;
+      color:#e5e7eb;
+      margin-top:60px;
+    }
+
+    /* MOBILE */
+    @media(max-width:600px){
+      .mm-brand-wrap{
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="mm-header">
+  <div class="mm-header-inner">
+    <div class="mm-brand-wrap">
+      <div class="mm-logo">
+        <img src="assets/img/logo-manabu-mantappu.png" alt="Manabu Mantappu Logo">
+      </div>
+      <div class="mm-brand">
+        <h1>SSW Manabu Mantappu</h1>
+        <p>Platform belajar & latihan SSW Jepang 🇯🇵</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav class="mm-nav">
+  <a href="index.html">Home</a>
+  <a href="ssw/index.html">SSW</a>
+  <a href="materi.html">Materi</a>
+  <a href="tryout.html">Try Out</a>
+  <a href="tentang.html">Tentang</a>
+</nav>
+
+<!-- ===== CONTENT ===== -->
+<div class="container">
+
+  <div class="page-title">
+    <h2>📘 Materi Pembelajaran SSW</h2>
+    <p>
+      Pilih materi belajar sesuai tahapan dan bidang SSW
+      untuk mempersiapkan diri sebelum ujian dan kerja di Jepang.
+    </p>
+  </div>
+
+  <div class="materi-grid">
+
+    <!-- BAHASA DASAR -->
+    <div class="materi-card">
+      <h3>🇯🇵 Bahasa Jepang Dasar</h3>
+      <p>
+        Materi dasar bahasa Jepang untuk pemula,
+        meliputi hiragana, katakana, kosakata dasar,
+        dan pola kalimat sederhana.
+      </p>
+      <a href="#">Mulai Belajar</a>
+    </div>
+
+    <!-- BAHASA KERJA -->
+    <div class="materi-card">
+      <h3>🛠️ Bahasa Jepang Kerja</h3>
+      <p>
+        Kosakata dan ungkapan yang sering digunakan
+        di lingkungan kerja Jepang, termasuk sopan santun kerja.
+      </p>
+      <a href="#">Lihat Materi</a>
+    </div>
+
+    <!-- SSW JIDOUSHA -->
+    <div class="materi-card">
+      <h3>🚗 SSW Jidōsha Seibi</h3>
+      <p>
+        Materi khusus SSW bidang otomotif,
+        termasuk kosakata bengkel, alat, dan prosedur kerja.
+      </p>
+      <a href="ssw/jidousha-seibi.html">Buka Materi</a>
+    </div>
+
+    <!-- SSW KAIGO -->
+    <div class="materi-card">
+      <h3>🧑‍⚕️ SSW Kaigo (介護)</h3>
+      <p>
+        Materi dasar dan kosakata penting
+        untuk bidang perawatan lansia di Jepang.
+      </p>
+      <a href="#">Buka Materi</a>
+    </div>
+
+    <!-- SSW MAKANAN -->
+    <div class="materi-card">
+      <h3>🍱 Pengolahan Makanan</h3>
+      <p>
+        Materi SSW untuk industri pengolahan makanan,
+        termasuk istilah produksi dan kebersihan kerja.
+      </p>
+      <a href="#">Buka Materi</a>
+    </div>
+
+    <!-- SSW LAIN -->
+    <div class="materi-card">
+      <h3>📦 Bidang SSW Lainnya</h3>
+      <p>
+        Materi pendukung untuk bidang SSW lainnya
+        seperti konstruksi, perhotelan, dan perikanan.
+      </p>
+      <a href="#">Lihat Semua</a>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2025 Manabu Mantappu</p>
+  <p><em>がんばりましょう！</em></p>
+</footer>
+
+</body>
+</html>
