@@ -196,6 +196,48 @@
     gap:12px;
   }
 }
+/* ===== HEADER SERAGAM ===== */
+.mm-header{
+  background:linear-gradient(180deg,#0b3c66,#0f5fa3);
+  color:#ffffff;
+  padding:22px 20px;
+}
+
+.mm-header-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+/* LOGO */
+.mm-logo img{
+  height:46px;
+  width:auto;
+}
+
+/* BRAND */
+.mm-brand h1{
+  margin:0;
+  font-size:1.5rem;
+  font-weight:800;
+  letter-spacing:.4px;
+}
+
+.mm-brand p{
+  margin-top:4px;
+  font-size:.85rem;
+  opacity:.9;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .mm-header-inner{
+    flex-direction:column;
+    text-align:center;
+  }
+}
 
     </style>
 </head>
@@ -203,16 +245,29 @@
 <body>
 
 <!-- ===== HEADER SERAGAM ===== -->
-<header class="page-header">
-  <h1>SSW Manabu Mantappu</h1>
-  <p>Platform belajar & latihan SSW Jepang 🇯🇵</p>
+<header class="mm-header">
+  <div class="mm-header-inner">
+
+    <!-- LOGO -->
+    <div class="mm-logo">
+      <img src="logo-manabu-mantappu.png" alt="Manabu Mantappu Logo">
+    </div>
+
+    <!-- BRAND -->
+    <div class="mm-brand">
+      <h1>SSW Manabu Mantappu</h1>
+      <p>Platform belajar & latihan SSW Jepang 🇯🇵</p>
+    </div>
+
+  </div>
 </header>
 
-<nav class="page-nav">
+<nav class="mm-nav">
   <a href="index.html">Home</a>
   <a href="ssw/index.html">SSW</a>
-  <a href="ssw/bahasa-bengkel.html">Belajar</a>
-  <a href="ssw/latihan-bahasa-bengkel.html">Latihan</a>
+  <a href="materi.html">Materi</a>
+  <a href="tryout.html">Try Out</a>
+  <a href="tentang.html">Tentang</a>
 </nav>
 
 
