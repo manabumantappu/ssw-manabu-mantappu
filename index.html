@@ -117,6 +117,61 @@
     .home-btn.alt{
       background:linear-gradient(135deg,#22c55e,#15803d);
     }
+
+    .official-ssw-card{
+  background:linear-gradient(135deg,#0f4c81,#1e88e5);
+  color:#fff;
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 0 0 rgba(30,136,229,.6);
+  animation:glow 2.5s infinite alternate;
+}
+
+@keyframes glow{
+  from{
+    box-shadow:0 0 12px rgba(30,136,229,.4);
+  }
+  to{
+    box-shadow:0 0 28px rgba(30,136,229,.9);
+  }
+}
+
+.official-ssw-card h3{
+  margin-top:10px;
+  font-size:1.3rem;
+}
+
+.official-ssw-card p{
+  font-size:.95rem;
+  opacity:.95;
+}
+
+.card-icon{
+  font-size:2rem;
+}
+
+.official-links{
+  margin-top:16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.official-links a{
+  background:#ffffff;
+  color:#0f4c81;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:.85rem;
+  font-weight:600;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.official-links a:hover{
+  background:#e3f2fd;
+  transform:translateY(-2px);
+}
   </style>
 </head>
 
@@ -196,6 +251,28 @@
        Latihan pemanasan Jidousha seibi
       </a>
     </div>
+
+    <!-- === MENU BARU: SITUS RESMI SSW === -->
+<div class="home-card official-ssw-card">
+  <div class="card-icon">🏛️</div>
+  <h3>Situs Resmi Dukungan SSW</h3>
+  <p>
+    Akses langsung website resmi pemerintah & lembaga Jepang
+    sebagai referensi valid ujian dan program SSW.
+  </p>
+
+  <div class="official-links">
+    <a href="https://www.jpf.go.jp/jft-basic/" target="_blank">JFT-Basic</a>
+    <a href="https://www.jlpt.jp/" target="_blank">JLPT</a>
+    <a href="https://www.mhlw.go.jp/stf/newpage_000117702.html" target="_blank">SSW Kaigo</a>
+    <a href="https://www.jaspa.or.jp/mechanic/specific-skill/index.html" target="_blank">
+      Jidōsha Seibi
+    </a>
+    <a href="https://otaff.or.jp/" target="_blank">
+      Pengolahan Makanan
+    </a>
+  </div>
+</div>
 
   </section>
 
