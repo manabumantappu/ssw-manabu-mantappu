@@ -141,24 +141,80 @@
         flex-direction:column;
       }
     }
+    /* ===== PAGE HEADER (SERAGAM) ===== */
+.page-header{
+  background:linear-gradient(180deg,#0b3c66,#0f5fa3);
+  color:#ffffff;
+  text-align:center;
+  padding:48px 20px 40px;
+}
+
+.page-header h1{
+  margin:0;
+  font-size:2rem;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.page-header p{
+  margin-top:10px;
+  font-size:.95rem;
+  opacity:.9;
+}
+
+/* ===== NAV DI BAWAH HEADER ===== */
+.page-nav{
+  background:#ffffff;
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  padding:14px 10px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+.page-nav a{
+  text-decoration:none;
+  font-weight:600;
+  font-size:.9rem;
+  color:#0f5fa3;
+  padding:6px 12px;
+  border-radius:999px;
+  transition:.2s ease;
+}
+
+.page-nav a:hover{
+  background:#e6f2ff;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .page-header h1{
+    font-size:1.6rem;
+  }
+  .page-nav{
+    flex-wrap:wrap;
+    gap:12px;
+  }
+}
+
     </style>
 </head>
 
 <body>
 
-<header>
+<!-- ===== HEADER SERAGAM ===== -->
+<header class="page-header">
   <h1>SSW Manabu Mantappu</h1>
   <p>Platform belajar & latihan SSW Jepang 🇯🇵</p>
 </header>
 
-<nav>
-  <ul>
-   <li><a href="index.html">Home</a></li>
-    <li><a href="ssw/index.html">SSW</a></li>
-    <li><a href="ssw/bahasa-bengkel.html">Belajar</a></li>
-    <li><a href="ssw/latihan-bahasa-bengkel.html">Latihan</a></li>
-  </ul>
+<nav class="page-nav">
+  <a href="index.html">Home</a>
+  <a href="ssw/index.html">SSW</a>
+  <a href="ssw/bahasa-bengkel.html">Belajar</a>
+  <a href="ssw/latihan-bahasa-bengkel.html">Latihan</a>
 </nav>
+
 
 <div class="container">
 
