@@ -252,6 +252,34 @@
     flex-direction:column;
   }
 }
+/* ===== HOME: CARD KIRI + SECTION KANAN ===== */
+.ssw-home-layout{
+  display:flex;
+  gap:24px;
+  align-items:flex-start;
+}
+
+/* BIARKAN CARD KIRI APA ADANYA */
+.official-ssw-card{
+  flex:0 0 320px;
+}
+
+/* SECTION KANAN KHUSUS TABEL */
+.ssw-table-section{
+  flex:1;
+  background:#ffffff;
+  padding:16px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  overflow-x:auto;
+}
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .ssw-home-layout{
+    flex-direction:column;
+  }
+}
 
   </style>
 </head>
