@@ -163,28 +163,32 @@
 }
 
 /* ===== NAV DI BAWAH HEADER ===== */
-.page-nav{
+/* ===== NAVBAR LEBIH BESAR ===== */
+.mm-nav{
   background:#ffffff;
   display:flex;
   justify-content:center;
-  gap:24px;
-  padding:14px 10px;
+  gap:32px;                  /* jarak antar menu diperbesar */
+  padding:18px 12px;         /* tinggi navbar naik */
   box-shadow:0 6px 18px rgba(0,0,0,.08);
 }
 
-.page-nav a{
+/* LINK NAV */
+.mm-nav a{
   text-decoration:none;
-  font-weight:600;
-  font-size:.9rem;
+  font-weight:700;
+  font-size:1rem;            /* DIBESARKAN */
   color:#0f5fa3;
-  padding:6px 12px;
+  padding:8px 18px;          /* area klik lebih nyaman */
   border-radius:999px;
-  transition:.2s ease;
+  transition:.25s ease;
 }
 
-.page-nav a:hover{
+.mm-nav a:hover{
   background:#e6f2ff;
+  transform:translateY(-2px);
 }
+
 
 /* MOBILE */
 @media(max-width:600px){
