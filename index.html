@@ -280,6 +280,28 @@
     flex-direction:column;
   }
 }
+/* === SAMAKAN LEBAR TABEL DENGAN CARD ATAS === */
+.ssw-home-layout{
+  display:flex;
+  gap:24px;
+  align-items:stretch; /* penting */
+}
+
+/* kiri tetap */
+.official-ssw-card{
+  flex:0 0 320px;
+}
+
+/* kanan DIPAKSA MELEBAR */
+.ssw-table-section{
+  flex:1 1 0;          /* kunci supaya ambil sisa lebar */
+  width:100%;          /* paksa full */
+  min-width:0;         /* penting agar flex tidak menyempit */
+}
+.ssw-table-section table{
+  width:100%;
+  table-layout:fixed;   /* kolom rapi & lebar stabil */
+}
 
   </style>
 </head>
