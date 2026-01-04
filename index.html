@@ -224,6 +224,35 @@
   background:#e3f2fd;
   transform:translateY(-2px);
 }
+/* ===== LAYOUT CARD KIRI + TABEL KANAN ===== */
+
+.ssw-dual-wrap{
+  display:flex;
+  gap:24px;
+  align-items:flex-start;
+  margin-top:24px;
+}
+
+.ssw-left{
+  flex:0 0 320px; /* lebar card kiri */
+}
+
+.ssw-right{
+  flex:1;
+  background:#ffffff;
+  padding:16px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  overflow-x:auto;
+}
+
+/* RESPONSIVE HP */
+@media(max-width:900px){
+  .ssw-dual-wrap{
+    flex-direction:column;
+  }
+}
+
   </style>
 </head>
 
