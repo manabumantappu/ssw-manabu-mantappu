@@ -116,19 +116,21 @@
 
 <body>
 
-<header>
-  <h1>🔧 Kosakata Jidōsha Seibi</h1>
-  <p>Materi dasar kosakata bengkel untuk SSW Jidōsha Seibi</p>
-</header>
+<!--===== HEADER SERAGAM PANGGIL DARI HEADER.HTML ===== -->
+<div id="site-header"></div>
 
-<nav>
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="index.html">SSW</a></li>
-    <li><a href="jidousha-seibi.html">Jidōsha Seibi</a></li>
-    <li><a href="latihan-bahasa-bengkel.html">Latihan</a></li>
-  </ul>
-</nav>
+<script>
+fetch("/ssw-manabu-mantappu/header.html")
+  .then(res => {
+    if (!res.ok) throw new Error("header.html tidak ditemukan");
+    return res.text();
+  })
+  .then(html => {
+    document.getElementById("site-header").innerHTML = html;
+  })
+  .catch(err => console.error(err));
+</script>
+  
 
 <div class="container">
 
