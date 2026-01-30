@@ -22,20 +22,21 @@
 
 <body>
 
-<!-- ===== HEADER ===== -->
-<header>
-  <h1>SSW Pengolahan Makanan</h1>
-  <p>Belajar & latihan SSW Jepang bidang Pengolahan Makanan (食品製造)</p>
-</header>
+<!--===== HEADER SERAGAM PANGGIL DARI HEADER.HTML ===== -->
+<div id="site-header"></div>
 
-<!-- ===== NAVBAR ===== -->
-<nav>
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../ssw/index.html">SSW</a></li>
-    <li><a href="index.html">Pengolahan Makanan</a></li>
-  </ul>
-</nav>
+<script>
+fetch("/ssw-manabu-mantappu/header.html")
+  .then(res => {
+    if (!res.ok) throw new Error("header.html tidak ditemukan");
+    return res.text();
+  })
+  .then(html => {
+    document.getElementById("site-header").innerHTML = html;
+  })
+  .catch(err => console.error(err));
+</script>
+  
 
 <!-- ===== CONTENT ===== -->
 <div class="container">
