@@ -24,17 +24,6 @@
 
 <body>
 
-<!-- ===== HEADER SERAGAM PANGGIL DARI HEADER.HTML ===== -->
-<div id="site-header"></div>
-
-<script>
-fetch("../header.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("site-header").innerHTML = data;
-  });
-</script>
-
 
 <!-- ===== CONTENT ===== -->
 <style>
@@ -228,7 +217,18 @@ fetch("../header.html")
 }
 
 </style>
+  
+<!-- ===== HEADER SERAGAM PANGGIL DARI HEADER.HTML ===== -->
+<div id="site-header"></div>
 
+<script>
+fetch("../header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("site-header").innerHTML = data;
+  });
+</script>
+  
 <section class="ssw-wrap">
 
   <div class="ssw-title">
