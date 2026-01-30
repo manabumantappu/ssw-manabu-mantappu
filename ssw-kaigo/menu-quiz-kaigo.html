@@ -62,18 +62,21 @@
 
 <body>
 
-<header>
-  <h1>Menu Quiz SSW Kaigo</h1>
-  <p>Pilih latihan atau simulasi ujian SSW Kaigo</p>
-</header>
+<!--===== HEADER SERAGAM PANGGIL DARI HEADER.HTML ===== -->
+<div id="site-header"></div>
 
-<nav>
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="index.html">Kaigo</a></li>
-    <li><a href="kosakata.html">Kosakata</a></li>
-  </ul>
-</nav>
+<script>
+fetch("/ssw-manabu-mantappu/header.html")
+  .then(res => {
+    if (!res.ok) throw new Error("header.html tidak ditemukan");
+    return res.text();
+  })
+  .then(html => {
+    document.getElementById("site-header").innerHTML = html;
+  })
+  .catch(err => console.error(err));
+</script>
+  
 
 <div class="container">
 
