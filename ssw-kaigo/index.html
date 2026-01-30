@@ -85,19 +85,21 @@
 
 <body>
 
-<header>
-  <h1>SSW Manabu Mantappu</h1>
-  <p>Platform belajar & latihan SSW Jepang untuk pejuang kerja ke Jepang 🇯🇵</p>
-</header>
+<!--===== HEADER SERAGAM PANGGIL DARI HEADER.HTML ===== -->
+<div id="site-header"></div>
 
-<nav>
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../ssw/index.html">SSW</a></li>
-    <li><a href="../ssw-jidousha/index.html">Jidōsha Seibi</a></li>
-    <li><a href="index.html" class="active">Kaigo</a></li>
-  </ul>
-</nav>
+<script>
+fetch("/ssw-manabu-mantappu/header.html")
+  .then(res => {
+    if (!res.ok) throw new Error("header.html tidak ditemukan");
+    return res.text();
+  })
+  .then(html => {
+    document.getElementById("site-header").innerHTML = html;
+  })
+  .catch(err => console.error(err));
+</script>
+  
 
 <div class="container">
 
