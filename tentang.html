@@ -128,30 +128,21 @@
 
 <body>
 
-<!-- ===== HEADER ===== -->
-<header class="mm-header">
-  <div class="mm-header-inner">
-    <div class="mm-brand-wrap">
-      <div class="mm-logo">
-        <img src="assets/img/logo.png" alt="Manabu Mantappu Logo">
-      </div>
-      <div class="mm-brand">
-        <h1>SSW Manabu Mantappu</h1>
-        <p>Platform belajar & latihan SSW Jepang 🇯🇵</p>
-      </div>
-    </div>
-  </div>
-</header>
+<!--===== HEADER SERAGAM PANGGIL DARI HEADER.HTML ===== -->
+<div id="site-header"></div>
 
-<!-- ===== NAV ===== -->
-<nav class="mm-nav">
-  <a href="index.html">Home</a>
-  <a href="ssw/index.html">SSW</a>
-  <a href="materi.html">Materi</a>
-  <a href="tryout.html">Try Out</a>
-  <a href="tentang.html">Tentang</a>
-</nav>
-
+<script>
+fetch("/ssw-manabu-mantappu/header.html")
+  .then(res => {
+    if (!res.ok) throw new Error("header.html tidak ditemukan");
+    return res.text();
+  })
+  .then(html => {
+    document.getElementById("site-header").innerHTML = html;
+  })
+  .catch(err => console.error(err));
+</script>
+  
 <!-- ===== CONTENT ===== -->
 <div class="container">
   <div class="about-card">
