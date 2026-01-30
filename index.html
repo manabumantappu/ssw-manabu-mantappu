@@ -277,32 +277,16 @@
 
 <body>
 
-<!-- ===== HEADER SERAGAM ===== -->
-<header class="mm-header">
-  <div class="mm-header-inner">
+<!-- ===== HEADER SERAGAM PANGGIL DARI HEADER.HTML ===== -->
+<div id="site-header"></div>
 
-    <div class="mm-brand-wrap">
-      <div class="mm-logo">
-        <img src="assets/img/logo.png" alt="Manabu Mantappu Logo">
-      </div>
-
-      <div class="mm-brand">
-        <h1>SSW Manabu Mantappu</h1>
-        <p>Platform belajar & latihan SSW Jepang</p>
-      </div>
-    </div>
-
-  </div>
-</header>
-
-
-<nav class="mm-nav">
-  <a href="index.html">Home</a>
-  <a href="ssw/index.html">SSW</a>
-  <a href="materi.html">Materi</a>
-  <a href="tryout.html">Try Out</a>
-  <a href="tentang.html">Tentang</a>
-</nav>
+<script>
+fetch("/header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("site-header").innerHTML = data;
+  });
+</script>
 
 
 <div class="container">
